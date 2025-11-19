@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zinckon+ Canada — Landing (Tailwind)</title>
+    <meta name="description"
+        content="Zinckon+ Canada — German-grade mineral salts, local Canadian support. Zinc, Magnesium, Calcium, Iron for Food, Pharma & Cosmetics." />
+
+    <!-- Tailwind Play CDN (for quick prototyping) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind config tweaks
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'zinx-purple': '#4B1D7A',
+                        'zinx-purple-soft': '#F5EEFF',
+                        'zinx-accent': '#E91E63'
+                    },
+                    fontFamily: {
+                        aptos: ['Aptos', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- GSAP for polished animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Quick font fallback. If you have Aptos hosted, replace this. */
+        body {
+            font-family: Aptos, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        }
+
+        /* subtle dashed orbit ring */
+        .orbit-ring {
+            box-shadow: 0 12px 40px rgba(15, 0, 45, 0.12);
+            border-radius: 9999px;
+            border: 1px dashed rgba(75, 29, 122, 0.18);
+        }
+
+        /* ions -- tiny tweak to look neat */
+        .ion {
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+
+        /* smoother 3d preserve */
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* small input focus glow */
+        .focus-glow:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(75, 29, 122, 0.08);
+            border-color: rgba(75, 29, 122, 0.8);
+        }
+
+        /* reduced motion prefer */
+        @media (prefers-reduced-motion: reduce) {
+            .gsap-motion {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased">
+
+    <!-- STICKY HEADER -->
+    <header class="sticky top-0 z-50 bg-white/60 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-4">
+                    <a href="#" class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-zinx-purple to-zinx-accent flex items-center justify-center text-white font-semibold">
+                            +</div>
+                        <div class="hidden sm:block">
+                            <div class="text-sm font-medium">Zinckon+ Canada</div>
+                            <div class="text-xs text-gray-500">German quality — local presence</div>
+                        </div>
+                    </a>
+                </div>
+
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#products" class="hover:text-zinx-purple">Products</a>
+                    <a href="#industries" class="hover:text-zinx-purple">Industries</a>
+                    <a href="#quality" class="hover:text-zinx-purple">Quality</a>
+                    <a href="#resources" class="hover:text-zinx-purple">Resources</a>
+                    <a href="#contact" class="hover:text-zinx-purple">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-3">
+                    <a href="tel:+1-000-000-0000" class="text-sm text-gray-600 hidden md:inline">+1 (000) 000-0000</a>
+                    <a href="#contact"
+                        class="px-4 py-2 rounded-full bg-zinx-purple text-white text-sm shadow hover:shadow-lg">Talk to
+                        an Expert</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <main class="overflow-x-hidden">
+        <section class="relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 items-center">
+
+                <!-- LEFT: COPY -->
+                <div class="lg:col-span-7">
+                    <p class="text-xs font-semibold tracking-widest text-zinx-purple">MINERAL NUTRITION FOR CANADIAN
+                        MANUFACTURERS</p>
+                    <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-aptos font-light leading-tight">German-grade
+                        minerals,<br>now closer to your production.</h1>
+                    <p class="mt-6 text-gray-600 max-w-xl">Zinckon+ Canada delivers premium zinc, magnesium, calcium and
+                        iron compounds for food, nutraceutical, pharmaceutical and cosmetic applications – backed by
+                        German quality and local Canadian support.</p>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="#products"
+                            class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-zinx-purple text-white text-sm shadow-md hover:shadow-lg">Explore
+                            products</a>
+                        <a href="#downloads"
+                            class="inline-flex items-center gap-3 px-5 py-3 rounded-full border border-zinx-purple text-zinx-purple text-sm">Download
+                            portfolio</a>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
+                        <span class="px-3 py-2 rounded-full border border-gray-100 bg-gray-50">✔ Consistent
+                            quality</span>
+                        <span class="px-3 py-2 rounded-full border border-gray-100 bg-gray-50">✔ Regulatory
+                            documentation</span>
+                        <span class="px-3 py-2 rounded-full border border-gray-100 bg-gray-50">✔ Reliable
+                            sourcing</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT: 3D STACK + ORBIT -->
+                <div class="lg:col-span-5 flex items-center justify-center relative">
+
+                    <!-- decorative radial background -->
+                    <div aria-hidden
+                        class="absolute -right-24 top-0 w-[640px] h-[640px] rounded-full bg-gradient-to-br from-zinx-purple/10 to-transparent pointer-events-none">
+                    </div>
+
+                    <div class="w-[360px] h-[360px] relative flex items-center justify-center">
+
+                        <!-- orbit ring -->
+                        <div class="orbit-ring w-64 h-64 absolute flex items-center justify-center rounded-full">
+                            <!-- ions positions (they're absolutely positioned within) -->
+                            <div
+                                class="ion absolute w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-sm font-medium border border-zinx-purple/10 shadow">
+                                Zn</div>
+                            <div class="ion absolute w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-sm font-medium border border-zinx-purple/10 shadow"
+                                style="right: -8px; top: 50%; transform: translateY(-50%);">Mg</div>
+                            <div class="ion absolute w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-sm font-medium border border-zinx-purple/10 shadow"
+                                style="bottom: -8px; left: 24%;">Ca</div>
+                            <div class="ion absolute w-12 h-12 rounded-full bg-white/90 flex items-center justify-center text-sm font-medium border border-zinx-purple/10 shadow"
+                                style="left: -8px; top: 28%;">Fe</div>
+                        </div>
+
+                        <!-- 3D stack -->
+                        <div class="relative preserve-3d w-72 h-72 transform -rotate-y-6 -rotate-x-3" id="heroStack">
+                            <article
+                                class="absolute inset-0 rounded-2xl p-6 bg-white/80 border border-zinx-purple/10 shadow-2xl"
+                                style="transform: translateZ(40px);">
+                                <h3 class="text-sm font-semibold text-zinx-purple uppercase tracking-wider">Food &
+                                    Beverage</h3>
+                                <p class="mt-3 text-gray-600 text-sm">Fortify beverages and foods with highly
+                                    bioavailable mineral salts.</p>
+                            </article>
+
+                            <article
+                                class="absolute inset-0 rounded-2xl p-6 bg-white/80 border border-zinx-purple/8 shadow-xl"
+                                style="transform: translateZ(0) translateY(18px) scale(.98);">
+                                <h3 class="text-sm font-semibold text-zinx-purple uppercase tracking-wider">Pharma &
+                                    Nutraceuticals</h3>
+                                <p class="mt-3 text-gray-600 text-sm">Mineral compounds designed for stringent quality
+                                    requirements.</p>
+                            </article>
+
+                            <article
+                                class="absolute inset-0 rounded-2xl p-6 bg-white/80 border border-zinx-purple/6 shadow-lg"
+                                style="transform: translateZ(-40px) translateY(36px) scale(.94); opacity:.9;">
+                                <h3 class="text-sm font-semibold text-zinx-purple uppercase tracking-wider">Cosmetics &
+                                    Personal Care</h3>
+                                <p class="mt-3 text-gray-600 text-sm">Consistent mineral quality for sophisticated
+                                    formulations.</p>
+                            </article>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- WHY BAND -->
+        <section class="border-t border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 grid md:grid-cols-4 gap-4">
+                <div class="p-4 bg-zinx-purple-soft rounded-xl shadow-sm">
+                    <h4 class="text-zinx-purple font-semibold">German Quality</h4>
+                    <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German supply
+                        chain.</p>
+                </div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
+                    <h4 class="text-zinx-purple font-semibold">Regulatory Ready</h4>
+                    <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma regulatory needs.
+                    </p>
+                </div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
+                    <h4 class="text-zinx-purple font-semibold">Reliable Sourcing</h4>
+                    <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and consistency.</p>
+                </div>
+                <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
+                    <h4 class="text-zinx-purple font-semibold">Custom Blends</h4>
+                    <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored to you.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INDUSTRIES -->
+        <section id="industries" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="text-2xl font-semibold">Industries we serve</h2>
+                    <p class="mt-4 text-gray-600 max-w-prose">From food and beverages to pharmaceuticals and cosmetics —
+                        our mineral solutions support a wide range of manufacturing needs with documentation and
+                        regulatory support tailored to Canadian industry standards.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- interactive tiles -->
+                    <button
+                        class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
+                        <h3 class="text-zinx-purple font-semibold">Food & Beverage</h3>
+                        <p class="mt-2 text-sm text-gray-600">Fortification, stability, taste & bioavailability.</p>
+                    </button>
+
+                    <button
+                        class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
+                        <h3 class="text-zinx-purple font-semibold">Pharmaceuticals</h3>
+                        <p class="mt-2 text-sm text-gray-600">Pharma-grade salts with batch documentation.</p>
+                    </button>
+
+                    <button
+                        class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
+                        <h3 class="text-zinx-purple font-semibold">Nutraceuticals</h3>
+                        <p class="mt-2 text-sm text-gray-600">Supplements and clinical-grade ingredients.</p>
+                    </button>
+
+                    <button
+                        class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
+                        <h3 class="text-zinx-purple font-semibold">Cosmetics</h3>
+                        <p class="mt-2 text-sm text-gray-600">Stability and performance for personal care formulations.
+                        </p>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SLIDER (scroll-driven) -->
+        <section id="products" class="bg-gray-50 py-12">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <h2 class="text-2xl font-semibold">Our Mineral Portfolio</h2>
+                <p class="text-gray-600 mt-2 max-w-prose">Explore key product families — click a card to view full
+                    product pages and technical datasheets.</p>
+
+                <div class="mt-8 overflow-x-auto no-scrollbar py-2">
+                    <div class="flex gap-4 w-max">
+                        <!-- product cards -->
+                        <article
+                            class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+                            <h3 class="text-lg font-semibold">Zinc Salts</h3>
+                            <p class="mt-3 text-sm text-gray-600">Zinc sulfate, zinc oxide, gluconate — food & pharma
+                                grades.</p>
+                            <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products →</a>
+                        </article>
+
+                        <article
+                            class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+                            <h3 class="text-lg font-semibold">Magnesium Salts</h3>
+                            <p class="mt-3 text-sm text-gray-600">Citrate, chloride, hydroxide — designed for
+                                formulations.</p>
+                            <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products →</a>
+                        </article>
+
+                        <article
+                            class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+                            <h3 class="text-lg font-semibold">Calcium Salts</h3>
+                            <p class="mt-3 text-sm text-gray-600">Carbonate, lactate — fortification & stability
+                                focused.</p>
+                            <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products →</a>
+                        </article>
+
+                        <article
+                            class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+                            <h3 class="text-lg font-semibold">Iron Salts</h3>
+                            <p class="mt-3 text-sm text-gray-600">Ferrous sulfate, fumarate — for nutrition & pharma.
+                            </p>
+                            <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products →</a>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUALITY / Certifications -->
+        <section id="quality" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-2xl font-semibold">Quality & Certifications</h2>
+                    <p class="mt-4 text-gray-600 max-w-prose">We work with certified partners and maintain strict
+                        quality control processes. Certificates and technical documents are provided for each product
+                        batch.</p>
+
+                    <div class="mt-6 flex gap-4 flex-wrap">
+                        <button class="px-4 py-2 bg-white border border-gray-100 rounded-full text-sm">ISO</button>
+                        <button class="px-4 py-2 bg-white border border-gray-100 rounded-full text-sm">HACCP</button>
+                        <button class="px-4 py-2 bg-white border border-gray-100 rounded-full text-sm">Batch
+                            Certificates</button>
+                        <button class="px-4 py-2 bg-white border border-gray-100 rounded-full text-sm">Technical
+                            Datasheets</button>
+                    </div>
+                </div>
+
+                <div class="flex justify-center">
+                    <div
+                        class="w-80 h-56 bg-white rounded-2xl border border-gray-100 shadow flex items-center justify-center">
+                        <div class="text-center">
+                            <p class="text-zinx-purple font-semibold">Download our certificates</p>
+                            <p class="text-sm text-gray-600 mt-2">Request the full batch documentation for your chosen
+                                products.</p>
+                            <a
+                                class="mt-4 inline-flex items-center px-4 py-2 rounded-full border border-zinx-purple text-zinx-purple">Request
+                                documents</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS TIMELINE -->
+        <section class="bg-gray-50 py-12">
+            <div class="max-w-6xl mx-auto px-6 lg:px-8">
+                <h2 class="text-2xl font-semibold">How collaboration works</h2>
+                <div class="mt-8 grid md:grid-cols-5 gap-6 text-center">
+                    <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
+                        <div class="text-3xl font-bold text-zinx-purple">1</div>
+                        <p class="mt-4 text-sm text-gray-600">Understanding your formulation</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
+                        <div class="text-3xl font-bold text-zinx-purple">2</div>
+                        <p class="mt-4 text-sm text-gray-600">Selecting mineral forms</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
+                        <div class="text-3xl font-bold text-zinx-purple">3</div>
+                        <p class="mt-4 text-sm text-gray-600">Regulatory support</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
+                        <div class="text-3xl font-bold text-zinx-purple">4</div>
+                        <p class="mt-4 text-sm text-gray-600">Logistics & delivery</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
+                        <div class="text-3xl font-bold text-zinx-purple">5</div>
+                        <p class="mt-4 text-sm text-gray-600">Ongoing technical support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT / LEAD FORM -->
+        <section id="contact" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <div class="grid lg:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h2 class="text-2xl font-semibold">Ready to discuss your next formulation?</h2>
+                    <p class="mt-4 text-gray-600">Share some details and our Canadian team will get back to you with
+                        tailored recommendations and sample options.</p>
+
+                    <div class="mt-6 space-y-4 text-sm text-gray-700">
+                        <p><strong>Canada Office</strong><br>Toronto, ON — Local contact & logistics</p>
+                        <p><strong>German HQ</strong><br>Zinckon GmbH — Product & R&amp;D sync</p>
+                    </div>
+                </div>
+
+                <form class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm"
+                    onsubmit="event.preventDefault(); handleFormSubmit();">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <input class="focus-glow p-3 rounded-lg border border-gray-200" placeholder="Name *" required
+                            id="name" />
+                        <input class="focus-glow p-3 rounded-lg border border-gray-200" placeholder="Email *"
+                            type="email" required id="email" />
+                        <input class="focus-glow p-3 rounded-lg border border-gray-200" placeholder="Company"
+                            id="company" />
+                        <input class="focus-glow p-3 rounded-lg border border-gray-200" placeholder="Industry"
+                            id="industry" />
+                    </div>
+
+                    <textarea id="message" class="focus-glow mt-4 p-3 rounded-lg border border-gray-200 w-full" rows="4"
+                        placeholder="Tell us about your project"></textarea>
+
+                    <div class="mt-4 flex items-center gap-3">
+                        <label class="inline-flex items-center gap-2 text-sm">
+                            <input type="checkbox" id="samples" class="h-4 w-4" />
+                            <span>I'd like product samples</span>
+                        </label>
+                    </div>
+
+                    <div class="mt-6 flex items-center gap-3">
+                        <button type="submit" class="px-4 py-2 rounded-full bg-zinx-purple text-white">Send
+                            request</button>
+                        <a href="#" class="text-sm text-gray-600">Or book a call →</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-gray-100 mt-12">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 grid md:grid-cols-3 gap-6">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-zinx-purple flex items-center justify-center text-white font-semibold">
+                            +</div>
+                        <div>
+                            <div class="font-semibold">Zinckon+ Canada</div>
+                            <div class="text-sm text-gray-500">German standards — Canadian support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-600">
+                    <h4 class="font-medium">Resources</h4>
+                    <ul class="mt-2 space-y-2">
+                        <li><a class="hover:text-zinx-purple">Downloads</a></li>
+                        <li><a class="hover:text-zinx-purple">Certificates</a></li>
+                        <li><a class="hover:text-zinx-purple">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="text-sm text-gray-600">
+                    <h4 class="font-medium">Company</h4>
+                    <ul class="mt-2 space-y-2">
+                        <li><a class="hover:text-zinx-purple">About</a></li>
+                        <li><a class="hover:text-zinx-purple">Contact</a></li>
+                        <li><a class="hover:text-zinx-purple">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 text-sm text-gray-500">© <span id="year"></span> Zinckon+
+                Canada — All rights reserved.</div>
+        </footer>
+    </main>
+
+    <script>
+        // small helpers
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Hero stack tilt (mouse parallax)
+        const heroStack = document.getElementById('heroStack');
+        const heroSection = document.querySelector('main section');
+        if (heroStack && heroSection) {
+            heroSection.addEventListener('mousemove', (e) => {
+                const rect = heroSection.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                const rotateY = -6 + x * 12; // tuned for tailwind layout
+                const rotateX = -3 - y * 8;
+                heroStack.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+            });
+            heroSection.addEventListener('mouseleave', () => {
+                heroStack.style.transform = 'rotateY(-6deg) rotateX(-3deg)';
+            });
+        }
+
+        // GSAP subtle animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.orbit-ring .ion', {
+            y: -8,
+            opacity: 0,
+            stagger: 0.12,
+            duration: 1.1,
+            ease: 'power3.out'
+        });
+
+        gsap.from('#heroStack article', {
+            y: 30,
+            opacity: 0,
+            stagger: 0.08,
+            duration: 0.9,
+            ease: 'power3.out',
+            delay: 0.2
+        });
+
+        // Scroll-triggered reveal for sections
+        document.querySelectorAll('section').forEach((sec) => {
+            gsap.from(sec.querySelectorAll('h2, h3, p, article, .ion, .stack-card'), {
+                y: 20,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.06,
+                scrollTrigger: { trigger: sec, start: 'top 85%' }
+            });
+        });
+
+        // tiny form handler (placeholder)
+        function handleFormSubmit() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            // here you'd post to your backend / Netlify function / API
+            alert(`Thanks ${name || ''}! Your request is received. We'll contact ${email || ''} soon.`);
+            document.querySelector('form').reset();
+        }
+
+        // small accessibility: remove focus outline only visually, keep for keyboard
+        const focusable = document.querySelectorAll('button, a, input, textarea');
+        focusable.forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Tab') el.classList.add('focus-visible'); }));
+    </script>
+</body>
+
+</html>
