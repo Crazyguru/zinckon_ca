@@ -1,0 +1,76 @@
+.slider-wrapper {
+  max-width: 1280px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.mySwiper {
+  width: 100%;
+  padding: 50px 0;
+}
+
+/* ---- SLIDE STYLE ---- */
+.swiper-slide {
+  width: auto !important;
+  display: flex !important;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.35;
+  transform: scale(0.88);
+  filter: blur(2px);
+  transition: all 0.55s cubic-bezier(0.17, 0.67, 0.32, 1.28);
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+
+/* ---- CARD STYLE ---- */
+.card {
+  width: 390px;
+  height: 260px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ddd;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* glow when slide is active */
+.swiper-slide-active .card {
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.28);
+}
+
+/* ---- IMAGE ---- */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+/* zoom for active slide */
+.swiper-slide-active .card img {
+  transform: scale(1.07);
+}
+
+/* ---- HOVER ANIMATION ---- */
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+}
+
+.card:hover img {
+  transform: scale(1.12);
+}
+
+/* ---- PAGINATION ---- */
+.swiper-pagination-bullet {
+  background: #6d28d9;
+}

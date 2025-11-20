@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Side by Side Filmstrip Slider</title>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        body {
+            margin: 0;
+            background: #f7f7f7;
+            font-family: Inter, sans-serif;
+        }
+
+        .slider-wrapper {
+            max-width: 1280px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .mySwiper {
+            width: 100%;
+            padding: 50px 0;
+        }
+
+        /* ---- SLIDE STYLE ---- */
+        .swiper-slide {
+            width: auto !important;
+            display: flex !important;
+            gap: 32px;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.35;
+            transform: scale(0.88);
+            filter: blur(2px);
+            transition: all 0.55s cubic-bezier(.17, .67, .32, 1.28);
+        }
+
+        .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+        }
+
+        /* ---- CARD STYLE ---- */
+        .card {
+            width: 390px;
+            height: 260px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: #ddd;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+            cursor: pointer;
+            flex-shrink: 0;
+            position: relative;
+            transition: transform .5s ease, box-shadow .5s ease;
+        }
+
+        /* glow when slide is active */
+        .swiper-slide-active .card {
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.28);
+        }
+
+        /* ---- IMAGE ---- */
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .7s ease;
+        }
+
+        /* zoom for active slide */
+        .swiper-slide-active .card img {
+            transform: scale(1.07);
+        }
+
+        /* ---- HOVER ANIMATION ---- */
+        .card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .card:hover img {
+            transform: scale(1.12);
+        }
+
+        /* ---- PAGINATION ---- */
+        .swiper-pagination-bullet {
+            background: #6d28d9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider-wrapper">
+        <h2 style="text-align:center;color:#5b21b6;font-size:30px;">animation</h2>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1581093588401-22f6362f4a02?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1503009122-758c8e9d0b3f?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1526318472351-bc6f3f1b40d5?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1530089681742-4c2f04e46bfa?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide">
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1507344648193-16c12aac53f2?auto=format&fit=crop&w=1200&q=60"></a>
+                    <a href="#" class="card"><img
+                            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=60"></a>
+                </div>
+
+            </div>
+
+            <!-- Pagination + Nav -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 850,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+
+            autoplay: {
+                delay: 2300,
+                disableOnInteraction: false,
+            },
+
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            // ---- PARALLAX + ENTRY ANIMATION ----
+            on: {
+                slideChangeTransitionStart() {
+                    const active = document.querySelector(".swiper-slide-active");
+
+                    if (!active) return;
+
+                    const cards = active.querySelectorAll(".card img");
+
+                    cards.forEach((img, i) => {
+                        img.style.transition = "transform .8s ease, opacity .6s ease";
+                        img.style.transform = `translateY(${i * 8}px) scale(1.12)`;
+                        img.style.opacity = "0";
+                    });
+                },
+
+                slideChangeTransitionEnd() {
+                    const active = document.querySelector(".swiper-slide-active");
+
+                    if (!active) return;
+
+                    const cards = active.querySelectorAll(".card img");
+
+                    cards.forEach((img, i) => {
+                        img.style.transition = "transform .9s cubic-bezier(.15,.65,.15,1), opacity .9s";
+                        img.style.transform = "translateY(0px) scale(1.07)";
+                        img.style.opacity = "1";
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

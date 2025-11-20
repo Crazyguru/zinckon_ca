@@ -70,40 +70,70 @@
             }
         }
     </style>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
 <body class="bg-white text-gray-900 antialiased">
 
-    <!-- STICKY HEADER -->
-    <header class="sticky top-0 z-50 bg-white/60 backdrop-blur-md border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a href="#" class="flex items-center gap-3">
-                        <div
-                            class="w-10 h-10 rounded-full bg-gradient-to-br from-zinx-purple to-zinx-accent flex items-center justify-center text-white font-semibold">
-                            +</div>
-                        <div class="hidden sm:block">
-                            <div class="text-sm font-medium">Zinckon+ Canada</div>
-                            <div class="text-xs text-gray-500">German quality — local presence</div>
-                        </div>
-                    </a>
+    <!-- STICKY HEADER (Updated to Zinckon+ layout) -->
+    <header class="w-full bg-white shadow-sm border-b border-gray-200">
+        <!-- TOP BAR -->
+        <div class="w-full bg-white">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <img src="/logo.png" alt="Zinckon+" class="h-14 w-auto" />
                 </div>
 
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="#products" class="hover:text-zinx-purple">Products</a>
-                    <a href="#industries" class="hover:text-zinx-purple">Industries</a>
-                    <a href="#quality" class="hover:text-zinx-purple">Quality</a>
-                    <a href="#resources" class="hover:text-zinx-purple">Resources</a>
-                    <a href="#contact" class="hover:text-zinx-purple">Contact</a>
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-6 hidden md:flex">
+                    <div class="flex w-full border-2 border-zinx-purple rounded-full overflow-hidden">
+                        <select class="px-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">
+                            <option>Products</option>
+                            <option>Applications</option>
+                            <option>Certifications</option>
+                        </select>
+                        <input type="text" placeholder="Type product names or CAS numbers..."
+                            class="flex-1 px-4 py-2 outline-none text-sm" />
+                        <button class="px-5 bg-zinx-purple text-white flex items-center justify-center"><span
+                                class="material-icons">search</span></button>
+                    </div>
+                </div>
+
+                <!-- Right Controls -->
+                <div class="flex items-center gap-4 text-sm">
+                    <div class="flex items-center gap-1 cursor-pointer"><span>CA</span> | <span
+                            class="text-gray-500">EN</span></div>
+                    <button class="relative"><span class="material-icons text-zinx-purple">shopping_cart</span><span
+                            class="absolute -top-1 -right-2 text-xs bg-zinx-purple text-white rounded-full px-1">0</span></button>
+                    <div class="relative group">
+                        <button class="flex items-center gap-1"><span
+                                class="material-icons text-zinx-purple">person</span> Login</button>
+                        <div
+                            class="hidden group-hover:block absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
+                            <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
+                            <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PURPLE NAV STRIP -->
+        <div class="w-full bg-zinx-purple text-white">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
+                <nav class="flex items-center gap-6 text-sm font-medium">
+                    <button class="hover:underline">Industry we cater to ▼</button>
+                    <button class="hover:underline">Products ▼</button>
+                    <button class="hover:underline">Applications ▼</button>
+                    <button class="hover:underline">Certifications ▼</button>
+                    <button class="hover:underline">Contact</button>
                 </nav>
 
-                <div class="flex items-center gap-3">
-                    <a href="tel:+1-000-000-0000" class="text-sm text-gray-600 hidden md:inline">+1 (000) 000-0000</a>
-                    <a href="#contact"
-                        class="px-4 py-2 rounded-full bg-zinx-purple text-white text-sm shadow hover:shadow-lg">Talk to
-                        an Expert</a>
-                </div>
+                <button class="px-4 py-2 bg-white text-zinx-purple font-semibold rounded-md text-sm">Request a
+                    QUOTE</button>
             </div>
         </div>
     </header>
@@ -201,6 +231,81 @@
 
             </div>
         </section>
+        <section id="premium-filmstrip-slider" class="slider-wrapper">
+            <h2 style="text-align:center;color:#5b21b6;font-size:30px;">animation</h2>
+
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1581093588401-22f6362f4a02?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1503009122-758c8e9d0b3f?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                    <!-- Slide 5 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1526318472351-bc6f3f1b40d5?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1530089681742-4c2f04e46bfa?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1517697471339-4aa32003c11a?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                    <!-- Slide 6 -->
+                    <div class="swiper-slide">
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1507344648193-16c12aac53f2?auto=format&fit=crop&w=1200&q=60"></a>
+                        <a href="#" class="card"><img
+                                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1200&q=60"></a>
+                    </div>
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+
+
 
         <!-- WHY BAND -->
         <section class="border-t border-b border-gray-100">
@@ -528,6 +633,66 @@
         const focusable = document.querySelectorAll('button, a, input, textarea');
         focusable.forEach(el => el.addEventListener('keydown', (e) => { if (e.key === 'Tab') el.classList.add('focus-visible'); }));
     </script>
+
+
+
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 850,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+
+            autoplay: {
+                delay: 2300,
+                disableOnInteraction: false,
+            },
+
+            pagination: { el: ".swiper-pagination", clickable: true },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            // ---- PARALLAX + ENTRY ANIMATION ----
+            on: {
+                slideChangeTransitionStart() {
+                    const active = document.querySelector(".swiper-slide-active");
+
+                    if (!active) return;
+
+                    const cards = active.querySelectorAll(".card img");
+
+                    cards.forEach((img, i) => {
+                        img.style.transition = "transform .8s ease, opacity .6s ease";
+                        img.style.transform = `translateY(${i * 8}px) scale(1.12)`;
+                        img.style.opacity = "0";
+                    });
+                },
+
+                slideChangeTransitionEnd() {
+                    const active = document.querySelector(".swiper-slide-active");
+
+                    if (!active) return;
+
+                    const cards = active.querySelectorAll(".card img");
+
+                    cards.forEach((img, i) => {
+                        img.style.transition = "transform .9s cubic-bezier(.15,.65,.15,1), opacity .9s";
+                        img.style.transform = "translateY(0px) scale(1.07)";
+                        img.style.opacity = "1";
+                    });
+                }
+            }
+        });
+
+    </script>
+
+
 </body>
 
 </html>
