@@ -1,7 +1,8 @@
 .slider-wrapper {
-  max-width: 1280px;
+  max-width: 1480px;
   margin: 60px auto;
-  padding: 0 20px;
+  padding: 0px 25px;
+  border-radius: 22px;
 }
 
 .mySwiper {
@@ -30,11 +31,11 @@
 
 /* ---- CARD STYLE ---- */
 .card {
-  width: 390px;
+  width: 450px;
   height: 260px;
   border-radius: 22px;
   overflow: hidden;
-  background: #ddd;
+
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   flex-shrink: 0;
