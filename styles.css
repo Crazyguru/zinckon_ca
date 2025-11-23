@@ -110,6 +110,7 @@ body {
 .about-container {
   padding: 30px 20px;
   background-color: #A53860;
+  /* background-color: #64034f; */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-left: 5px solid #FCB50C; /* pink left border */
