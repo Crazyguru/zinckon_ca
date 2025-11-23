@@ -26,6 +26,7 @@
                 }
             }
         }
+        
     </script>
 
     <!-- GSAP for polished animations -->
@@ -150,7 +151,7 @@
         }
 
         .hero-node-ca {
-            bottom: -4%;
+            bottom: -1%;
             left: 26%;
         }
 
@@ -166,7 +167,7 @@
             height: 6px;
             border-radius: 9999px;
             background: rgba(248, 250, 252, 0.95);
-            box-shadow: 0 0 18px rgba(147, 51, 234, 0.95);
+            box-shadow: 0 0 18px #8F267C;
             opacity: 0.8;
             z-index: 15;
         }
@@ -224,7 +225,7 @@
         .hero-panel strong {
             display: block;
             font-size: 12px;
-            color: #4b21b6;
+            color: #8F267C;
         }
 
         /* Left column text spacing tweaks on bigger screens */
@@ -272,7 +273,7 @@
 
                     <!-- Search Bar -->
                     <div class="flex-1 max-w-2xl mx-6 hidden md:flex">
-                        <div class="flex w-full border-2 border-zinx-purple rounded-full overflow-hidden">
+                        <div class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden">
                             <select
                                 class="px-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">
                                 <option>Products</option>
@@ -281,7 +282,7 @@
                             </select>
                             <input type="text" placeholder="Type product names or CAS numbers..."
                                 class="flex-1 px-4 py-2 outline-none text-sm" />
-                            <button class="px-5 bg-zinx-purple text-white flex items-center justify-center"><span
+                            <button class="px-5 bg-[#8F267C] text-white flex items-center justify-center"><span
                                     class="material-icons">search</span></button>
                         </div>
                     </div>
@@ -290,11 +291,11 @@
                     <div class="flex items-center gap-4 text-sm">
                         <div class="flex items-center gap-1 cursor-pointer"><span>CA</span> | <span
                                 class="text-gray-500">EN</span></div>
-                        <button class="relative"><span class="material-icons text-zinx-purple">shopping_cart</span><span
-                                class="absolute -top-1 -right-2 text-xs bg-zinx-purple text-white rounded-full px-1">0</span></button>
+                        <button class="relative"><span class="material-icons text-[#8F267C]">shopping_cart</span><span
+                                class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span></button>
                         <div class="relative group">
-                            <button class="flex items-center gap-1"><span
-                                    class="material-icons text-zinx-purple">person</span> Login</button>
+                            <button class="flex items-center text-[#8F267C] gap-1"><span
+                                    class="material-icons ">person</span> Login</button>
                             <div
                                 class="hidden group-hover:block absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
                                 <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
@@ -306,7 +307,7 @@
             </div>
 
             <!-- PURPLE NAV STRIP -->
-            <div class="w-full bg-zinx-purple text-white">
+            <div class="w-full bg-[#8F267C] text-white">
                 <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
                     <nav class="flex items-center gap-6 text-sm font-medium">
                         <button class="hover:underline">Industry we cater to ▼</button>
@@ -316,7 +317,7 @@
                         <button class="hover:underline">Contact</button>
                     </nav>
 
-                    <button class="px-4 py-2 bg-white text-zinx-purple font-semibold rounded-md text-sm">Request a
+                    <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">Request a
                         QUOTE</button>
                 </div>
             </div>
@@ -325,11 +326,11 @@
         <!-- HERO -->
         <main class="">
             <section class="relative" data-hero>
-                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 grid lg:grid-cols-12 gap-10 items-center">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-14 grid lg:grid-cols-12 gap-10 items-center">
 
                     <!-- LEFT COPY -->
                     <div class="lg:col-span-7 relative z-[10]" data-hero-copy>
-                        <p class="text-xs font-semibold tracking-widest text-zinx-purple">
+                        <p class="text-xs font-semibold tracking-widest text-text-[#8F267C]">
                             MINERAL NUTRITION FOR CANADIAN MANUFACTURERS
                         </p>
 
@@ -346,21 +347,21 @@
 
                         <div class="mt-8 flex flex-wrap gap-3">
                             <a href="#products"
-                                class="px-5 py-3 rounded-full bg-zinx-purple text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">
+                                class="px-5 py-3 rounded-full bg-[#8F267C] text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">
                                 Explore mineral portfolio
                             </a>
                             <a href="#downloads"
-                                class="px-5 py-3 rounded-full border border-zinx-purple text-zinx-purple text-sm hover:bg-zinx-purple/5 transition">
+                                class="px-5 py-3 rounded-full border border-[#8F267C] text-[#8F267C] text-sm hover:bg-[#8F267C]/5 transition">
                                 Download technical sheets
                             </a>
                         </div>
 
-                        <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
+                        <!-- <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Batch-wise documentation</span>
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Food, pharma & cosmetic
                                 grades</span>
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ European process standards</span>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- RIGHT FUTURISTIC VISUAL -->
@@ -414,12 +415,43 @@
 
 
 
+ <!-- WHY BAND -->
+            <section class="border-t border-b border-gray-100">
+                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 grid md:grid-cols-4 gap-4">
+                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm">
+                        <h4 class="text-[#8F267C] font-semibold">German Quality</h4>
+                        <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German
+                            supply
+                            chain.</p>
+                    </div>
+                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+                        <h4 class="text-[#8F267C] font-semibold">Regulatory Ready</h4>
+                        <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma
+                            regulatory
+                            needs.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+                        <h4 class="text-[#8F267C] font-semibold">Reliable Sourcing</h4>
+                        <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and
+                            consistency.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+                        <h4 class="text-[#8F267C] font-semibold">Custom Blends</h4>
+                        <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored
+                            to
+                            you.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
 
 
             <!-- GSAP ANIMATION SLIDER -->
-            <section id="gsap-slider" class="slider-wrapper">
-                <h2 style="text-align:center;color:#5b21b6;font-size:30px;"> Slider</h2>
+            <section id="gsap-slider" class="slider-wrapper overflow-hidden ">
+                <h2 style="text-align:center;color:#8F267C;font-size:30px;"> Slider</h2>
 
                 <div class="slider-container">
                     <div class="slide">
@@ -455,81 +487,82 @@
             </section>
 
 
+            <!-- INDUSTRIES WE SERVE -->
 
-            <!-- WHY BAND -->
-            <section class="border-t border-b border-gray-100">
-                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-8 grid md:grid-cols-4 gap-4">
-                    <div class="p-4 bg-zinx-purple-soft rounded-xl shadow-sm">
-                        <h4 class="text-zinx-purple font-semibold">German Quality</h4>
-                        <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German
-                            supply
-                            chain.</p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-zinx-purple font-semibold">Regulatory Ready</h4>
-                        <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma
-                            regulatory
-                            needs.
-                        </p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-zinx-purple font-semibold">Reliable Sourcing</h4>
-                        <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and
-                            consistency.
-                        </p>
-                    </div>
-                    <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-zinx-purple font-semibold">Custom Blends</h4>
-                        <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored
-                            to
-                            you.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <section class="relative py-24 bg-cover bg-center text-center" 
+    style="background-image: url('images/lab-bg2.jpg');">
 
-            <!-- INDUSTRIES -->
-            <section id="industries" class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-                <div class="grid lg:grid-cols-2 gap-8 items-start">
-                    <div>
-                        <h2 class="text-2xl font-semibold">Industries we serve</h2>
-                        <p class="mt-4 text-gray-600 max-w-prose">From food and beverages to pharmaceuticals and
-                            cosmetics —
-                            our mineral solutions support a wide range of manufacturing needs with documentation and
-                            regulatory support tailored to Canadian industry standards.</p>
-                    </div>
+    <!-- Glass Card Wrapper -->
+    <div class="max-w-4xl mx-auto px-6 py-12 
+                bg-white/20 backdrop-blur-xl border border-white/30 
+                rounded-2xl shadow-2xl">
 
-                    <div class="grid grid-cols-2 gap-4">
-                        <!-- interactive tiles -->
-                        <button
-                            class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
-                            <h3 class="text-zinx-purple font-semibold">Food & Beverage</h3>
-                            <p class="mt-2 text-sm text-gray-600">Fortification, stability, taste & bioavailability.
-                            </p>
-                        </button>
+        <h2 class="text-4xl font-bold text-white">Industries We Serve</h2>
+        <p class="text-white/90 mt-3">Our mineral solutions empower diverse industries.</p>
 
-                        <button
-                            class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
-                            <h3 class="text-zinx-purple font-semibold">Pharmaceuticals</h3>
-                            <p class="mt-2 text-sm text-gray-600">Pharma-grade salts with batch documentation.</p>
-                        </button>
+        <!-- GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-12">
 
-                        <button
-                            class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
-                            <h3 class="text-zinx-purple font-semibold">Nutraceuticals</h3>
-                            <p class="mt-2 text-sm text-gray-600">Supplements and clinical-grade ingredients.</p>
-                        </button>
+            <!-- CARD 1 -->
+            <div class="p-6 rounded-xl 
+                        bg-white/20 border border-white/30 
+                        backdrop-blur-lg text-white 
+                        transition transform hover:-translate-y-2 hover:bg-white/30">
+                
+                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3" viewBox="0 0 24 24">
+                    
+                        <path d="M4 3h2v16H4V3zm4 0h2v7H8V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm3 8H3v2h18v-2zm-4 4H7l-2 9h14l-2-9z"/>
+                    
+                </svg>
 
-                        <button
-                            class="group p-6 rounded-2xl bg-white border border-gray-100 shadow hover:scale-102 transition-transform text-left">
-                            <h3 class="text-zinx-purple font-semibold">Cosmetics</h3>
-                            <p class="mt-2 text-sm text-gray-600">Stability and performance for personal care
-                                formulations.
-                            </p>
-                        </button>
-                    </div>
-                </div>
-            </section>
+                <h3 class="text-lg font-semibold">Food & Beverage</h3>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="p-6 rounded-xl 
+                        bg-white/20 border border-white/30 
+                        backdrop-blur-lg text-white 
+                        transition transform hover:-translate-y-2 hover:bg-white/30">
+
+                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3" viewBox="0 0 24 24">
+                    <path d="M22 2H12a2 2 0 00-2 2v12a6 6 0 1012 0V4a2 2 0 00-2-2zm-5 22a4 4 0 110-8 4 4 0 010 8z"/>
+                </svg>
+
+                <h3 class="text-lg font-semibold">Pharmaceuticals</h3>
+            </div>
+                   
+            <!-- CARD 3 -->
+            <div class="p-6 rounded-xl 
+                        bg-white/20 border border-white/30 
+                        backdrop-blur-lg text-white 
+                        transition transform hover:-translate-y-2 hover:bg-white/30">
+
+                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3" viewBox="0 0 24 24">
+                    <path d="M18 2a7 7 0 00-7 7v18a7 7 0 1014 0V9a7 7 0 00-7-7zm5 25a5 5 0 11-10 0V11h10v16z"/>
+                </svg>
+
+                <h3 class="text-lg font-semibold">Nutraceuticals</h3>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="p-6 rounded-xl 
+                        bg-white/20 border border-white/30 
+                        backdrop-blur-lg text-white 
+                        transition transform hover:-translate-y-2 hover:bg-white/30">
+
+                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3" viewBox="0 0 24 24">
+                    <path d="M12 2H6L2 12v2h12v-2L12 2zm1 16H5l-1 16h10l-1-16zM22 2l-4 6v4h8V8l-4-6zm-4 18h8v12h-8V20z"/>
+                </svg>
+
+                <h3 class="text-lg font-semibold">Cosmetics</h3>
+            </div>
+
+        </div>
+    </div>
+</section>
+            
+            
+
 
             <!-- PRODUCTS SLIDER (scroll-driven) -->
             <section id="products" class="bg-gray-50 py-12">
@@ -548,7 +581,7 @@
                                 <p class="mt-3 text-sm text-gray-600">Zinc sulfate, zinc oxide, gluconate — food &
                                     pharma
                                     grades.</p>
-                                <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products
+                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
                                     →</a>
                             </article>
 
@@ -557,7 +590,7 @@
                                 <h3 class="text-lg font-semibold">Magnesium Salts</h3>
                                 <p class="mt-3 text-sm text-gray-600">Citrate, chloride, hydroxide — designed for
                                     formulations.</p>
-                                <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products
+                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
                                     →</a>
                             </article>
 
@@ -566,7 +599,7 @@
                                 <h3 class="text-lg font-semibold">Calcium Salts</h3>
                                 <p class="mt-3 text-sm text-gray-600">Carbonate, lactate — fortification & stability
                                     focused.</p>
-                                <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products
+                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
                                     →</a>
                             </article>
 
@@ -576,7 +609,7 @@
                                 <p class="mt-3 text-sm text-gray-600">Ferrous sulfate, fumarate — for nutrition &
                                     pharma.
                                 </p>
-                                <a class="mt-4 inline-block text-sm text-zinx-purple font-medium">View products
+                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
                                     →</a>
                             </article>
                         </div>
@@ -610,12 +643,12 @@
                         <div
                             class="w-80 h-56 bg-white rounded-2xl border border-gray-100 shadow flex items-center justify-center">
                             <div class="text-center">
-                                <p class="text-zinx-purple font-semibold">Download our certificates</p>
+                                <p class="text-[#8F267C] font-semibold">Download our certificates</p>
                                 <p class="text-sm text-gray-600 mt-2">Request the full batch documentation for your
                                     chosen
                                     products.</p>
                                 <a
-                                    class="mt-4 inline-flex items-center px-4 py-2 rounded-full border border-zinx-purple text-zinx-purple">Request
+                                    class="mt-4 inline-flex items-center px-4 py-2 rounded-full border border-[#8F267C] text-[#8F267C]">Request
                                     documents</a>
                             </div>
                         </div>
@@ -629,23 +662,23 @@
                     <h2 class="text-2xl font-semibold">How collaboration works</h2>
                     <div class="mt-8 grid md:grid-cols-5 gap-6 text-center">
                         <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
-                            <div class="text-3xl font-bold text-zinx-purple">1</div>
+                            <div class="text-3xl font-bold text-[#8F267C]">1</div>
                             <p class="mt-4 text-sm text-gray-600">Understanding your formulation</p>
                         </div>
                         <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
-                            <div class="text-3xl font-bold text-zinx-purple">2</div>
+                            <div class="text-3xl font-bold text-[#8F267C]">2</div>
                             <p class="mt-4 text-sm text-gray-600">Selecting mineral forms</p>
                         </div>
                         <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
-                            <div class="text-3xl font-bold text-zinx-purple">3</div>
+                            <div class="text-3xl font-bold text-[#8F267C]">3</div>
                             <p class="mt-4 text-sm text-gray-600">Regulatory support</p>
                         </div>
                         <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
-                            <div class="text-3xl font-bold text-zinx-purple">4</div>
+                            <div class="text-3xl font-bold text-[#8F267C]">4</div>
                             <p class="mt-4 text-sm text-gray-600">Logistics & delivery</p>
                         </div>
                         <div class="p-6 bg-white rounded-2xl border border-gray-100 shadow">
-                            <div class="text-3xl font-bold text-zinx-purple">5</div>
+                            <div class="text-3xl font-bold text-[#8F267C]">5</div>
                             <p class="mt-4 text-sm text-gray-600">Ongoing technical support</p>
                         </div>
                     </div>
@@ -691,7 +724,7 @@
                         </div>
 
                         <div class="mt-6 flex items-center gap-3">
-                            <button type="submit" class="px-4 py-2 rounded-full bg-zinx-purple text-white">Send
+                            <button type="submit" class="px-4 py-2 rounded-full bg-[#8F267C] text-white">Send
                                 request</button>
                             <a href="#" class="text-sm text-gray-600">Or book a call →</a>
                         </div>
@@ -705,7 +738,7 @@
                     <div>
                         <div class="flex items-center gap-3">
                             <div
-                                class="w-10 h-10 rounded-full bg-zinx-purple flex items-center justify-center text-white font-semibold">
+                                class="w-10 h-10 rounded-full bg-[#8F267C] flex items-center justify-center text-white font-semibold">
                                 +</div>
                             <div>
                                 <div class="font-semibold">Zinckon+ Canada</div>
@@ -717,18 +750,18 @@
                     <div class="text-sm text-gray-600">
                         <h4 class="font-medium">Resources</h4>
                         <ul class="mt-2 space-y-2">
-                            <li><a class="hover:text-zinx-purple">Downloads</a></li>
-                            <li><a class="hover:text-zinx-purple">Certificates</a></li>
-                            <li><a class="hover:text-zinx-purple">Blog</a></li>
+                            <li><a class="hover:text-[#8F267C]">Downloads</a></li>
+                            <li><a class="hover:text-[#8F267C]">Certificates</a></li>
+                            <li><a class="hover:text-[#8F267C]">Blog</a></li>
                         </ul>
                     </div>
 
                     <div class="text-sm text-gray-600">
                         <h4 class="font-medium">Company</h4>
                         <ul class="mt-2 space-y-2">
-                            <li><a class="hover:text-zinx-purple">About</a></li>
-                            <li><a class="hover:text-zinx-purple">Contact</a></li>
-                            <li><a class="hover:text-zinx-purple">Privacy</a></li>
+                            <li><a class="hover:text-[#8F267C]">About</a></li>
+                            <li><a class="hover:text-[#8F267C]">Contact</a></li>
+                            <li><a class="hover:text-[#8F267C]">Privacy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -739,6 +772,232 @@
             </footer>
         </main>
 
+            <section class="relative w-full overflow-hidden bg-[#64034f] py-3">
+      <style>
+        /* Marquee core animation */
+        @keyframes scrollText {
+          0% {
+            transform: translateX(0);
+          }
+
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .marquee-wrapper {
+          display: flex;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .marquee-track {
+          display: inline-flex;
+          animation: scrollText 20s linear infinite;
+        }
+
+        /* Responsive speed tweak */
+        @media (max-width: 640px) {
+          .marquee-track {
+            animation-duration: 10s;
+          }
+        }
+
+        /* Optional subtle hover pause */
+        .marquee-wrapper:hover .marquee-track {
+          animation-play-state: paused;
+        }
+      </style>
+
+      <div
+        class="marquee-wrapper text-white font-medium text-sm sm:text-base tracking-wide"
+      >
+        <div class="marquee-track">
+          <span class="mx-6">Best in Quality</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">GMP Certified</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">ISO Certified</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">100% Natural Ingredients</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">Trusted by Experts</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">Made in India</span>
+          <span class="mx-6">✨</span>
+
+          <!-- Duplicate once for seamless loop -->
+          <span class="mx-6">Best in Quality</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">GMP Certified</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">ISO Certified</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">100% Natural Ingredients</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">Trusted by Experts</span>
+          <span class="mx-6">✨</span>
+          <span class="mx-6">Made in India</span>
+          <span class="mx-6">✨</span>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="relative bg-[#4d023d] text-white py-14 overflow-hidden footer"
+    >
+      <!-- Floating Decorative Orbs -->
+      <svg
+        class="absolute left-10 top-10 animate-float w-10 h-10 text-yellow-500 opacity-25"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+      <svg
+        class="absolute right-20 bottom-10 animate-float-reverse w-8 h-8 text-yellow-300 opacity-20"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+      <svg
+        class="absolute left-1/2 bottom-0 animate-bounce-slow w-8 h-8 text-yellow-400 opacity-10"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <circle cx="12" cy="12" r="10" />
+      </svg>
+
+      <!-- Main Footer Content -->
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm z-10 relative"
+      >
+        <!-- Brand -->
+        <div>
+          <h3 class="text-2xl font-bold text-yellow-400 tracking-wide">
+            ZINCKON
+          </h3>
+          <p class="mt-4 text-gray-300 leading-relaxed">
+            Zinckon+ Canada
+            <br />
+            German standards — Canadian support
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4
+            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
+          >
+            Quick Links
+          </h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>
+              <a href="#home" class="hover:text-yellow-300 transition">Home</a>
+            </li>
+
+            <li>
+              <a href="#products" class="hover:text-yellow-300 transition"
+                >Products</a
+              >
+            </li>
+            <li>
+              <a href="#quality" class="hover:text-yellow-300 transition"
+                >Quality</a
+              >
+            </li>
+            <li>
+              <a href="#about" class="hover:text-yellow-300 transition"
+                >About</a
+              >
+            </li>
+            <li>
+              <a href="#contact" class="hover:text-yellow-300 transition"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- 🌿 Get in Touch (replacing Services) -->
+        <div>
+          <h4
+            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
+          >
+            Get in Touch
+          </h4>
+          <ul class="space-y-3 text-gray-300">
+            <li class="flex items-center gap-2">
+              <i class="fas fa-map-marker-alt text-yellow-400"></i>
+              <span>Toronto, Canada</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-envelope text-yellow-400"></i>
+              <a
+                href="mailto:info@zinckon.com"
+                class="hover:text-yellow-300 transition"
+                >info@zinckon.com</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-phone-alt text-yellow-400"></i>
+              <a
+                href="tel:+919959870888"
+                class="hover:text-yellow-300 transition"
+                >+91 99598 70888</a
+              >
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fas fa-clock text-yellow-400"></i>
+              <span>Mon – Sat: 9:00 AM – 8:00 PM</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h4
+            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
+          >
+            Follow Us
+          </h4>
+          <div class="flex space-x-5 text-2xl mt-2">
+            <a href="#" class="hover:text-yellow-400 transition"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" class="hover:text-yellow-400 transition"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" class="hover:text-yellow-400 transition"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" class="hover:text-yellow-400 transition"
+              ><i class="fab fa-youtube"></i
+            ></a>
+          </div>
+          <p class="mt-4 text-gray-400 text-sm leading-relaxed">
+            Join our community for Ayurvedic tips, wellness insights, and
+            exclusive offers.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div
+        class="mt-12 mx-6 text-center text-gray-200 text-sm border-t border-gray-300 pt-6 relative"
+      >
+        <div>© 2025 Zinckon+ Canada. All rights reserved.</div>
+        <div class="text-gray-300">
+          Designed by
+          <a
+            href="https://s2gsolutions.com"
+            class="text-yellow-400 hover:underline inline-block transition-transform"
+            >S2G Solutions</a
+          >
+        </div>
+      </div>
+    </footer>
 
 
         <script>

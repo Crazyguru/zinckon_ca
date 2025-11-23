@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'Aptos Light';
+  src: url('fonts/aptos-light.woff2') format('woff2'),
+       url('fonts/aptos-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  overflow-x: hidden;
+  /* background-color: #64034f; */
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.7s ease-out;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+body {
+  font-family: 'Aptos Light';
+}
+
+
 .slider-wrapper {
   max-width: 1300px;
   margin: 60px auto;
@@ -35,7 +60,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
-  color: #5b21b6;
+  color: #8F267C;
   border: none;
   font-size: 50px;
   padding: 10px 18px;

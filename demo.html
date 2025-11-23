@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries We Serve - Templates</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        background: #f5f5f5;
+    }
+
+    h2 {
+        font-size: 34px;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    p {
+        color: #555;
+        margin-bottom: 30px;
+        font-size: 16px;
+    }
+
+    .divider {
+        margin: 60px auto;
+        border-top: 2px dashed #ccc;
+        width: 70%;
+    }
+
+    .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+        padding: 0 20px;
+    }
+
+    .industry-card {
+        background: #fff;
+        border-radius: 14px;
+        padding: 30px 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        transition: 0.3s ease;
+    }
+
+    .industry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    svg {
+        margin-bottom: 12px;
+    }
+
+    /* Glassmorphism */
+    .glass {
+        backdrop-filter: blur(15px);
+        background: rgba(255,255,255,0.2);
+        border: 1px solid rgba(255,255,255,0.4);
+    }
+
+</style>
+</head>
+<body>
+
+
+
+<!-- ===================================================== -->
+<!-- ============== TEMPLATE 1 — MODERN COLOR ============= -->
+<!-- ===================================================== -->
+
+<section style="padding: 80px 20px; background: linear-gradient(135deg, #7f5af0, #2cb67d); color: white;">
+    <h2>Industries We Serve</h2>
+    <p>Delivering tailored digital solutions across multiple sectors.</p>
+
+    <div class="industry-grid">
+
+        <div class="industry-card" style="background:#ffffff20; color:#fff;">
+            <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                <path d="M3 13h2v8H3zM7 9h2v12H7zM11 5h2v16h-2zM15 1h2v20h-2zM19 7h2v14h-2z"/>
+            </svg>
+            <h3>Manufacturing</h3>
+        </div>
+
+        <div class="industry-card" style="background:#ffffff20; color:#fff;">
+            <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                <path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4z"/>
+            </svg>
+            <h3>FinTech</h3>
+        </div>
+
+        <div class="industry-card" style="background:#ffffff20; color:#fff;">
+            <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                <path d="M4 4h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/>
+            </svg>
+            <h3>Education</h3>
+        </div>
+
+        <div class="industry-card" style="background:#ffffff20; color:#fff;">
+            <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 5-2.3 5-5S14.7 2 12 2 7 4.3 7 7s2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+            </svg>
+            <h3>Healthcare</h3>
+        </div>
+
+    </div>
+</section>
+
+
+
+<div class="divider"></div>
+
+
+
+<!-- ===================================================== -->
+<!-- ============ TEMPLATE 2 — GLASSMORPHIC =============== -->
+<!-- ===================================================== -->
+
+<section style="
+    padding: 90px 20px;
+    background: url('images/lab-bg2.jpg') center/cover no-repeat;
+    color: white;
+    position: relative;
+">
+    <div style="max-width:850px; margin:auto;" class="glass">
+        
+        <h2 style="padding-top:40px;">Industries We Serve</h2>
+        <p>Innovative solutions trusted by diverse global businesses.</p>
+
+        <div class="industry-grid" style="padding:20px;">
+
+            <div class="industry-card glass" style="color:#fff;">
+                <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                    <path d="M3 13h2v8H3zM7 9h2v12H7zM11 5h2v16h-2zM15 1h2v20h-2zM19 7h2v14h-2z"/>
+                </svg>
+                <h3>Real Estate</h3>
+            </div>
+
+            <div class="industry-card glass" style="color:#fff;">
+                <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4z"/>
+                </svg>
+                <h3>Finance</h3>
+            </div>
+
+            <div class="industry-card glass" style="color:#fff;">
+                <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                    <path d="M4 4h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/>
+                </svg>
+                <h3>Retail</h3>
+            </div>
+
+            <div class="industry-card glass" style="color:#fff;">
+                <svg width="50" height="50" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 12c2.7 0 5-2.3 5-5S14.7 2 12 2 7 4.3 7 7s2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+                </path>
+                </svg>
+                <h3>Staffing</h3>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+<div class="divider"></div>
+
+
+
+<!-- ===================================================== -->
+<!-- ============ TEMPLATE 3 — MINIMAL CLEAN =============== -->
+<!-- ===================================================== -->
+
+<section style="padding: 80px 20px; background:white;">
+    
+    <h2>Industries We Serve</h2>
+    <p>Supporting businesses across sectors with scalable digital solutions.</p>
+
+    <div class="industry-grid">
+
+        <div class="industry-card">
+            <svg width="50" height="50" fill="#6a4cfc" viewBox="0 0 24 24">
+                <path d="M3 13h2v8H3zM7 9h2v12H7zM11 5h2v16h-2zM15 1h2v20h-2zM19 7h2v14h-2z"/>
+            </svg>
+            <h3>Hospitality</h3>
+        </div>
+
+        <div class="industry-card">
+            <svg width="50" height="50" fill="#00a8e8" viewBox="0 0 24 24">
+                <path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4z"/>
+            </svg>
+            <h3>Cybersecurity</h3>
+        </div>
+
+        <div class="industry-card">
+            <svg width="50" height="50" fill="#ff6b6b" viewBox="0 0 24 24">
+                <path d="M4 4h16v2H4zm0 6h16v2H4zm0 6h10v2H4z"/>
+            </svg>
+            <h3>Logistics</h3>
+        </div>
+
+        <div class="industry-card">
+            <svg width="50" height="50" fill="#3a86ff" viewBox="0 0 24 24">
+                <path d="M12 12c2.7 0 5-2.3 5-5S14.7 2 12 2 7 4.3 7 7s2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+            </svg>
+            <h3>IT Services</h3>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
