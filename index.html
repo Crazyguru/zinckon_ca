@@ -5,6 +5,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Zinckon+ Canada — Landing (Tailwind)</title>
+
+    <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-k5mS0Bd7Y+5p1+t0NenE2no0RvrRZtGJPD7Wv5ManIeZDV4SSQdlqzTeWY5Avzkdxl3pNGdisz8IKeC9gC4Q0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+
     
     <meta name="description"
         content="Zinckon+ Canada — German-grade mineral salts, local Canadian support. Zinc, Magnesium, Calcium, Iron for Food, Pharma & Cosmetics." />
@@ -275,12 +281,8 @@
                     <!-- Search Bar -->
                     <div class="flex-1 max-w-2xl mx-6 hidden md:flex">
                         <div class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden">
-                            <select
-                                class="px-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">
-                                <option>Products</option>
-                                <option>Applications</option>
-                                <option>Certifications</option>
-                            </select>
+                            
+                            <p class="p-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">Products</p>
                             <input type="text" placeholder="Type product names or CAS numbers..."
                                 class="flex-1 px-4 py-2 outline-none text-sm" />
                             <button class="px-5 bg-[#8F267C] text-white flex items-center justify-center"><span
@@ -295,8 +297,7 @@
                         <button class="relative"><span class="material-icons text-[#8F267C]">shopping_cart</span><span
                                 class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span></button>
                         <div class="relative group">
-                            <button class="flex items-center text-[#8F267C] gap-1"><span
-                                    class="material-icons ">person</span> Login</button>
+                            <button class="flex items-center text-[#8F267C] gap-1"> Login</button>
                             <div
                                 class="hidden group-hover:block absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
                                 <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
@@ -310,13 +311,39 @@
             <!-- PURPLE NAV STRIP -->
             <div class="w-full bg-[#8F267C] text-white">
                 <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
-                    <nav class="flex items-center gap-6 text-sm font-medium">
-                        <button class="hover:underline">Industry we cater to ▼</button>
-                        <button class="hover:underline">Products ▼</button>
-                        <button class="hover:underline">Applications ▼</button>
-                        <button class="hover:underline">Certifications ▼</button>
-                        <button class="hover:underline">Contact</button>
-                    </nav>
+                    <nav class="flex items-center gap-6 text-sm font-medium relative">
+
+    <!-- Industry Dropdown -->
+    <div class="group relative">
+        <button class="hover:underline">Industries we cater to</button>
+
+        <!-- Dropdown -->
+        <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pharmaceuticals</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Nutraceuticals</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Beverages</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cosmetics</a>
+        </div>
+      </div>
+    <!-- Products Dropdown -->
+    <div class="group relative">
+        <button class="hover:underline">Our Products</button>
+
+        <!-- Dropdown -->
+        <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Zinc</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Magnesium</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Iron</a>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Calcium</a>
+        </div>
+    </div>
+
+    <!-- Simple Links -->
+    <button class="hover:underline">About Us</button>
+    <button class="hover:underline">Contact Us</button>
+
+</nav>
+
 
                     <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">Request a
                         QUOTE</button>
@@ -489,77 +516,8 @@
 
 
             <!-- INDUSTRIES WE SERVE -->
+<section class="relative py-24 bg-cover bg-center text-center" style="background-image: url('images/lab-bg2.jpg');"> <!-- Glass Card Wrapper --> <div class="max-w-4xl mx-auto px-6 py-12 bg-white/20 backdrop-blur-xl border border-white/30 rounded-2xl shadow-2xl"> <h2 class="text-4xl font-bold text-white">Industries We Serve</h2> <p class="text-white/90 mt-3">Our mineral solutions empower diverse industries.</p> <!-- GRID --> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-12"> <!-- CARD 1 --> <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2 hover:bg-white/30"> <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24"> <path d="M4 3h2v16H4V3zm4 0h2v7H8V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm3 8H3v2h18v-2zm-4 4H7l-2 9h14l-2-9z"/> </svg> <h3 class="text-lg font-semibold">Food & Beverage</h3> </div> <!-- CARD 2 --> <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2 hover:bg-white/30"> <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24"> <path d="M22 2H12a2 2 0 00-2 2v12a6 6 0 1012 0V4a2 2 0 00-2-2zm-5 22a4 4 0 110-8 4 4 0 010 8z"/> </svg> <h3 class="text-lg font-semibold">Pharmaceuticals</h3> </div> <!-- CARD 3 --> <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2 hover:bg-white/30"> <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24"> <path d="M18 2a7 7 0 00-7 7v18a7 7 0 1014 0V9a7 7 0 00-7-7zm5 25a5 5 0 11-10 0V11h10v16z"/> </svg> <h3 class="text-lg font-semibold">Nutraceuticals</h3> </div> <!-- CARD 4 --> <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:bg-white/30"> <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24"> <path d="M12 2H6L2 12v2h12v-2L12 2zm1 16H5l-1 16h10l-1-16zM22 2l-4 6v4h8V8l-4-6zm-4 18h8v12h-8V20z"/> </svg> <h3 class="text-lg font-semibold">Cosmetics</h3> </div> </div> </div> </section>
 
-            <section class="relative py-24 bg-cover bg-center text-center" 
-    style="background-image: url('images/lab-bg2.jpg');">
-
-    <!-- Glass Card Wrapper -->
-    <div class="max-w-4xl mx-auto px-6 py-12 
-                bg-white/20 backdrop-blur-xl border border-white/30 
-                rounded-2xl shadow-2xl">
-
-        <h2 class="text-4xl font-bold text-white">Industries We Serve</h2>
-        <p class="text-white/90 mt-3">Our mineral solutions empower diverse industries.</p>
-
-        <!-- GRID -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-
-            <!-- CARD 1 -->
-            <div class="p-6 rounded-xl 
-                        bg-white/20 border border-white/30 
-                        backdrop-blur-lg text-white 
-                        transition transform hover:-translate-y-2 hover:bg-white/30">
-                
-                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24">                  
-                        <path d="M4 3h2v16H4V3zm4 0h2v7H8V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm4 0h2v7h-2V3zm3 8H3v2h18v-2zm-4 4H7l-2 9h14l-2-9z"/>
-                    
-                </svg>
-
-                <h3 class="text-lg font-semibold">Food & Beverage</h3>
-            </div>
-
-            <!-- CARD 2 -->
-            <div class="p-6 rounded-xl 
-                        bg-white/20 border border-white/30 
-                        backdrop-blur-lg text-white 
-                        transition transform hover:-translate-y-2 hover:bg-white/30">
-
-                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24">
-                    <path d="M22 2H12a2 2 0 00-2 2v12a6 6 0 1012 0V4a2 2 0 00-2-2zm-5 22a4 4 0 110-8 4 4 0 010 8z"/>
-                </svg>
-
-                <h3 class="text-lg font-semibold">Pharmaceuticals</h3>
-            </div>
-                   
-            <!-- CARD 3 -->
-            <div class="p-6 rounded-xl 
-                        bg-white/20 border border-white/30 
-                        backdrop-blur-lg text-white 
-                        transition transform hover:-translate-y-2 hover:bg-white/30">
-
-                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24">
-                    <path d="M18 2a7 7 0 00-7 7v18a7 7 0 1014 0V9a7 7 0 00-7-7zm5 25a5 5 0 11-10 0V11h10v16z"/>
-                </svg>
-
-                <h3 class="text-lg font-semibold">Nutraceuticals</h3>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="p-6 rounded-xl 
-                        bg-white/20 border border-white/30 
-                        backdrop-blur-lg text-white 
-                        transition transform  hover:bg-white/30">
-
-                <svg width="50" height="50" fill="#8F267C" class="mx-auto mb-3 pop-up-ani" viewBox="0 0 24 24">
-                    <path d="M12 2H6L2 12v2h12v-2L12 2zm1 16H5l-1 16h10l-1-16zM22 2l-4 6v4h8V8l-4-6zm-4 18h8v12h-8V20z"/>
-                </svg>
-
-                <h3 class="text-lg font-semibold">Cosmetics</h3>
-            </div>
-
-        </div>
-    </div>
-</section>
             
             
 
@@ -814,7 +772,7 @@
       class="flex justify-center items-center pb-10 overflow-hidden"
     >
       <div
-        class="max-w-7xl mx-auto sm:my-10 flex flex-col md:flex-row items-center overflow-hidden bg-[#a53860] transition-colors duration-500 rounded-full relative md:pr-10 border-12 border-green-600 mx-6"
+        class="max-w-7xl mx-auto sm:my-10 flex flex-col md:flex-row items-center overflow-hidden bg-[#8F267C] transition-colors duration-500 rounded-full relative md:pr-10 border-12 border-green-600 mx-6"
       >
 
       <!-- Image Section -->
@@ -978,6 +936,9 @@
         </div>
       </div>
     </section>
+
+    <div><i class="fa-solid fa-star" style="font-size:40px; color:red;"></i></div>
+
 
     <footer
       class="relative bg-[#4d023d] text-white py-14 overflow-hidden footer"
