@@ -2,426 +2,442 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zinckon+ Canada — Landing (Tailwind)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zinckon+ Canada — Landing (Tailwind)</title>
 
-    <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-k5mS0Bd7Y+5p1+t0NenE2no0RvrRZtGJPD7Wv5ManIeZDV4SSQdlqzTeWY5Avzkdxl3pNGdisz8IKeC9gC4Q0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-k5mS0Bd7Y+5p1+t0NenE2no0RvrRZtGJPD7Wv5ManIeZDV4SSQdlqzTeWY5Avzkdxl3pNGdisz8IKeC9gC4Q0g=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
 
 
-    
-    <meta name="description"
-        content="Zinckon+ Canada — German-grade mineral salts, local Canadian support. Zinc, Magnesium, Calcium, Iron for Food, Pharma & Cosmetics." />
 
-    <!-- Tailwind Play CDN (for quick prototyping) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind config tweaks
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'zinx-purple': '#4B1D7A',
-                        'zinx-purple-soft': '#F5EEFF',
-                        'zinx-accent': '#E91E63'
-                    },
-                    fontFamily: {
-                        aptos: ['Aptos', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto']
-                    }
-                }
-            }
+  <meta name="description"
+    content="Zinckon+ Canada — German-grade mineral salts, local Canadian support. Zinc, Magnesium, Calcium, Iron for Food, Pharma & Cosmetics." />
+
+  <!-- Tailwind Play CDN (for quick prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config tweaks
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'zinx-purple': '#4B1D7A',
+            'zinx-purple-soft': '#F5EEFF',
+            'zinx-accent': '#E91E63'
+          },
+          fontFamily: {
+            aptos: ['Aptos', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto']
+          }
         }
-        
-    </script>
+      }
+    }
 
-    <!-- GSAP for polished animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </script>
+
+  <!-- GSAP for polished animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 
-    <style>
-        /* Font fallback */
-        body {
-            font-family: Aptos, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
+  <style>
+    /* Font fallback */
+    body {
+      font-family: Aptos, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
 
-        /* HERO BASE */
-        [data-hero] {
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(circle at top left, #f5eeff 0%, #ffffff 55%, #f9f5ff 100%);
-        }
+    /* HERO BASE */
+    [data-hero] {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(circle at top left, #f5eeff 0%, #ffffff 55%, #f9f5ff 100%);
+    }
 
-        /* Right visual wrapper */
-        .hero-visual-wrap {
-            position: relative;
-            width: 420px;
-            height: 420px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            perspective: 1200px;
-        }
+    /* Right visual wrapper */
+    .hero-visual-wrap {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
 
-        /* Background soft glow */
-        .hero-bg-circle {
-            position: absolute;
-            inset: -120px;
-            /* background: radial-gradient(circle at 20% 20%, rgba(91, 33, 182, 0.22), transparent 65%),
+    /* Background soft glow */
+    .hero-bg-circle {
+      position: absolute;
+      inset: -120px;
+      /* background: radial-gradient(circle at 20% 20%, rgba(91, 33, 182, 0.22), transparent 65%),
                 radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.18), transparent 65%); */
-            opacity: 0.9;
-            z-index: 0;
-            filter: blur(4px);
-        }
+      opacity: 0.9;
+      z-index: 0;
+      filter: blur(4px);
+    }
 
-        /* Central core */
-        .hero-core {
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            border-radius: 9999px;
-            background:
-                radial-gradient(circle at 30% 20%, #ffffff, rgba(255, 255, 255, 0) 60%),
-                radial-gradient(circle at 70% 80%, #4b21b6, #7c3aed);
-            box-shadow:
-                0 0 40px rgba(124, 58, 237, 0.65),
-                0 0 80px rgba(79, 70, 229, 0.4);
-            z-index: 20;
-        }
+    /* Central core */
+    .hero-core {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 9999px;
+      background:
+        radial-gradient(circle at 30% 20%, #ffffff, rgba(255, 255, 255, 0) 60%),
+        radial-gradient(circle at 70% 80%, #4b21b6, #7c3aed);
+      box-shadow:
+        0 0 40px rgba(124, 58, 237, 0.65),
+        0 0 80px rgba(79, 70, 229, 0.4);
+      z-index: 20;
+    }
 
-        /* Rings */
-        .hero-ring {
-            position: absolute;
-            border-radius: 9999px;
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
+    /* Rings */
+    .hero-ring {
+      position: absolute;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
 
-        .hero-ring-outer {
-            width: 320px;
-            height: 320px;
-            border-style: dashed;
-            border-color: rgba(79, 70, 229, 0.5);
-            z-index: 8;
-        }
+    .hero-ring-outer {
+      width: 320px;
+      height: 320px;
+      border-style: dashed;
+      border-color: rgba(79, 70, 229, 0.5);
+      z-index: 8;
+    }
 
-        .hero-ring-middle {
-            width: 260px;
-            height: 260px;
-            border-style: solid;
-            border-color: rgba(244, 244, 245, 0.9);
-            z-index: 10;
-        }
+    .hero-ring-middle {
+      width: 260px;
+      height: 260px;
+      border-style: solid;
+      border-color: rgba(244, 244, 245, 0.9);
+      z-index: 10;
+    }
 
-        .hero-ring-inner {
-            width: 190px;
-            height: 190px;
-            border-style: solid;
-            border-color: rgba(147, 51, 234, 0.4);
-            z-index: 12;
-        }
+    .hero-ring-inner {
+      width: 190px;
+      height: 190px;
+      border-style: solid;
+      border-color: rgba(147, 51, 234, 0.4);
+      z-index: 12;
+    }
 
-        /* Ion nodes */
-        .hero-node {
-            position: absolute;
-            width: 52px;
-            height: 52px;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.96);
-            border: 1px solid rgba(79, 70, 229, 0.16);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 600;
-            color: #4b21b6;
-            box-shadow:
-                0 8px 20px rgba(15, 23, 42, 0.25),
-                0 0 18px rgba(124, 58, 237, 0.45);
-            z-index: 30;
-        }
+    /* Ion nodes */
+    .hero-node {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(79, 70, 229, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #4b21b6;
+      box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.25),
+        0 0 18px rgba(124, 58, 237, 0.45);
+      z-index: 30;
+    }
 
-        .hero-node-zn {
-            top: 4%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+    .hero-node-zn {
+      top: 4%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-        .hero-node-mg {
-            right: -4%;
-            top: 46%;
-            transform: translateY(-50%);
-        }
+    .hero-node-mg {
+      right: -4%;
+      top: 46%;
+      transform: translateY(-50%);
+    }
 
-        .hero-node-ca {
-            bottom: -1%;
-            left: 26%;
-        }
+    .hero-node-ca {
+      bottom: -1%;
+      left: 26%;
+    }
 
-        .hero-node-fe {
-            left: -4%;
-            top: 24%;
-        }
+    .hero-node-fe {
+      left: -4%;
+      top: 24%;
+    }
 
-        /* Particles */
-        .hero-particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 9999px;
-            background: rgba(248, 250, 252, 0.95);
-            box-shadow: 0 0 18px #8F267C;
-            opacity: 0.8;
-            z-index: 15;
-        }
+    /* Particles */
+    .hero-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 9999px;
+      background: rgba(248, 250, 252, 0.95);
+      box-shadow: 0 0 18px #8F267C;
+      opacity: 0.8;
+      z-index: 15;
+    }
 
-        .hero-particle-1 {
-            top: 8%;
-            right: 12%;
-        }
+    .hero-particle-1 {
+      top: 8%;
+      right: 12%;
+    }
 
-        .hero-particle-2 {
-            top: 68%;
-            left: 10%;
-        }
+    .hero-particle-2 {
+      top: 68%;
+      left: 10%;
+    }
 
-        .hero-particle-3 {
-            top: 52%;
-            left: 6%;
-        }
+    .hero-particle-3 {
+      top: 52%;
+      left: 6%;
+    }
 
-        .hero-particle-4 {
-            top: 24%;
-            right: 22%;
-        }
+    .hero-particle-4 {
+      top: 24%;
+      right: 22%;
+    }
 
-        .hero-particle-5 {
-            bottom: 16%;
-            right: 18%;
-        }
+    .hero-particle-5 {
+      bottom: 16%;
+      right: 18%;
+    }
 
-        /* Small panels at bottom (apps) */
-        .hero-panels {
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 40;
-        }
+    /* Small panels at bottom (apps) */
+    .hero-panels {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 40;
+    }
 
-        .hero-panel {
-            min-width: 130px;
-            padding: 8px 12px;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(226, 232, 240, 0.9);
-            font-size: 11px;
-            line-height: 1.3;
-            color: #334155;
-            box-shadow: 0 12px 35px rgba(15, 23, 42, 0.28);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
+    .hero-panel {
+      min-width: 130px;
+      padding: 8px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      font-size: 11px;
+      line-height: 1.3;
+      color: #334155;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.28);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
 
-        .hero-panel strong {
-            display: block;
-            font-size: 12px;
-            color: #8F267C;
-        }
+    .hero-panel strong {
+      display: block;
+      font-size: 12px;
+      color: #8F267C;
+    }
 
-        /* Left column text spacing tweaks on bigger screens */
-        @media (min-width: 1024px) {
-            [data-hero-copy] h1 {
-                letter-spacing: -0.03em;
-            }
-        }
+    /* Left column text spacing tweaks on bigger screens */
+    @media (min-width: 1024px) {
+      [data-hero-copy] h1 {
+        letter-spacing: -0.03em;
+      }
+    }
 
-        /* Input focus glow (keep) */
-        .focus-glow:focus {
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(75, 29, 122, 0.08);
-            border-color: rgba(75, 29, 122, 0.8);
-        }
+    /* Input focus glow (keep) */
+    .focus-glow:focus {
+      outline: none;
+      box-shadow: 0 0 0 4px rgba(75, 29, 122, 0.08);
+      border-color: rgba(75, 29, 122, 0.8);
+    }
 
-        @media (prefers-reduced-motion: reduce) {
-            .gsap-motion {
-                transition: none !important;
-            }
-        }
-    </style>
+    @media (prefers-reduced-motion: reduce) {
+      .gsap-motion {
+        transition: none !important;
+      }
+    }
+
+    #zinx-hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 
 
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 </head>
 
 <body class="bg-white text-gray-900 antialiased">
 
-    <body>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 
 
-        <!-- STICKY HEADER (Updated to Zinckon+ layout) -->
-        <header class="w-full bg-white shadow-sm border-b border-gray-200">
-            <!-- TOP BAR -->
-            <div class="w-full bg-white">
-                <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
-                    <!-- Logo -->
-                    <div class="flex items-center gap-3">
-                        <img src="images/Zinckon-logo.png" alt="Zinckon+" class="h-14 w-auto" />
-                    </div>
+    <!-- STICKY HEADER (Updated to Zinckon+ layout) -->
+    <header class="w-full bg-white shadow-sm border-b border-gray-200">
+      <!-- TOP BAR -->
+      <div class="w-full bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+          <!-- Logo -->
+          <div class="flex items-center gap-3">
+            <img src="images/Zinckon-logo.png" alt="Zinckon+" class="h-14 w-auto" />
+          </div>
 
-                    <!-- Search Bar -->
-                    <div class="flex-1 max-w-2xl mx-6 hidden md:flex">
-                        <div class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden">
-                            
-                            <p class="p-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">Products</p>
-                            <input type="text" placeholder="Type product names or CAS numbers..."
-                                class="flex-1 px-4 py-2 outline-none text-sm" />
-                            <button class="px-5 bg-[#8F267C] text-white flex items-center justify-center"><span
-                                    class="material-icons">search</span></button>
-                        </div>
-                    </div>
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-2xl mx-6 hidden md:flex">
+            <div class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden">
 
-                    <!-- Right Controls -->
-                    <div class="flex items-center gap-4 text-sm">
-                        <div class="flex items-center gap-1 cursor-pointer"><span>CA</span> | <span
-                                class="text-gray-500">EN</span></div>
-                        <button class="relative"><span class="material-icons text-[#8F267C]">shopping_cart</span><span
-                                class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span></button>
-                        <div class="relative group">
-                            <button class="flex items-center text-[#8F267C] gap-1"> Login</button>
-                            <div
-                                class="hidden group-hover:block absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
-                                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
-                                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Register</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <p class="p-4 bg-gray-100 text-gray-700 text-sm outline-none border-r border-gray-300">Products</p>
+              <input type="text" placeholder="Type product names or CAS numbers..."
+                class="flex-1 px-4 py-2 outline-none text-sm" />
+              <button class="px-5 bg-[#8F267C] text-white flex items-center justify-center"><span
+                  class="material-icons">search</span></button>
             </div>
+          </div>
 
-            <!-- PURPLE NAV STRIP -->
-            <div class="w-full bg-[#8F267C] text-white">
-                <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
-                    <nav class="flex items-center gap-6 text-sm font-medium relative">
-
-    <!-- Industry Dropdown -->
-    <div class="group relative">
-        <button class="hover:underline">Industries we cater to</button>
-
-        <!-- Dropdown -->
-        <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pharmaceuticals</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Nutraceuticals</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Beverages</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cosmetics</a>
+          <!-- Right Controls -->
+          <div class="flex items-center gap-4 text-sm">
+            <div class="flex items-center gap-1 cursor-pointer"><span>CA</span> | <span class="text-gray-500">EN</span>
+            </div>
+            <button class="relative"><span class="material-icons text-[#8F267C]">shopping_cart</span><span
+                class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span></button>
+            <div class="relative group">
+              <button class="flex items-center text-[#8F267C] gap-1"> Login</button>
+              <div
+                class="hidden group-hover:block absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
+                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
+                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Register</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    <!-- Products Dropdown -->
-    <div class="group relative">
-        <button class="hover:underline">Our Products</button>
 
-        <!-- Dropdown -->
-        <div class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Zinc</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Magnesium</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Iron</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Calcium</a>
-        </div>
-    </div>
+      <!-- PURPLE NAV STRIP -->
+      <div class="w-full bg-[#8F267C] text-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
+          <nav class="flex items-center gap-6 text-sm font-medium relative">
 
-    <!-- Simple Links -->
-    
-    <a href="#" class="hover:underline">About Us</a>
-    <a href="#" class="hover:underline">Contact Us</a>
-    <a href="products.html" class="hover:underline">Products</a>
-</nav>
+            <!-- Industry Dropdown -->
+            <div class="group relative">
+              <button class="hover:underline">Industries we cater to</button>
 
-
-                    <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">Request a
-                        QUOTE</button>
-                </div>
+              <!-- Dropdown -->
+              <div
+                class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pharmaceuticals</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Nutraceuticals</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Beverages</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cosmetics</a>
+              </div>
             </div>
-        </header>
+            <!-- Products Dropdown -->
+            <div class="group relative">
+              <button class="hover:underline">Our Products</button>
 
-        <!-- HERO -->
-        
-            <section class="relative" data-hero>
-                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-14 grid lg:grid-cols-12 gap-10 items-center">
+              <!-- Dropdown -->
+              <div
+                class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Zinc</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Magnesium</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Iron</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Calcium</a>
+              </div>
+            </div>
 
-                    <!-- LEFT COPY -->
-                    <div class="lg:col-span-7 relative z-[10]" data-hero-copy>
-                        <p class="text-xs font-semibold tracking-widest text-text-[#8F267C]">
-                            MINERAL NUTRITION FOR CANADIAN MANUFACTURERS
-                        </p>
+            <!-- Simple Links -->
 
-                        <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-aptos font-light leading-tight">
-                            German-grade minerals,<br>for future-ready formulations.
-                        </h1>
+            <a href="#" class="hover:underline">About Us</a>
+            <a href="#" class="hover:underline">Contact Us</a>
+            <a href="products.html" class="hover:underline">Products</a>
+          </nav>
 
-                        <p class="mt-6 text-gray-600 max-w-xl">
-                            Zinckon+ Canada connects German mineral engineering with local Canadian support – for
-                            fortified foods,
-                            nutraceuticals, pharma and cosmetic applications that demand consistency, traceability and
-                            performance.
-                        </p>
 
-                        <div class="mt-8 flex flex-wrap gap-3">
-                            <a href="#products"
-                                class="px-5 py-3 rounded-full bg-[#8F267C] text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">
-                                Explore mineral portfolio
-                            </a>
-                            <a href="#downloads"
-                                class="px-5 py-3 rounded-full border border-[#8F267C] text-[#8F267C] text-sm hover:bg-[#8F267C]/5 transition">
-                                Download technical sheets
-                            </a>
-                        </div>
+          <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">Request a
+            QUOTE</button>
+        </div>
+      </div>
+    </header>
 
-                        <!-- <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
+    <!-- HERO -->
+
+    <section class="relative" data-hero>
+      <canvas id="zinx-hero-bg" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-14 grid lg:grid-cols-12 gap-10 items-center">
+
+        <!-- LEFT COPY -->
+        <div class="lg:col-span-7 relative z-[10]" data-hero-copy>
+          <p class="text-xs font-semibold tracking-widest text-text-[#8F267C]">
+            MINERAL NUTRITION FOR CANADIAN MANUFACTURERS
+          </p>
+
+          <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-aptos font-light leading-tight">
+            German-grade minerals,<br>for future-ready formulations.
+          </h1>
+
+          <p class="mt-6 text-gray-600 max-w-xl">
+            Zinckon+ Canada connects German mineral engineering with local Canadian support – for
+            fortified foods,
+            nutraceuticals, pharma and cosmetic applications that demand consistency, traceability and
+            performance.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#products"
+              class="px-5 py-3 rounded-full bg-[#8F267C] text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">
+              Explore mineral portfolio
+            </a>
+            <a href="#downloads"
+              class="px-5 py-3 rounded-full border border-[#8F267C] text-[#8F267C] text-sm hover:bg-[#8F267C]/5 transition">
+              Download technical sheets
+            </a>
+          </div>
+
+          <!-- <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Batch-wise documentation</span>
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Food, pharma & cosmetic
                                 grades</span>
                             <span class="px-3 py-2 rounded-full border bg-gray-50">✔ European process standards</span>
                         </div> -->
-                    </div>
+        </div>
 
-                    <!-- RIGHT FUTURISTIC VISUAL -->
-                    <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
-                        <div class="hero-visual-wrap">
-                            <!-- glowing gradient field -->
-                            <div class="hero-bg-circle"></div>
+        <!-- RIGHT FUTURISTIC VISUAL -->
+        <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
+          <div class="hero-visual-wrap">
+            <!-- glowing gradient field -->
+            <!-- <div class="hero-bg-circle"></div> -->
 
-                            <!-- orbit rings -->
-                            <div class="hero-ring hero-ring-outer"></div>
-                            <div class="hero-ring hero-ring-middle"></div>
-                            <div class="hero-ring hero-ring-inner"></div>
+            <!-- orbit rings -->
+            <!-- <div class="hero-ring hero-ring-outer"></div>
+            <div class="hero-ring hero-ring-middle"></div>
+            <div class="hero-ring hero-ring-inner"></div> -->
 
-                            <!-- central mineral core -->
-                            <div class="hero-core"></div>
+            <!-- central mineral core -->
+            <!-- <div class="hero-core"></div> -->
 
-                            <!-- ions -->
-                            <div class="hero-node hero-node-zn">Zn</div>
-                            <div class="hero-node hero-node-mg">Mg</div>
-                            <div class="hero-node hero-node-ca">Ca</div>
-                            <div class="hero-node hero-node-fe">Fe</div>
+            <!-- ions -->
+            <!-- <div class="hero-node hero-node-zn">Zn</div>
+            <div class="hero-node hero-node-mg">Mg</div>
+            <div class="hero-node hero-node-ca">Ca</div>
+            <div class="hero-node hero-node-fe">Fe</div> -->
 
-                            <!-- particles -->
-                            <div class="hero-particle hero-particle-1"></div>
+            <!-- particles -->
+            <!-- <div class="hero-particle hero-particle-1"></div>
                             <div class="hero-particle hero-particle-2"></div>
                             <div class="hero-particle hero-particle-3"></div>
                             <div class="hero-particle hero-particle-4"></div>
-                            <div class="hero-particle hero-particle-5"></div>
+                            <div class="hero-particle hero-particle-5"></div> -->
 
-                            <!-- small panels -->
-                            <!-- <div class="hero-panels">
+            <!-- small panels -->
+            <!-- <div class="hero-panels">
                                 <div class="hero-panel">
                                     <strong>Food & Beverage</strong>
                                     Fortification & taste-neutral stability.
@@ -435,277 +451,304 @@
                                     Consistent actives for clean formulas.
                                 </div>
                             </div> -->
-                        </div>
-                    </div>
+          </div>
+        </div>
 
-                </div>
-            </section>
-
-
-
-
- <!-- WHY BAND -->
-            <section class="">
-                <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 grid md:grid-cols-4 gap-4">
-                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm">
-                        <h4 class="text-[#8F267C] font-semibold">German Quality</h4>
-                        <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German
-                            supply
-                            chain.</p>
-                    </div>
-                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-[#8F267C] font-semibold">Regulatory Ready</h4>
-                        <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma
-                            regulatory
-                            needs.
-                        </p>
-                    </div>
-                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-[#8F267C] font-semibold">Reliable Sourcing</h4>
-                        <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and
-                            consistency.
-                        </p>
-                    </div>
-                    <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
-                        <h4 class="text-[#8F267C] font-semibold">Custom Blends</h4>
-                        <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored
-                            to
-                            you.
-                        </p>
-                    </div>
-                </div>
-            </section>
+      </div>
+    </section>
 
 
 
-            <!-- GSAP ANIMATION SLIDER -->
-            <section id="gsap-slider" class="slider-wrapper overflow-hidden ">
-                <h2 style="text-align:center;color:#8F267C;font-size:30px;"> Slider</h2>
 
-                <div class="slider-container">
-                    <div class="slide">
-                        <img class="left"
-                            src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=60">
-                        <img class="middle"
-                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60">
-                        <img class="right"
-                            src="https://images.unsplash.com/photo-1581093588401-22f6362f4a02?auto=format&fit=crop&w=1200&q=60">
-                    </div>
-
-                    <div class="slide">
-                        <img class="left"
-                            src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60">
-                        <img class="middle"
-                            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60">
-                        <img class="right"
-                            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=60">
-                    </div>
-
-                    <div class="slide">
-                        <img class="left"
-                            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60">
-                        <img class="middle"
-                            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60">
-                        <img class="right"
-                            src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=60">
-                    </div>
-                </div>
-
-                <button class="nav prev">❮</button>
-                <button class="nav next">❯</button>
-            </section>
+    <!-- WHY BAND -->
+    <section class="">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 grid md:grid-cols-4 gap-4">
+        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm">
+          <h4 class="text-[#8F267C] font-semibold">German Quality</h4>
+          <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German
+            supply
+            chain.</p>
+        </div>
+        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+          <h4 class="text-[#8F267C] font-semibold">Regulatory Ready</h4>
+          <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma
+            regulatory
+            needs.
+          </p>
+        </div>
+        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+          <h4 class="text-[#8F267C] font-semibold">Reliable Sourcing</h4>
+          <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and
+            consistency.
+          </p>
+        </div>
+        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+          <h4 class="text-[#8F267C] font-semibold">Custom Blends</h4>
+          <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored
+            to
+            you.
+          </p>
+        </div>
+      </div>
+    </section>
 
 
-            
-<!-- INDUSTRIES WE SERVE -->
-<section class="relative py-24 text-center overflow-hidden" style="background-image: url('images/lab-bg2.jpg');">
 
-  <!-- VIDEO BACKGROUND -->
+    <!-- GSAP ANIMATION SLIDER -->
+    <section id="gsap-slider" class="slider-wrapper overflow-hidden ">
+      <h2 style="text-align:center;color:#8F267C;font-size:30px;"> Slider</h2>
+
+      <div class="slider-container">
+        <div class="slide">
+          <img class="left"
+            src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=60">
+          <img class="middle"
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=60">
+          <img class="right"
+            src="https://images.unsplash.com/photo-1581093588401-22f6362f4a02?auto=format&fit=crop&w=1200&q=60">
+        </div>
+
+        <div class="slide">
+          <img class="left"
+            src="https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1200&q=60">
+          <img class="middle"
+            src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=60">
+          <img class="right"
+            src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=60">
+        </div>
+
+        <div class="slide">
+          <img class="left"
+            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=60">
+          <img class="middle"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=60">
+          <img class="right"
+            src="https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?auto=format&fit=crop&w=1200&q=60">
+        </div>
+      </div>
+
+      <button class="nav prev">❮</button>
+      <button class="nav next">❯</button>
+    </section>
+
+
+
+    <!-- INDUSTRIES WE SERVE -->
+    <section class="relative py-24 text-center overflow-hidden" style="background-image: url('images/lab-bg2.jpg');">
+
+      <!-- VIDEO BACKGROUND -->
       <!-- <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
         <source src="videos/lab-bg-video.mp4" type="video/mp4">
       </video> -->
 
-  <!-- Dark overlay to increase contrast -->
-  <div class="absolute inset-0 bg-black/50"></div>
+      <!-- Dark overlay to increase contrast -->
+      <div class="absolute inset-0 bg-black/50"></div>
 
-  <!-- Glass Wrapper -->
-  <div class="relative max-w-5xl mx-auto px-8 py-14 bg-white/15 backdrop-blur-2xl 
+      <!-- Glass Wrapper -->
+      <div class="relative max-w-5xl mx-auto px-8 py-14 bg-white/15 backdrop-blur-2xl 
               border border-white/30 rounded-3xl shadow-[0_0_30px_rgba(255,255,255,0.3)]">
 
-    <h2 class="text-4xl font-extrabold text-white tracking-wide animate-slide-down">
-      Industries We Serve
-    </h2>
-    <p class="text-white/80 mt-3 animate-slide-up">
-      Our mineral solutions empower diverse industries.
-    </p>
+        <h2 class="text-4xl font-extrabold text-white tracking-wide animate-slide-down">
+          Industries We Serve
+        </h2>
+        <p class="text-white/80 mt-3 animate-slide-up">
+          Our mineral solutions empower diverse industries.
+        </p>
 
-    <!-- GRID -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-14">
+        <!-- GRID -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mt-14">
 
-      <!-- CARD 1 (Lottie Animation) -->
-      <div class="group p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white shadow-xl
+          <!-- CARD 1 (Lottie Animation) -->
+          <div class="group p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white shadow-xl
         transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl animate-up">
-        
-        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_puciaact.json"
-          background="transparent" speed="1" class="mx-auto mb-4" style="width:70px;height:70px;" loop autoplay>
-        </lottie-player>
 
-        <h3 class="text-lg font-semibold tracking-wide">Food & Beverage</h3>
-      </div>
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_puciaact.json" background="transparent"
+              speed="1" class="mx-auto mb-4" style="width:70px;height:70px;" loop autoplay>
+            </lottie-player>
 
-      <!-- CARD 2 (unchanged SVG or you update later) -->
-      <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2">
-        <h3 class="text-lg font-semibold mt-5">Pharmaceuticals</h3>
-        <dotlottie-wc src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie" autoplay loop></dotlottie-wc>
-    <script type="module" src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js"></script>
-      </div>
+            <h3 class="text-lg font-semibold tracking-wide">Food & Beverage</h3>
+          </div>
 
-      <!-- CARD 3 (Lottie Animation) -->
-      <div class="group p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white shadow-xl 
+          <!-- CARD 2 (unchanged SVG or you update later) -->
+          <div
+            class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2">
+            <h3 class="text-lg font-semibold mt-5">Pharmaceuticals</h3>
+            <dotlottie-wc src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie" autoplay
+              loop></dotlottie-wc>
+            <script type="module"
+              src="https://unpkg.com/@lottiefiles/dotlottie-wc@latest/dist/dotlottie-wc.js"></script>
+          </div>
+
+          <!-- CARD 3 (Lottie Animation) -->
+          <div class="group p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white shadow-xl 
         transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl animate-up delay-200">
 
-        <dotlottie-wc src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie" autoplay loop></dotlottie-wc>
+            <dotlottie-wc src="https://lottie.host/4db68bbd-31f6-4cd8-84eb-189de081159a/IGmMCqhzpt.lottie" autoplay
+              loop></dotlottie-wc>
 
 
-        <h3 class="text-lg font-semibold tracking-wide">Nutraceuticals</h3>
+            <h3 class="text-lg font-semibold tracking-wide">Nutraceuticals</h3>
+          </div>
+
+          <!-- CARD 4 (unchanged for now) -->
+          <div
+            class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2">
+            <h3 class="text-lg font-semibold mt-5">Cosmetics</h3>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <!-- CARD 4 (unchanged for now) -->
-      <div class="p-6 rounded-xl bg-white/20 border border-white/30 backdrop-blur-lg text-white transition transform hover:-translate-y-2">
-        <h3 class="text-lg font-semibold mt-5">Cosmetics</h3>
+    <!-- LOTTIE IMPORT -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <style>
+      @keyframes up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-up {
+        animation: up 1s ease-out;
+      }
+
+      .delay-200 {
+        animation-delay: .2s;
+      }
+
+      @keyframes slide-down {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slide-down {
+        animation: slide-down 1s ease-out;
+      }
+
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 1s ease-out 0.2s both;
+      }
+    </style>
+
+
+
+
+
+
+    <!-- PRODUCTS SLIDER (scroll-driven) -->
+    <section id="products" class=" py-12">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <h2 class="text-2xl font-semibold">Our Mineral Portfolio</h2>
+        <p class="text-gray-600 mt-2 max-w-prose">Explore key product families — click a card to view
+          full
+          product pages and technical datasheets.</p>
+
+        <div class="mt-8 overflow-x-auto no-scrollbar py-2">
+          <div class="flex gap-4 w-max">
+            <!-- product cards -->
+            <article
+              class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+              <h3 class="text-lg font-semibold">Zinc Salts</h3>
+              <p class="mt-3 text-sm text-gray-600">Zinc sulfate, zinc oxide, gluconate — food &
+                pharma
+                grades.</p>
+              <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
+                →</a>
+            </article>
+
+            <article
+              class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+              <h3 class="text-lg font-semibold">Magnesium Salts</h3>
+              <p class="mt-3 text-sm text-gray-600">Citrate, chloride, hydroxide — designed for
+                formulations.</p>
+              <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
+                →</a>
+            </article>
+
+            <article
+              class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+              <h3 class="text-lg font-semibold">Calcium Salts</h3>
+              <p class="mt-3 text-sm text-gray-600">Carbonate, lactate — fortification & stability
+                focused.</p>
+              <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
+                →</a>
+            </article>
+
+            <article
+              class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
+              <h3 class="text-lg font-semibold">Iron Salts</h3>
+              <p class="mt-3 text-sm text-gray-600">Ferrous sulfate, fumarate — for nutrition &
+                pharma.
+              </p>
+              <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
+                →</a>
+            </article>
+          </div>
+        </div>
       </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- LOTTIE IMPORT -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-<style>
-@keyframes up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-up { animation: up 1s ease-out; }
-.delay-200 { animation-delay: .2s; }
-
-@keyframes slide-down {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slide-down { animation: slide-down 1s ease-out; }
-
-@keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-slide-up { animation: slide-up 1s ease-out 0.2s both; }
-</style>
+    </section>
 
 
-            
-            
-
-
-            <!-- PRODUCTS SLIDER (scroll-driven) -->
-            <section id="products" class=" py-12">
-                <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                    <h2 class="text-2xl font-semibold">Our Mineral Portfolio</h2>
-                    <p class="text-gray-600 mt-2 max-w-prose">Explore key product families — click a card to view
-                        full
-                        product pages and technical datasheets.</p>
-
-                    <div class="mt-8 overflow-x-auto no-scrollbar py-2">
-                        <div class="flex gap-4 w-max">
-                            <!-- product cards -->
-                            <article
-                                class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
-                                <h3 class="text-lg font-semibold">Zinc Salts</h3>
-                                <p class="mt-3 text-sm text-gray-600">Zinc sulfate, zinc oxide, gluconate — food &
-                                    pharma
-                                    grades.</p>
-                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
-                                    →</a>
-                            </article>
-
-                            <article
-                                class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
-                                <h3 class="text-lg font-semibold">Magnesium Salts</h3>
-                                <p class="mt-3 text-sm text-gray-600">Citrate, chloride, hydroxide — designed for
-                                    formulations.</p>
-                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
-                                    →</a>
-                            </article>
-
-                            <article
-                                class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
-                                <h3 class="text-lg font-semibold">Calcium Salts</h3>
-                                <p class="mt-3 text-sm text-gray-600">Carbonate, lactate — fortification & stability
-                                    focused.</p>
-                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
-                                    →</a>
-                            </article>
-
-                            <article
-                                class="w-72 rounded-2xl bg-white border border-gray-100 p-6 shadow cursor-pointer hover:scale-102 transition-transform">
-                                <h3 class="text-lg font-semibold">Iron Salts</h3>
-                                <p class="mt-3 text-sm text-gray-600">Ferrous sulfate, fumarate — for nutrition &
-                                    pharma.
-                                </p>
-                                <a class="mt-4 inline-block text-sm text-[#8F267C] font-medium">View products
-                                    →</a>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-             <section class="py-20" id="about-company">
+    <section class="py-20" id="about-company">
       <!-- Heading -->
-      <div
-        class="max-w-7xl mx-auto px-4 text-center mb-20"
-        data-aos="fade-up"
-        data-aos-delay="100"
-      >
+      <div class="max-w-7xl mx-auto px-4 text-center mb-20" data-aos="fade-up" data-aos-delay="100">
         <h1
-          class="relative inline-block text-5xl font-extrabold tracking-tight text-[#8F267C] leading-tight drop-shadow-md font-[Bebas Neue]"
-        >
+          class="relative inline-block text-5xl font-extrabold tracking-tight text-[#8F267C] leading-tight drop-shadow-md font-[Bebas Neue]">
           About Company
           <!-- 🪄 Magic Underline -->
-        <span class="animated-underline absolute bottom-[-14px] left-1/2 h-[5px] w-0 bg-[#FCB50C] rounded-full"></span>
+          <span
+            class="animated-underline absolute bottom-[-14px] left-1/2 h-[5px] w-0 bg-[#FCB50C] rounded-full"></span>
         </h1>
-        
+
       </div>
 
       <div>
-         <h2 class="text-4xl font-extrabold pb-5 px-4 text-center text-[#FCB50C]" data-aos="fade-up" data-aos-delay="200">
-            <span class="text-[#8F267C]">Zinckon</span> – Our
-            <em>journey</em> started with a <em>difference</em>
-          </h2>
+        <h2 class="text-4xl font-extrabold pb-5 px-4 text-center text-[#FCB50C]" data-aos="fade-up"
+          data-aos-delay="200">
+          <span class="text-[#8F267C]">Zinckon</span> – Our
+          <em>journey</em> started with a <em>difference</em>
+        </h2>
       </div>
 
       <!-- Main Content -->
-      <div
-        class="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-10 overflow-hidden"
-      >
-        
+      <div class="max-w-7xl mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-10 overflow-hidden">
+
         <div class="relative group p-4 md:p-10">
-          
+
 
           <!-- Layered Images -->
           <div class="relative z-10 ">
-            <img
-              src="images/about.jpg"
-              alt="Company"
-              class="rounded-3xl  w-full h-[420px] object-cover transform group-hover:scale-[1.02] transition duration-500"
-            />
-            <img
-              src="images/about2.jpg"
-              alt="Company"
-              class="absolute -bottom-8 -right-8 w-48 md:w-60 rounded-2xl  border-4 border-white object-cover group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500"
-            />
+            <img src="images/about.jpg" alt="Company"
+              class="rounded-3xl  w-full h-[420px] object-cover transform group-hover:scale-[1.02] transition duration-500" />
+            <img src="images/about2.jpg" alt="Company"
+              class="absolute -bottom-8 -right-8 w-48 md:w-60 rounded-2xl  border-4 border-white object-cover group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform duration-500" />
           </div>
         </div>
 
@@ -732,38 +775,22 @@
           <!-- Bullet Points -->
           <div class="about-container p-4">
             <ul class=" text-md" style="list-style-type: disc">
-              <li
-                class="flex items-start gap-1 pb-2"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
+              <li class="flex items-start gap-1 pb-2" data-aos="fade-up" data-aos-delay="300">
                 <img src="images/Zinckon-logo-crop.png" alt="bullet" class="w-7 h-7 mb-2">
                 <!-- <i class="bi bi-check-circle"></i> -->
                 Providing personalized support to our global customer base
               </li>
-              <li
-                class="flex items-start gap-1 pb-2"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
+              <li class="flex items-start gap-1 pb-2" data-aos="fade-up" data-aos-delay="400">
                 <img src="images/Zinckon-logo-crop.png" alt="bullet" class="w-7 h-7 mb-2">
                 <!-- <i class="bi bi-check-circle"></i> -->
                 Certified, reliable quality, Fast, uncomplicated communication
               </li>
-              <li
-                class="flex items-start gap-1 pb-2"
-                data-aos="fade-up"
-                data-aos-delay="500"
-              >
+              <li class="flex items-start gap-1 pb-2" data-aos="fade-up" data-aos-delay="500">
                 <!-- <img src="images/Zinckon-cut.png" alt="bullet" class="w-7 h-7 mb-4"> -->
                 <img src="images/Zinckon-logo-crop.png" alt="bullet" class="w-7 h-7 mb-2">
                 Global sourcing with local commitment
               </li>
-              <li
-                class="flex items-start gap-1"
-                data-aos="fade-up"
-                data-aos-delay="600"
-              >
+              <li class="flex items-start gap-1" data-aos="fade-up" data-aos-delay="600">
                 <!-- <img src="images/Zinckon-cut.png" alt="bullet" class="w-7 h-7 mb-2"> -->
                 <img src="images/Zinckon-logo-crop.png" alt="bullet" class="w-7 h-7 mb-2">
                 Deep expertise connecting trusted producers to international
@@ -775,53 +802,54 @@
       </div>
     </section>
 
-            <!-- QUALITY / Certifications -->
+    <!-- QUALITY / Certifications -->
 
-            <section class="w-full py-10 ">
-  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-    
-    <!-- Text -->
-    <div>
-      <h2 class="text-3xl font-bold text-[#8F267C] mb-6">Our Commitment to Quality</h2>
+    <section class="w-full py-10 ">
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-      <p class="text-gray-700 leading-relaxed mb-4">
-        We focus on delivering the highest product quality, dependable service, and exceptional reliability. 
-        Personal contact with our customers matters deeply, and our dedicated team is always available to support you quickly and professionally.
-      </p>
+        <!-- Text -->
+        <div>
+          <h2 class="text-3xl font-bold text-[#8F267C] mb-6">Our Commitment to Quality</h2>
 
-      <p class="text-gray-700 leading-relaxed mb-4">
-        We are <span class="font-semibold text-[#8F267C]">IFS Broker </span> and <span class="font-semibold text-[#8F267C]">GDP certified</span>, and operate with a structured quality management system covering all responsibilities and processes.
-      </p>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            We focus on delivering the highest product quality, dependable service, and exceptional reliability.
+            Personal contact with our customers matters deeply, and our dedicated team is always available to support
+            you quickly and professionally.
+          </p>
 
-      <p class="text-gray-700 leading-relaxed mb-4">
-        We maintain strong, long-term relationships with our suppliers through continuous monitoring, visits, and audits. Complaints are handled promptly and used for continuous improvement.
-      </p>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            We are <span class="font-semibold text-[#8F267C]">IFS Broker </span> and <span
+              class="font-semibold text-[#8F267C]">GDP certified</span>, and operate with a structured quality
+            management system covering all responsibilities and processes.
+          </p>
 
-      <p class="text-gray-700 leading-relaxed mb-4">
-        Our actions are risk-based, hygiene-focused, and supported by a <span class="font-semibold text-[#8F267C]">HACCP</span> concept that undergoes regular verification.
-      </p>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            We maintain strong, long-term relationships with our suppliers through continuous monitoring, visits, and
+            audits. Complaints are handled promptly and used for continuous improvement.
+          </p>
 
-      <p class="text-gray-700 leading-relaxed">
-        We supply food, pharmaceutical, cosmetic, and technical grades of the highest purity.  
-        <br><span class="font-semibold text-[#8F267C]">Company License Number: HRB754811</span>
-      </p>
-    </div>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Our actions are risk-based, hygiene-focused, and supported by a <span
+              class="font-semibold text-[#8F267C]">HACCP</span> concept that undergoes regular verification.
+          </p>
 
-    <!-- Image -->
-    <div class="w-full">
-      <img 
-        src="images/certified.png" 
-        alt="Quality Assurance" 
-        class="w-full h-auto  object-cover pop-up-ani"
-      >
-    </div>
+          <p class="text-gray-700 leading-relaxed">
+            We supply food, pharmaceutical, cosmetic, and technical grades of the highest purity.
+            <br><span class="font-semibold text-[#8F267C]">Company License Number: HRB754811</span>
+          </p>
+        </div>
 
-  </div>
-</section>
+        <!-- Image -->
+        <div class="w-full">
+          <img src="images/certified.png" alt="Quality Assurance" class="w-full h-auto  object-cover pop-up-ani">
+        </div>
+
+      </div>
+    </section>
 
 
-            <!-- HOW IT WORKS TIMELINE -->
-            <!-- <section class="bg-gray-50 py-12">
+    <!-- HOW IT WORKS TIMELINE -->
+    <!-- <section class="bg-gray-50 py-12">
                 <div class="max-w-6xl mx-auto px-6 lg:px-8">
                     <h2 class="text-2xl font-semibold">How collaboration works</h2>
                     <div class="mt-8 grid md:grid-cols-5 gap-6 text-center">
@@ -849,95 +877,54 @@
                 </div>
             </section> -->
 
-            
 
-        <!-- CONTACT CAPSULE SECTION -->
 
-        <section
-      id="contact"
-      class="flex justify-center items-center pb-10 overflow-hidden"
-    >
+    <!-- CONTACT CAPSULE SECTION -->
+
+    <section id="contact" class="flex justify-center items-center pb-10 overflow-hidden">
       <div
-        class="max-w-7xl mx-auto sm:my-10 flex flex-col md:flex-row items-center overflow-hidden bg-[#8F267C] transition-colors duration-500 rounded-full relative md:pr-10 border-12 border-green-600 mx-6"
-      >
+        class="max-w-7xl mx-auto sm:my-10 flex flex-col md:flex-row items-center overflow-hidden bg-[#8F267C] transition-colors duration-500 rounded-full relative md:pr-10 border-12 border-green-600 mx-6">
 
-      <!-- Image Section -->
-        <div
-          class="relative w-full md:w-1/2 flex justify-center md:justify-start mt-6 md:mt-0"
-        >
+        <!-- Image Section -->
+        <div class="relative w-full md:w-1/2 flex justify-center md:justify-start mt-6 md:mt-0">
           <div
-            class="hidden md:block overflow-hidden rounded-full w-56 h-56 sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[320px] lg:w-[480px] lg:h-[480px] flex justify-center items-center animate-rotate-slow pop-up-ani"
-          >
-            <img
-              src="images/lab-bg2.jpg"
-              alt="Herb Testing Process"
-              class="object-cover w-full h-full rounded-full transition-transform duration-700 shadow-lg scale-105"
-            />
+            class="hidden md:block overflow-hidden rounded-full w-56 h-56 sm:w-[260px] sm:h-[260px] md:w-[320px] md:h-[320px] lg:w-[480px] lg:h-[480px] flex justify-center items-center animate-rotate-slow pop-up-ani">
+            <img src="images/lab-bg2.jpg" alt="Herb Testing Process"
+              class="object-cover w-full h-full rounded-full transition-transform duration-700 shadow-lg scale-105" />
           </div>
         </div>
 
         <!-- Text Section -->
         <div
-          class="relative z-10 text-white md:w-1/2 w-full px-4 md:pr-40 sm:text-center md:text-left md:py-0 py-20 slide-in-left"
-        >
+          class="relative z-10 text-white md:w-1/2 w-full px-4 md:pr-40 sm:text-center md:text-left md:py-0 py-20 slide-in-left">
           <h2 class="text-4xl font-bold mb-4 text-center">Contact Us</h2>
           <p class="text-lg mb-10 text-lime-100 leading-relaxed">
             Experience the purity of Ayurveda — shop now for natural wellness!
           </p>
 
           <!-- ✅ FORM STARTS -->
-          <form
-            id="contactForm"
-            action="https://formspree.io/f/mwprgzrj"
-            method="POST"
-            class="space-y-6"
-          >
+          <form id="contactForm" action="https://formspree.io/f/mwprgzrj" method="POST" class="space-y-6">
             <div class="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                required
-                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none"
-              />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                required
-                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none"
-              />
+              <input type="text" name="name" placeholder="Full Name" required
+                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none" />
+              <input type="email" name="email" placeholder="Email Address" required
+                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none" />
             </div>
 
             <div class="flex flex-col md:flex-row gap-6">
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number"
-                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none"
-              />
+              <input type="text" name="phone" placeholder="Phone Number"
+                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none" />
               <!-- ✅ Correct lowercase _subject -->
-              <input
-                type="text"
-                name="_subject"
-                placeholder="Subject"
-                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none"
-              />
+              <input type="text" name="_subject" placeholder="Subject"
+                class="w-full md:w-1/2 pb-2 border-b bg-transparent text-white placeholder-lime-200 focus:outline-none" />
             </div>
 
-            <textarea
-              name="message"
-              placeholder="Message"
-              rows="2"
-              required
-              class="w-full pb-2 border-b bg-transparent text-white placeholder-lime-200 resize-none focus:outline-none"
-            ></textarea>
+            <textarea name="message" placeholder="Message" rows="2" required
+              class="w-full pb-2 border-b bg-transparent text-white placeholder-lime-200 resize-none focus:outline-none"></textarea>
 
             <div class="flex justify-center md:justify-start">
-              <button
-                type="submit"
-                class="submit-btn mt-4 px-10 py-2 text-lg bg-yellow-500 text-white font-semibold rounded-full hover:bg-lime-700 transition-colors duration-300 text-center"
-              >
+              <button type="submit"
+                class="submit-btn mt-4 px-10 py-2 text-lg bg-yellow-500 text-white font-semibold rounded-full hover:bg-lime-700 transition-colors duration-300 text-center">
                 Submit
               </button>
             </div>
@@ -945,14 +932,14 @@
           <!-- ✅ FORM ENDS -->
         </div>
 
-        
+
       </div>
     </section>
 
 
-        <!-- MARQUEE BAND -->
+    <!-- MARQUEE BAND -->
 
-            <section class="relative w-full overflow-hidden bg-[#64034f] py-3">
+    <section class="relative w-full overflow-hidden bg-[#64034f] py-3">
       <style>
         /* Marquee core animation */
         @keyframes scrollText {
@@ -989,9 +976,7 @@
         }
       </style>
 
-      <div
-        class="marquee-wrapper text-white font-medium text-sm sm:text-base tracking-wide"
-      >
+      <div class="marquee-wrapper text-white font-medium text-sm sm:text-base tracking-wide">
         <div class="marquee-track">
           <span class="mx-6">Best in Quality</span>
           <span class="mx-6">✨</span>
@@ -1026,36 +1011,23 @@
     <div><i class="fa-solid fa-star" style="font-size:40px; color:red;"></i></div>
 
 
-    <footer
-      class="relative bg-[#4d023d] text-white py-14 overflow-hidden footer"
-    >
+    <footer class="relative bg-[#4d023d] text-white py-14 overflow-hidden footer">
       <!-- Floating Decorative Orbs -->
-      <svg
-        class="absolute left-10 top-10 animate-float w-10 h-10 text-yellow-500 opacity-25"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg class="absolute left-10 top-10 animate-float w-10 h-10 text-yellow-500 opacity-25" fill="currentColor"
+        viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" />
       </svg>
-      <svg
-        class="absolute right-20 bottom-10 animate-float-reverse w-8 h-8 text-yellow-300 opacity-20"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg class="absolute right-20 bottom-10 animate-float-reverse w-8 h-8 text-yellow-300 opacity-20"
+        fill="currentColor" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" />
       </svg>
-      <svg
-        class="absolute left-1/2 bottom-0 animate-bounce-slow w-8 h-8 text-yellow-400 opacity-10"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
+      <svg class="absolute left-1/2 bottom-0 animate-bounce-slow w-8 h-8 text-yellow-400 opacity-10" fill="currentColor"
+        viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="10" />
       </svg>
 
       <!-- Main Footer Content -->
-      <div
-        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm z-10 relative"
-      >
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-sm z-10 relative">
         <!-- Brand -->
         <div>
           <h3 class="text-2xl font-bold text-yellow-400 tracking-wide">
@@ -1070,9 +1042,7 @@
 
         <!-- Quick Links -->
         <div>
-          <h4
-            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
-          >
+          <h4 class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide">
             Quick Links
           </h4>
           <ul class="space-y-2 text-gray-400">
@@ -1081,33 +1051,23 @@
             </li>
 
             <li>
-              <a href="#products" class="hover:text-yellow-300 transition"
-                >Products</a
-              >
+              <a href="#products" class="hover:text-yellow-300 transition">Products</a>
             </li>
             <li>
-              <a href="#quality" class="hover:text-yellow-300 transition"
-                >Quality</a
-              >
+              <a href="#quality" class="hover:text-yellow-300 transition">Quality</a>
             </li>
             <li>
-              <a href="#about" class="hover:text-yellow-300 transition"
-                >About</a
-              >
+              <a href="#about" class="hover:text-yellow-300 transition">About</a>
             </li>
             <li>
-              <a href="#contact" class="hover:text-yellow-300 transition"
-                >Contact</a
-              >
+              <a href="#contact" class="hover:text-yellow-300 transition">Contact</a>
             </li>
           </ul>
         </div>
 
         <!-- 🌿 Get in Touch (replacing Services) -->
         <div>
-          <h4
-            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
-          >
+          <h4 class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide">
             Get in Touch
           </h4>
           <ul class="space-y-3 text-gray-300">
@@ -1117,19 +1077,11 @@
             </li>
             <li class="flex items-center gap-2">
               <i class="fas fa-envelope text-yellow-400"></i>
-              <a
-                href="mailto:info@zinckon.com"
-                class="hover:text-yellow-300 transition"
-                >info@zinckon.com</a
-              >
+              <a href="mailto:info@zinckon.com" class="hover:text-yellow-300 transition">info@zinckon.com</a>
             </li>
             <li class="flex items-center gap-2">
               <i class="fas fa-phone-alt text-yellow-400"></i>
-              <a
-                href="tel:+919959870888"
-                class="hover:text-yellow-300 transition"
-                >+91 99598 70888</a
-              >
+              <a href="tel:+919959870888" class="hover:text-yellow-300 transition">+91 99598 70888</a>
             </li>
             <li class="flex items-center gap-2">
               <i class="fas fa-clock text-yellow-400"></i>
@@ -1140,24 +1092,14 @@
 
         <!-- Social Media -->
         <div>
-          <h4
-            class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide"
-          >
+          <h4 class="font-semibold text-yellow-300 mb-3 uppercase tracking-wide">
             Follow Us
           </h4>
           <div class="flex space-x-5 text-2xl mt-2">
-            <a href="#" class="hover:text-yellow-400 transition"
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a href="#" class="hover:text-yellow-400 transition"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="#" class="hover:text-yellow-400 transition"
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a href="#" class="hover:text-yellow-400 transition"
-              ><i class="fab fa-youtube"></i
-            ></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-yellow-400 transition"><i class="fab fa-youtube"></i></a>
           </div>
           <p class="mt-4 text-gray-400 text-sm leading-relaxed">
             Join our community for Ayurvedic tips, wellness insights, and
@@ -1167,305 +1109,451 @@
       </div>
 
       <!-- Bottom Bar -->
-      <div
-        class="mt-12 mx-6 text-center text-gray-200 text-sm border-t border-gray-300 pt-6 relative"
-      >
+      <div class="mt-12 mx-6 text-center text-gray-200 text-sm border-t border-gray-300 pt-6 relative">
         <div>© 2025 Zinckon+ Canada. All rights reserved.</div>
         <div class="text-gray-300">
           Designed by
-          <a
-            href="https://s2gsolutions.com"
-            class="text-yellow-400 hover:underline inline-block transition-transform"
-            >S2G Solutions</a
-          >
+          <a href="https://s2gsolutions.com"
+            class="text-yellow-400 hover:underline inline-block transition-transform">S2G Solutions</a>
         </div>
       </div>
     </footer>
 
 
-        <script>
-            // YEAR UPDATE
-            const yearEl = document.getElementById("year");
-            if (yearEl) yearEl.textContent = new Date().getFullYear();
+    <script>
+      // YEAR UPDATE
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-            // ===============================
-            // HERO ANIMATIONS (FUTURISTIC LAB)
-            // ===============================
-            document.addEventListener("DOMContentLoaded", () => {
-                const heroSection = document.querySelector("[data-hero]");
-                const heroCopy = document.querySelector("[data-hero-copy]");
-                const heroVisual = document.querySelector("[data-hero-visual]");
-                const core = document.querySelector(".hero-core");
-                const rings = gsap.utils.toArray(".hero-ring");
-                const nodes = gsap.utils.toArray(".hero-node");
-                const particles = gsap.utils.toArray(".hero-particle");
+      // ===============================
+      // HERO ANIMATIONS (FUTURISTIC LAB)
+      // ===============================
+      document.addEventListener("DOMContentLoaded", () => {
+        const heroSection = document.querySelector("[data-hero]");
+        const heroCopy = document.querySelector("[data-hero-copy]");
+        const heroVisual = document.querySelector("[data-hero-visual]");
+        const core = document.querySelector(".hero-core");
+        const rings = gsap.utils.toArray(".hero-ring");
+        const nodes = gsap.utils.toArray(".hero-node");
+        const particles = gsap.utils.toArray(".hero-particle");
 
-                if (!heroSection || !heroCopy || !heroVisual) return;
+        if (!heroSection || !heroCopy || !heroVisual) return;
 
-                // MAIN ENTRANCE TIMELINE
-                const tl = gsap.timeline({
-                    defaults: { ease: "power3.out" },
-                    delay: 0.15
-                });
+        // MAIN ENTRANCE TIMELINE
+        const tl = gsap.timeline({
+          defaults: { ease: "power3.out" },
+          delay: 0.15
+        });
 
-                // Left side text
-                tl.from(heroCopy.querySelector("p.text-xs"), {
-                    opacity: 0,
-                    y: 20,
-                    duration: 0.7
-                })
-                    .from(heroCopy.querySelector("h1"), {
-                        opacity: 0,
-                        y: 40,
-                        skewY: 4,
-                        duration: 0.9
-                    }, "-=0.45")
-                    .from(heroCopy.querySelector("p.mt-6"), {
-                        opacity: 0,
-                        y: 24,
-                        duration: 0.7
-                    }, "-=0.4")
-                    .from(heroCopy.querySelectorAll(".mt-8 a"), {
-                        opacity: 0,
-                        y: 22,
-                        duration: 0.6,
-                        stagger: 0.1
-                    }, "-=0.35")
-                    .from(heroCopy.querySelectorAll(".mt-6 span"), {
-                        opacity: 0,
-                        scale: 0.85,
-                        duration: 0.5,
-                        stagger: 0.08
-                    }, "-=0.4");
+        // Left side text
+        tl.from(heroCopy.querySelector("p.text-xs"), {
+          opacity: 0,
+          y: 20,
+          duration: 0.7
+        })
+          .from(heroCopy.querySelector("h1"), {
+            opacity: 0,
+            y: 40,
+            skewY: 4,
+            duration: 0.9
+          }, "-=0.45")
+          .from(heroCopy.querySelector("p.mt-6"), {
+            opacity: 0,
+            y: 24,
+            duration: 0.7
+          }, "-=0.4")
+          .from(heroCopy.querySelectorAll(".mt-8 a"), {
+            opacity: 0,
+            y: 22,
+            duration: 0.6,
+            stagger: 0.1
+          }, "-=0.35")
+          .from(heroCopy.querySelectorAll(".mt-6 span"), {
+            opacity: 0,
+            scale: 0.85,
+            duration: 0.5,
+            stagger: 0.08
+          }, "-=0.4");
 
-                // Right side container
-                tl.from(heroVisual, {
-                    opacity: 0,
-                    scale: 0.9,
-                    duration: 0.8
-                }, "-=0.6");
+        // Right side container
+        tl.from(heroVisual, {
+          opacity: 0,
+          scale: 0.9,
+          duration: 0.8
+        }, "-=0.6");
 
-                // Core + rings
-                tl.from(core, {
-                    scale: 0,
-                    opacity: 0,
-                    duration: 0.8
-                }, "-=0.5");
+        // Core + rings
+        tl.from(core, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.8
+        }, "-=0.5");
 
-                tl.from(rings, {
-                    scale: 0.7,
-                    opacity: 0,
-                    duration: 0.9,
-                    stagger: 0.12
-                }, "-=0.6");
+        tl.from(rings, {
+          scale: 0.7,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12
+        }, "-=0.6");
 
-                // ions
-                tl.from(nodes, {
-                    y: 16,
-                    opacity: 0,
-                    scale: 0.2,
-                    duration: 0.6,
-                    stagger: 0.1
-                }, "-=0.5");
+        // ions
+        tl.from(nodes, {
+          y: 16,
+          opacity: 0,
+          scale: 0.2,
+          duration: 0.6,
+          stagger: 0.1
+        }, "-=0.5");
 
-                // particles
-                tl.from(particles, {
-                    opacity: 0,
-                    scale: 0.2,
-                    duration: 0.6,
-                    stagger: 0.05
-                }, "-=0.5");
+        // particles
+        tl.from(particles, {
+          opacity: 0,
+          scale: 0.2,
+          duration: 0.6,
+          stagger: 0.05
+        }, "-=0.5");
 
-                // panels
-                tl.from(".hero-panel", {
-                    y: 18,
-                    opacity: 0,
-                    duration: 0.6,
-                    stagger: 0.08
-                }, "-=0.45");
+        // panels
+        tl.from(".hero-panel", {
+          y: 18,
+          opacity: 0,
+          duration: 0.6,
+          stagger: 0.08
+        }, "-=0.45");
 
-                // ===============================
-                // MICRO-ANIMATIONS (LOOPS)
-                // ===============================
+        // ===============================
+        // MICRO-ANIMATIONS (LOOPS)
+        // ===============================
 
-                // Core pulse
-                gsap.to(core, {
-                    scale: 1.08,
-                    duration: 3.2,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
+        // Core pulse
+        gsap.to(core, {
+          scale: 1.08,
+          duration: 3.2,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
 
-                // Rings slow rotation
-                gsap.to(".hero-ring-outer", {
-                    rotate: 360,
-                    duration: 32,
-                    repeat: -1,
-                    ease: "none"
-                });
+        // Rings slow rotation
+        gsap.to(".hero-ring-outer", {
+          rotate: 360,
+          duration: 32,
+          repeat: -1,
+          ease: "none"
+        });
 
-                gsap.to(".hero-ring-middle", {
-                    rotate: -360,
-                    duration: 44,
-                    repeat: -1,
-                    ease: "none"
-                });
+        gsap.to(".hero-ring-middle", {
+          rotate: -360,
+          duration: 44,
+          repeat: -1,
+          ease: "none"
+        });
 
-                gsap.to(".hero-ring-inner", {
-                    rotate: 360,
-                    duration: 28,
-                    repeat: -1,
-                    ease: "none"
-                });
+        gsap.to(".hero-ring-inner", {
+          rotate: 360,
+          duration: 28,
+          repeat: -1,
+          ease: "none"
+        });
 
-                // ions floating gently
-                nodes.forEach((node, i) => {
-                    gsap.to(node, {
-                        y: "+=" + (i % 2 === 0 ? 10 : -10),
-                        x: "+=" + (i % 2 === 0 ? -6 : 6),
-                        duration: 3.2 + i * 0.4,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: "sine.inOut"
-                    });
-                });
+        // ions floating gently
+        nodes.forEach((node, i) => {
+          gsap.to(node, {
+            y: "+=" + (i % 2 === 0 ? 10 : -10),
+            x: "+=" + (i % 2 === 0 ? -6 : 6),
+            duration: 3.2 + i * 0.4,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+          });
+        });
 
-                // particles flicker / drift
-                particles.forEach((p, i) => {
-                    gsap.to(p, {
-                        y: "+=" + (i % 2 === 0 ? -14 : 10),
-                        x: "+=" + (i % 2 === 0 ? 12 : -16),
-                        opacity: 0.3,
-                        duration: 4 + i,
-                        repeat: -1,
-                        yoyo: true,
-                        ease: "sine.inOut"
-                    });
-                });
+        // particles flicker / drift
+        particles.forEach((p, i) => {
+          gsap.to(p, {
+            y: "+=" + (i % 2 === 0 ? -14 : 10),
+            x: "+=" + (i % 2 === 0 ? 12 : -16),
+            opacity: 0.3,
+            duration: 4 + i,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+          });
+        });
 
-                // panels slight float
-                gsap.to(".hero-panel", {
-                    y: -6,
-                    duration: 4,
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut",
-                    stagger: {
-                        each: 0.3,
-                        from: "center"
-                    }
-                });
+        // panels slight float
+        gsap.to(".hero-panel", {
+          y: -6,
+          duration: 4,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          stagger: {
+            each: 0.3,
+            from: "center"
+          }
+        });
 
-                // ===============================
-                // PARALLAX ON MOUSE MOVE
-                // ===============================
-                heroSection.addEventListener("mousemove", (e) => {
-                    const rect = heroSection.getBoundingClientRect();
-                    const x = (e.clientX - rect.left) / rect.width - 0.5;
-                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+        // ===============================
+        // PARALLAX ON MOUSE MOVE
+        // ===============================
+        heroSection.addEventListener("mousemove", (e) => {
+          const rect = heroSection.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-                    gsap.to(heroVisual, {
-                        x: x * 30,
-                        y: y * 20,
-                        duration: 0.6,
-                        ease: "power3.out"
-                    });
+          gsap.to(heroVisual, {
+            x: x * 30,
+            y: y * 20,
+            duration: 0.6,
+            ease: "power3.out"
+          });
 
-                    gsap.to(core, {
-                        x: x * 12,
-                        y: y * 8,
-                        duration: 0.6,
-                        ease: "power3.out"
-                    });
+          gsap.to(core, {
+            x: x * 12,
+            y: y * 8,
+            duration: 0.6,
+            ease: "power3.out"
+          });
 
-                    gsap.to(rings, {
-                        x: x * 10,
-                        y: y * 6,
-                        duration: 0.6,
-                        ease: "power3.out"
-                    });
+          gsap.to(rings, {
+            x: x * 10,
+            y: y * 6,
+            duration: 0.6,
+            ease: "power3.out"
+          });
 
-                    gsap.to(nodes, {
-                        x: n => x * (10 + Math.random() * 6),
-                        y: n => y * (10 + Math.random() * 6),
-                        duration: 0.6,
-                        ease: "power3.out"
-                    });
-                });
+          gsap.to(nodes, {
+            x: n => x * (10 + Math.random() * 6),
+            y: n => y * (10 + Math.random() * 6),
+            duration: 0.6,
+            ease: "power3.out"
+          });
+        });
 
-                heroSection.addEventListener("mouseleave", () => {
-                    gsap.to([heroVisual, core, rings, nodes], {
-                        x: 0,
-                        y: 0,
-                        duration: 0.9,
-                        ease: "power3.out"
-                    });
-                });
+        heroSection.addEventListener("mouseleave", () => {
+          gsap.to([heroVisual, core, rings, nodes], {
+            x: 0,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out"
+          });
+        });
+      });
+
+
+      // ===============================
+      // SLIDER (unchanged, your GSAP slider)
+      // ===============================
+      const slides = document.querySelectorAll(".slide");
+      let current = 0;
+      let animating = false;
+
+      function animateSlide(index) {
+        if (animating) return;
+        animating = true;
+
+        const slide = slides[index];
+        const left = slide.querySelector(".left");
+        const middle = slide.querySelector(".middle");
+        const right = slide.querySelector(".right");
+
+        slides.forEach(s => gsap.set(s, { opacity: 0, pointerEvents: "none" }));
+        gsap.set(slide, { opacity: 1, pointerEvents: "auto" });
+
+        const tl = gsap.timeline({
+          onComplete: () => animating = false
+        });
+
+        tl.from(left, { x: -200, rotation: -15, opacity: 0, duration: 1, ease: "power3.out" })
+          .from(middle, { y: -200, rotation: 0, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7")
+          .from(right, { x: 200, rotation: 15, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7");
+      }
+
+      if (slides.length) {
+        animateSlide(0);
+
+        setInterval(() => {
+          current = (current + 1) % slides.length;
+          animateSlide(current);
+        }, 4000);
+
+        const nextBtn = document.querySelector(".next");
+        const prevBtn = document.querySelector(".prev");
+
+        if (nextBtn) nextBtn.onclick = () => {
+          current = (current + 1) % slides.length;
+          animateSlide(current);
+        };
+        if (prevBtn) prevBtn.onclick = () => {
+          current = (current - 1 + slides.length) % slides.length;
+          animateSlide(current);
+        };
+      }
+
+      // simple form handler
+      function handleFormSubmit() {
+        const name = document.getElementById("name")?.value || "";
+        const email = document.getElementById("email")?.value || "";
+        alert(`Thanks ${name}! We'll reach out to ${email} soon.`);
+        const form = document.querySelector("form");
+        if (form) form.reset();
+      }
+    </script>
+
+    <script src="script.js"></script>
+
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const hero = document.querySelector("[data-hero]");
+        const canvas = document.getElementById("zinx-hero-bg");
+        const ctx = canvas.getContext("2d");
+
+        let w, h, rect;
+
+        function resize() {
+          rect = hero.getBoundingClientRect();
+          w = canvas.width = rect.width;
+          h = canvas.height = rect.height;
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        const PARTICLE_COUNT = 1200;
+        let particles = [];
+
+        function initParticles() {
+          particles = [];
+          for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const spreadX = (Math.random() - 0.5) * w * 1.8;
+            const spreadY = (Math.random() - 0.5) * h * 1.8;
+            const spreadZ = (Math.random() - 0.5) * 900;
+
+            particles.push({
+              x: spreadX,
+              y: spreadY,
+              z: spreadZ,
+              size: Math.random() * 2 + 0.7
             });
+          }
+        }
+
+        initParticles();
+        window.addEventListener("resize", initParticles);
+
+        // mouse relative to hero
+        let mouseX = 0, mouseY = 0;
+        window.addEventListener("mousemove", (e) => {
+          if (!rect) return;
+          const xInHero = e.clientX - rect.left;
+          const yInHero = e.clientY - rect.top;
+          mouseX = (xInHero - w / 2) / 100;
+          mouseY = (yInHero - h / 2) / 100;
+        });
+
+        let scrollOffset = 0;
+        window.addEventListener("scroll", () => {
+          const heroTop = hero.getBoundingClientRect().top;
+          scrollOffset = (window.innerHeight - heroTop) / 400;
+        });
+
+        let tick = 0;
+
+        function animate() {
+          ctx.clearRect(0, 0, w, h);
+          tick += 0.01;
+
+          // MOVE PLASMA + ORBITS TO THE RIGHT SIDE
+          const cx = w * 0.75;   // or 0.65 / 0.85 depending on how far you want it
+          const cy = h / 2;
 
 
-            // ===============================
-            // SLIDER (unchanged, your GSAP slider)
-            // ===============================
-            const slides = document.querySelectorAll(".slide");
-            let current = 0;
-            let animating = false;
+          particles.forEach((p) => {
+            let x = p.x;
+            let y = p.y;
+            let z = p.z;
 
-            function animateSlide(index) {
-                if (animating) return;
-                animating = true;
+            const t = tick * 0.4;
 
-                const slide = slides[index];
-                const left = slide.querySelector(".left");
-                const middle = slide.querySelector(".middle");
-                const right = slide.querySelector(".right");
+            // base rotations
+            let ry = y * Math.cos(t) - z * Math.sin(t);
+            let rz = y * Math.sin(t) + z * Math.cos(t);
 
-                slides.forEach(s => gsap.set(s, { opacity: 0, pointerEvents: "none" }));
-                gsap.set(slide, { opacity: 1, pointerEvents: "auto" });
+            let rx = x * Math.cos(t * 0.6) - rz * Math.sin(t * 0.6);
+            rz = x * Math.sin(t * 0.6) + rz * Math.cos(t * 0.6);
 
-                const tl = gsap.timeline({
-                    onComplete: () => animating = false
-                });
+            // mouse tilt
+            const mx = mouseX * 0.8;
+            const my = mouseY * 0.8;
 
-                tl.from(left, { x: -200, rotation: -15, opacity: 0, duration: 1, ease: "power3.out" })
-                    .from(middle, { y: -200, rotation: 0, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7")
-                    .from(right, { x: 200, rotation: 15, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7");
-            }
+            let ryy = ry * Math.cos(mx) - rz * Math.sin(mx);
+            rz = ry * Math.sin(mx) + rz * Math.cos(mx);
 
-            if (slides.length) {
-                animateSlide(0);
+            let rxx = rx * Math.cos(my) - rz * Math.sin(my);
+            rz = rx * Math.sin(my) + rz * Math.cos(my);
 
-                setInterval(() => {
-                    current = (current + 1) % slides.length;
-                    animateSlide(current);
-                }, 4000);
+            const depth = 800 + rz + scrollOffset * 120;
+            if (depth <= 0) return;
 
-                const nextBtn = document.querySelector(".next");
-                const prevBtn = document.querySelector(".prev");
+            const scale = 600 / depth;
+            const px = cx + rxx * scale;
+            const py = cy + ryy * scale;
 
-                if (nextBtn) nextBtn.onclick = () => {
-                    current = (current + 1) % slides.length;
-                    animateSlide(current);
-                };
-                if (prevBtn) prevBtn.onclick = () => {
-                    current = (current - 1 + slides.length) % slides.length;
-                    animateSlide(current);
-                };
-            }
+            const pop = Math.sin(tick * 3 + rxx * 0.02 + ryy * 0.02) * 2;
 
-            // simple form handler
-            function handleFormSubmit() {
-                const name = document.getElementById("name")?.value || "";
-                const email = document.getElementById("email")?.value || "";
-                alert(`Thanks ${name}! We'll reach out to ${email} soon.`);
-                const form = document.querySelector("form");
-                if (form) form.reset();
-            }
-        </script>
+            const r = 150 + Math.sin(tick * 2) * 50;
+            const g = 30;
+            const b = 130 + Math.cos(tick * 1.5) * 40;
 
-<script src="script.js"></script>
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.85)`;
+            ctx.beginPath();
+            ctx.arc(px, py + pop, p.size * scale, 0, Math.PI * 2);
+            ctx.fill();
+          });
 
-    </body>
+          // plasma core
+          const pulse = Math.sin(tick * 2) * 8 + 26;
+          const coreGradient = ctx.createRadialGradient(
+            cx, cy, 0,
+            cx, cy, pulse * 5
+          );
+          coreGradient.addColorStop(0, "rgba(255,0,255,0.95)");
+          coreGradient.addColorStop(0.4, "rgba(143,38,124,0.75)");
+          coreGradient.addColorStop(1, "rgba(0,0,0,0)");
+
+          ctx.fillStyle = coreGradient;
+          ctx.beginPath();
+          ctx.arc(cx, cy, pulse * 5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // orbit rings
+          ctx.strokeStyle = "rgba(150,30,140,0.45)";
+          ctx.lineWidth = 1.5;
+
+          for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.ellipse(
+              cx,
+              cy,
+              90 + i * 25 + Math.sin(tick * 1.5 + i) * 6,
+              45 + i * 15,
+              tick * 0.6 + i,
+              0,
+              Math.PI * 2
+            );
+            ctx.stroke();
+          }
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      });
+    </script>
+
+
+  </body>
 
 </html>
