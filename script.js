@@ -89,3 +89,71 @@ if (slides.length) {
       animateSlide(current);
     };
 }
+
+// SMOKE TEXT ANIMATION
+
+function applySmokeText(el) {
+  let delay = 0;
+
+  function wrapNode(node) {
+    // TEXT NODE
+    if (node.nodeType === Node.TEXT_NODE) {
+      return [...node.textContent].map((char) => {
+        if (char === " ") return document.createTextNode(" ");
+
+        const span = document.createElement("span");
+        span.className = "smoke-char";
+        span.style.setProperty("--delay", `${delay}ms`);
+        span.textContent = char;
+
+        delay += 25;
+        return span;
+      });
+    }
+
+    // ELEMENT NODE (H1, P, SPAN…)
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      const wrapper = node.cloneNode(false);
+      node.childNodes.forEach((child) => {
+        wrapNode(child).forEach((c) => wrapper.appendChild(c));
+      });
+      return [wrapper];
+    }
+
+    // OTHER NODE TYPES (rare)
+    return [node.cloneNode()];
+  }
+
+  const newChildren = [];
+  el.childNodes.forEach((child) => {
+    newChildren.push(...wrapNode(child));
+  });
+
+  el.innerHTML = "";
+  newChildren.forEach((child) => el.appendChild(child));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".smoke-text").forEach(applySmokeText);
+});
+// SLIDE IN ANIMATION ON SCROLL
+
+
+
+function handleSlideInOnScroll() {
+  const elements = document.querySelectorAll(
+    ".slide-in-left, .slide-in-right, .slide-in-top, .slide-in-bottom"
+  );
+
+  elements.forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    const triggerPoint = window.innerHeight * 1.75;
+
+    if (rect.top < triggerPoint) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", handleSlideInOnScroll);
+window.addEventListener("load", handleSlideInOnScroll);
