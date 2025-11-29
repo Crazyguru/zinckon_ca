@@ -27,7 +27,6 @@ popupAniElements.forEach((el) => popupAniObserver.observe(el));
 // ================================
 
 // SLIDER ANIMATION WITH GSAP
-
 const slides = document.querySelectorAll(".slide");
 let current = 0;
 let animating = false;
@@ -89,6 +88,7 @@ if (slides.length) {
       animateSlide(current);
     };
 }
+
 
 // SMOKE TEXT ANIMATION
 
