@@ -1535,8 +1535,8 @@
             rz = x * Math.sin(t * 0.6) + rz * Math.cos(t * 0.6);
 
             // mouse tilt
-            const mx = mouseX * 0.8;
-            const my = mouseY * 0.8;
+            const mx = mouseX * 0.1;
+            const my = mouseY * 0.1;
 
             let ryy = ry * Math.cos(mx) - rz * Math.sin(mx);
             rz = ry * Math.sin(mx) + rz * Math.cos(mx);
@@ -1580,7 +1580,7 @@
 
           // orbit rings
           ctx.strokeStyle = "rgba(150,30,140,0.45)";
-          ctx.lineWidth = 1.5;
+          ctx.lineWidth = 1.8;
 
           for (let i = 0; i < 3; i++) {
             ctx.beginPath();
