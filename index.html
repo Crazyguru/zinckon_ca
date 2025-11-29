@@ -265,6 +265,43 @@
       z-index: 0;
       pointer-events: none;
     } */
+
+
+    #hero {
+      position: relative;
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+
+
+    /* REAL FINAL TEXT (full-size) */
+    .hero-title {
+      position: absolute;
+      top: 35%;
+      /* left: 10%; */
+      transform: translateY(-50%);
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1.2;
+      color: #8F267C;
+      /* final black text */
+      opacity: 0;
+      /* fade in later */
+      transition: opacity 1.2s ease;
+      pointer-events: none;
+      z-index: 10000;
+      white-space: pre-line;
+    }
+
+    #text-morph-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      pointer-events: none;
+    }
   </style>
 
 
@@ -286,7 +323,7 @@
         <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
           <!-- Logo -->
           <div class="flex items-center gap-3">
-            <img src="images/Zinckon-logo.png" alt="Zinckon+" class="h-14 w-auto" />
+            <a href="/index.html"><img src="images/Zinckon-logo.png" alt="Zinckon+" class="h-14 w-auto" /></a>
           </div>
 
           <!-- Search Bar -->
@@ -305,7 +342,7 @@
           <div class="flex items-center gap-4 text-sm">
             <div class="flex items-center gap-1 cursor-pointer"><span>CA</span> | <span class="text-gray-500">EN</span>
             </div>
-            <button class="relative"><span class="material-icons text-[#8F267C]">shopping_cart</span><span
+            <button class="relative"><span class="material-icons text-[#8F267C]">Shopping_cart</span><span
                 class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span></button>
             <div class="relative group">
               <button class="flex items-center text-[#8F267C] gap-1"> Login</button>
@@ -374,23 +411,29 @@
       <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-14 grid lg:grid-cols-12 gap-10 items-center">
 
         <!-- LEFT COPY -->
-        <div class="lg:col-span-7 relative z-[10]" data-hero-copy>
-          <p class="text-xs font-semibold tracking-widest text-text-[#8F267C]">
+        <div class="lg:col-span-7 relative z-[10] " data-hero-copy>
+          <p class="text-xs font-semibold tracking-widest text-black smoke-text">
             MINERAL NUTRITION FOR CANADIAN MANUFACTURERS
           </p>
 
-          <h1 class="mt-4 text-4xl md:text-5xl lg:text-6xl font-aptos font-light leading-tight">
-            German-grade minerals,<br>for future-ready formulations.
-          </h1>
+          <div id="hero-text-wrapper" class="relative inline-block">
+            <canvas id="text-morph-canvas" class="absolute inset-0 pointer-events-none"></canvas>
 
-          <p class="mt-6 text-gray-600 max-w-xl">
+            <h1 id="real-title"
+              class="opacity-0 mt-4 text-4xl md:text-5xl lg:text-6xl font-aptos font-light leading-tight transition-opacity duration-700 text-[#8F267C]">
+              German-grade minerals,<br>for future-ready formulations.
+            </h1>
+          </div>
+
+          <p class="mt-6 text-gray-600 max-w-xl slide-in-left">
             Zinckon+ Canada connects German mineral engineering with local Canadian support – for
-            fortified foods,
-            nutraceuticals, pharma and cosmetic applications that demand consistency, traceability and
-            performance.
+            fortified foods, nutraceuticals, pharma and cosmetic applications that demand consistency,
+            traceability and performance.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
+
+
+          <!-- <div class="mt-8 flex flex-wrap gap-3">
             <a href="#products"
               class="px-5 py-3 rounded-full bg-[#8F267C] text-white text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition">
               Explore mineral portfolio
@@ -399,45 +442,45 @@
               class="px-5 py-3 rounded-full border border-[#8F267C] text-[#8F267C] text-sm hover:bg-[#8F267C]/5 transition">
               Download technical sheets
             </a>
+          </div> -->
+
+          <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
+            <span class="px-3 py-2 rounded-full border bg-gray-50 slide-in-left">✔ Batch-wise documentation</span>
+            <span class="px-3 py-2 rounded-full border bg-gray-50 slide-in-bottom">✔ Food, pharma & cosmetic
+              grades</span>
+            <span class="px-3 py-2 rounded-full border bg-gray-50 slide-in-right">✔ European process standards</span>
           </div>
 
-          <!-- <div class="mt-6 flex flex-wrap gap-3 text-sm text-gray-600">
-                            <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Batch-wise documentation</span>
-                            <span class="px-3 py-2 rounded-full border bg-gray-50">✔ Food, pharma & cosmetic
-                                grades</span>
-                            <span class="px-3 py-2 rounded-full border bg-gray-50">✔ European process standards</span>
-                        </div> -->
-        </div>
 
-        <!-- RIGHT FUTURISTIC VISUAL -->
-        <!-- <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
+          <!-- RIGHT FUTURISTIC VISUAL -->
+          <!-- <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
           <div class="hero-visual-wrap"> -->
-        <!-- glowing gradient field -->
-        <!-- <div class="hero-bg-circle"></div> -->
+          <!-- glowing gradient field -->
+          <!-- <div class="hero-bg-circle"></div> -->
 
-        <!-- orbit rings -->
-        <!-- <div class="hero-ring hero-ring-outer"></div>
+          <!-- orbit rings -->
+          <!-- <div class="hero-ring hero-ring-outer"></div>
             <div class="hero-ring hero-ring-middle"></div>
             <div class="hero-ring hero-ring-inner"></div> -->
 
-        <!-- central mineral core -->
-        <!-- <div class="hero-core"></div> -->
+          <!-- central mineral core -->
+          <!-- <div class="hero-core"></div> -->
 
-        <!-- ions -->
-        <!-- <div class="hero-node hero-node-zn">Zn</div>
+          <!-- ions -->
+          <!-- <div class="hero-node hero-node-zn">Zn</div>
             <div class="hero-node hero-node-mg">Mg</div>
             <div class="hero-node hero-node-ca">Ca</div>
             <div class="hero-node hero-node-fe">Fe</div> -->
 
-        <!-- particles -->
-        <!-- <div class="hero-particle hero-particle-1"></div>
+          <!-- particles -->
+          <!-- <div class="hero-particle hero-particle-1"></div>
                             <div class="hero-particle hero-particle-2"></div>
                             <div class="hero-particle hero-particle-3"></div>
                             <div class="hero-particle hero-particle-4"></div>
                             <div class="hero-particle hero-particle-5"></div> -->
 
-        <!-- small panels -->
-        <!-- <div class="hero-panels">
+          <!-- small panels -->
+          <!-- <div class="hero-panels">
                                 <div class="hero-panel">
                                     <strong>Food & Beverage</strong>
                                     Fortification & taste-neutral stability.
@@ -451,10 +494,10 @@
                                     Consistent actives for clean formulas.
                                 </div>
                             </div> -->
-        <!-- </div>
+          <!-- </div>
         </div> -->
 
-      </div>
+        </div>
     </section>
 
 
@@ -463,26 +506,29 @@
     <!-- WHY BAND -->
     <section class="">
       <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 grid md:grid-cols-4 gap-4">
-        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm">
+        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm slide-in-left">
           <h4 class="text-[#8F267C] font-semibold">German Quality</h4>
           <p class="text-sm text-gray-600 mt-2">Precision manufacturing and strict QC from the German
             supply
             chain.</p>
         </div>
-        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+        <div
+          class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50 slide-in-bottom">
           <h4 class="text-[#8F267C] font-semibold">Regulatory Ready</h4>
           <p class="text-sm text-gray-600 mt-2">Documentation and assistance for Food/Pharma
             regulatory
             needs.
           </p>
         </div>
-        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+        <div
+          class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50 slide-in-top">
           <h4 class="text-[#8F267C] font-semibold">Reliable Sourcing</h4>
           <p class="text-sm text-gray-600 mt-2">Stable supply chains with traceability and
             consistency.
           </p>
         </div>
-        <div class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50">
+        <div
+          class="p-4 bg-white hover:bg-[#f6daf0] hover:scale-105 rounded-xl shadow-sm border border-gray-50 slide-in-right">
           <h4 class="text-[#8F267C] font-semibold">Custom Blends</h4>
           <p class="text-sm text-gray-600 mt-2">Formulation support and custom mineral blends tailored
             to
@@ -1507,9 +1553,136 @@
 
         animate();
       });
-    </script> -->
+    </script>
 
     <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+
+        const wrapper = document.getElementById("hero-text-wrapper");
+        const canvas = document.getElementById("text-morph-canvas");
+        const ctx = canvas.getContext("2d");
+        const realTitle = document.getElementById("real-title");
+
+        // Get H1 size AFTER rendering
+        function resizeCanvas() {
+          const rect = wrapper.getBoundingClientRect();
+
+          canvas.width = rect.width + 40;   // extra space for particles
+          canvas.height = rect.height + 40;
+        }
+
+        resizeCanvas();
+        window.addEventListener("resize", () => {
+          resizeCanvas();
+          setTimeout(() => location.reload(), 50); // reload to rebuild particle map
+        });
+
+        let cw = canvas.width;
+        let ch = canvas.height;
+
+        let particles = [];
+        let points = [];
+
+        // Convert the real H1 text into particle target points
+        function getTextPoints() {
+          ctx.clearRect(0, 0, cw, ch);
+
+          const scale = 0.70;
+          const shiftX = 10;
+          const shiftY = 20;
+
+          ctx.save();
+          ctx.scale(scale, scale);
+
+          ctx.font = "bold 80px Aptos Light";
+          ctx.fillStyle = "#000";
+          ctx.textAlign = "left";
+
+          const lines = [
+            "German-grade minerals,",
+            "for future-ready formulations."
+          ];
+
+          const lineHeight = 90;
+
+          lines.forEach((line, i) => {
+            ctx.fillText(
+              line,
+              (0 + shiftX) / scale,
+              (100 + shiftY) + i * lineHeight
+            );
+          });
+
+          ctx.restore();
+
+          const img = ctx.getImageData(0, 0, cw, ch).data;
+          const pts = [];
+
+          for (let y = 0; y < ch; y += 4) {
+            for (let x = 0; x < cw; x += 4) {
+              let idx = (y * cw + x) * 4;
+              if (img[idx + 3] > 128) {
+                pts.push({ x, y });
+              }
+            }
+          }
+
+          return pts;
+        }
+
+        points = getTextPoints();
+
+        // Shuffle points
+        for (let i = points.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [points[i], points[j]] = [points[j], points[i]];
+        }
+
+        const TOTAL = points.length;
+
+        // Create particles
+        for (let i = 0; i < TOTAL; i++) {
+          particles.push({
+            x: Math.random() * cw,
+            y: Math.random() * ch,
+            size: Math.random() * 1.2 + 0.5
+          });
+        }
+
+        // Animate
+        function animate() {
+          ctx.clearRect(0, 0, cw, ch);
+
+          particles.forEach((p, i) => {
+            const tp = points[i];
+            p.x += (tp.x - p.x) * 0.06;
+            p.y += (tp.y - p.y) * 0.06;
+
+            ctx.fillStyle = "#8F267C";
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Fade real H1
+        setTimeout(() => realTitle.style.opacity = 1, 900);
+
+        // Fade particles out
+        setTimeout(() => {
+          canvas.style.transition = "opacity 1s ease";
+          canvas.style.opacity = 0;
+        }, 800);
+
+      });
+    </script>
+
+
 
   </body>
 
