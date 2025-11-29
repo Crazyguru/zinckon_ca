@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zinckon+ Canada — Landing (Tailwind)</title>
+  <title>Zinckon+ Canada</title>
 
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -367,9 +367,9 @@
 
     <!-- HERO -->
 
-    <section class="relative" data-hero>
-      <canvas id="zinx-hero-bg" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+    <section class="relative w-100vh h-80vh" data-hero>
 
+      <canvas id="zinx-hero-bg" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
 
       <div class="max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-14 grid lg:grid-cols-12 gap-10 items-center">
 
@@ -410,8 +410,8 @@
         </div>
 
         <!-- RIGHT FUTURISTIC VISUAL -->
-        <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
-          <div class="hero-visual-wrap">
+        <!-- <div class="lg:col-span-5 flex items-center justify-center" data-hero-visual>
+          <div class="hero-visual-wrap"> -->
             <!-- glowing gradient field -->
             <!-- <div class="hero-bg-circle"></div> -->
 
@@ -451,8 +451,8 @@
                                     Consistent actives for clean formulas.
                                 </div>
                             </div> -->
-          </div>
-        </div>
+          <!-- </div>
+        </div> -->
 
       </div>
     </section>
@@ -495,7 +495,8 @@
 
 
     <!-- GSAP ANIMATION SLIDER -->
-    <section id="gsap-slider" class="slider-wrapper overflow-hidden ">
+    <section id="gsap-slider" class="slider-wrapper overflow-hidden relative z-100">
+
       <h2 style="text-align:center;color:#8F267C;font-size:30px;"> Slider</h2>
 
       <div class="slider-container">
@@ -1341,56 +1342,16 @@
         });
       });
 
+      window.addEventListener("scroll", () => {
+  const heroBounds = hero.getBoundingClientRect();
+  if (heroBounds.bottom < 0) {
+    cancelAnimationFrame(animationFrameId); // stops
+  }
+});
 
-      // ===============================
-      // SLIDER (unchanged, your GSAP slider)
-      // ===============================
-      const slides = document.querySelectorAll(".slide");
-      let current = 0;
-      let animating = false;
 
-      function animateSlide(index) {
-        if (animating) return;
-        animating = true;
 
-        const slide = slides[index];
-        const left = slide.querySelector(".left");
-        const middle = slide.querySelector(".middle");
-        const right = slide.querySelector(".right");
-
-        slides.forEach(s => gsap.set(s, { opacity: 0, pointerEvents: "none" }));
-        gsap.set(slide, { opacity: 1, pointerEvents: "auto" });
-
-        const tl = gsap.timeline({
-          onComplete: () => animating = false
-        });
-
-        tl.from(left, { x: -200, rotation: -15, opacity: 0, duration: 1, ease: "power3.out" })
-          .from(middle, { y: -200, rotation: 0, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7")
-          .from(right, { x: 200, rotation: 15, opacity: 0, duration: 1, ease: "power3.out" }, "-=0.7");
-      }
-
-      if (slides.length) {
-        animateSlide(0);
-
-        setInterval(() => {
-          current = (current + 1) % slides.length;
-          animateSlide(current);
-        }, 4000);
-
-        const nextBtn = document.querySelector(".next");
-        const prevBtn = document.querySelector(".prev");
-
-        if (nextBtn) nextBtn.onclick = () => {
-          current = (current + 1) % slides.length;
-          animateSlide(current);
-        };
-        if (prevBtn) prevBtn.onclick = () => {
-          current = (current - 1 + slides.length) % slides.length;
-          animateSlide(current);
-        };
-      }
-
+     
       // simple form handler
       function handleFormSubmit() {
         const name = document.getElementById("name")?.value || "";
@@ -1400,10 +1361,6 @@
         if (form) form.reset();
       }
     </script>
-
-    <script src="script.js"></script>
-
-
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
@@ -1468,7 +1425,6 @@
           // MOVE PLASMA + ORBITS TO THE RIGHT SIDE
           const cx = w * 0.75;   // or 0.65 / 0.85 depending on how far you want it
           const cy = h / 2;
-
 
           particles.forEach((p) => {
             let x = p.x;
@@ -1553,6 +1509,7 @@
       });
     </script>
 
+    <script src="script.js"></script>
 
   </body>
 

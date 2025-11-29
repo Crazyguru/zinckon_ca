@@ -8,6 +8,13 @@
   /* background-color: #64034f; */
 }
 
+
+[data-hero] { overflow:hidden; position: relative; }
+#zinx-hero-bg { z-index:1 !important; }
+
+
+
+
 .fade-up {
     opacity: 0;
     transform: translateY(20px);
