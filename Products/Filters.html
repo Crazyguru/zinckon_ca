@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Low Sodium Products</title>
+
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- Tailwind Play CDN (for quick prototyping) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header class="w-full">
+      <!-- TOP BAR -->
+      <div class="w-full bg-white">
+        <div
+          class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between"
+        >
+          <!-- Logo -->
+          <div class="flex items-center gap-3 md:w-1/6">
+            <a href="#"
+              ><img
+                src="/images/Zinckon-logo.png"
+                alt="Zinckon+"
+                class="h-14 w-auto"
+            /></a>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-2xl mx-6 hidden md:flex md:w-4/6">
+            <div
+              class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden"
+            >
+              <p
+                class="p-4 bg-gray-100 text-sm outline-none border-r border-gray-300 font-bold text-[#8F267C]"
+              >
+                Products
+              </p>
+              <input
+                type="text"
+                placeholder="Type product names or CAS numbers..."
+                class="flex-1 px-4 py-2 outline-none text-sm"
+              />
+              <button
+                class="px-5 bg-[#8F267C] text-white flex items-center justify-center"
+              >
+                <span class="material-icons">search</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Controls -->
+          <div class="flex items-center gap-4 text-sm md:w-1/6">
+            <!-- <div class="flex items-center gap-1 cursor-pointer">
+              <span>CA</span> | <span class="text-gray-500">EN</span>
+            </div> -->
+            <button class="relative">
+              <span class="material-icons text-[#8F267C]">shopping_cart</span
+              ><span
+                class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1"
+                >0</span
+              >
+            </button>
+            <div class="relative group">
+              <button class="flex items-center text-[#8F267C] gap-1">
+                Login
+              </button>
+              <div
+                class="hidden absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2"
+              >
+                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer"
+                  >Sign In</a
+                >
+                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer"
+                  >Register</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PURPLE NAV STRIP -->
+      <div class="w-full bg-[#8F267C] text-white">
+        <div
+          class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between"
+        >
+          <nav class="flex items-center gap-10 text-sm font-medium relative">
+            <a class="font-bold hover:underline" href="/index.html">Home</a>
+
+            <!-- Industry Dropdown -->
+            <div class="group relative">
+              <button class="font-bold hover:underline">Applications</button>
+
+              <!-- Dropdown -->
+              <div
+                class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50"
+              >
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Pharmaceuticals</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Nutraceuticals</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Beverages</a
+                >
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
+                  >Cosmetics</a
+                >
+              </div>
+            </div>
+            <!-- Products Dropdown -->
+            <!-- <div class="group relative">
+              <button class="hover:underline">Our Products</button>
+
+              <div
+                class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Zinc</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Magnesium</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Iron</a>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100">Calcium</a>
+              </div>
+            </div> -->
+
+            <!-- Simple Links -->
+
+            <a href="/about.html" class="font-bold hover:underline">About Us</a>
+            <a href="/contact.html" class="font-bold hover:underline"
+              >Contact Us</a
+            >
+            <a href="/products.html" class="font-bold hover:underline"
+              >Our Products</a
+            >
+          </nav>
+
+          <!-- <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">
+            Request a QUOTE
+          </button> -->
+        </div>
+      </div>
+    </header>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
