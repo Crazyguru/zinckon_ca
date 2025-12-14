@@ -8,7 +8,6 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen">
-
     <nav class="bg-[#8F267C] text-white px-6 py-4 flex justify-between items-center font-semibold">
 
         <!-- LEFT NAV -->
@@ -58,6 +57,7 @@
         </div>
 
     </nav>
+
 
 
     <div class="max-w-7xl mx-auto p-6">
@@ -151,6 +151,12 @@
     </div>
 
     <script>
+
+        function logout() {
+            localStorage.removeItem("adminAuth");
+            window.location.replace("/admin/index.html");
+        }
+
 
 
         window.addEventListener("pageshow", () => {
@@ -408,7 +414,22 @@
         }
 
         loadAll();
+
+        function toggleProfile() {
+            document.getElementById("profileMenu").classList.toggle("hidden");
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            const menu = document.getElementById("profileMenu");
+            if (!e.target.closest(".relative")) {
+                menu?.classList.add("hidden");
+            }
+        });
+
     </script>
+
+
 
 </body>
 

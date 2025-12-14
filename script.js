@@ -192,3 +192,17 @@ async function loadProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+
+
+function toggleProfile() {
+  document.getElementById("profileMenu").classList.toggle("hidden");
+}
+
+// Close dropdown when clicking outside
+document.addEventListener("click", (e) => {
+  const menu = document.getElementById("profileMenu");
+  if (!e.target.closest(".relative")) {
+    menu?.classList.add("hidden");
+  }
+});
