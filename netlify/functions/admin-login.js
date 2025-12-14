@@ -13,12 +13,8 @@ export async function handler(event) {
 
   const { email, password } = JSON.parse(event.body || "{}");
 
-  if (!email) {
-    return { statusCode: 400, body: "Wrong Email" };
-  }
-
-   if (!password) {
-    return { statusCode: 400, body: "Wrong Password" };
+  if (!email || !password) {
+    return { statusCode: 400, body: "Missing credentials" };
   }
 
   try {
