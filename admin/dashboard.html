@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Zinckon Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- NAVBAR -->
+    <nav class="bg-[#8F267C] text-white px-6 py-4 flex gap-6">
+        <button onclick="show('dashboard')" class="font-semibold">Dashboard</button>
+        <button onclick="show('categories')" class="font-semibold">Categories</button>
+        <button onclick="show('products')" class="font-semibold">Products</button>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="p-6 max-w-6xl mx-auto">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="view">
+            <h2 class="text-2xl font-bold mb-4">Overview</h2>
+            <div id="stats" class="grid grid-cols-3 gap-4"></div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section id="categories" class="view hidden">
+            <h2 class="text-2xl font-bold mb-4">Categories</h2>
+
+            <div class="flex gap-2 mb-4">
+                <input id="catName" placeholder="Name" class="border p-2 w-1/4">
+                <input id="catSlug" placeholder="Slug" class="border p-2 w-1/4">
+                <button onclick="addCategory()" class="bg-[#8F267C] text-white px-4">Add</button>
+            </div>
+
+            <div id="categoryList"></div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section id="products" class="view hidden">
+            <h2 class="text-2xl font-bold mb-4">Products</h2>
+
+            <div class="grid grid-cols-5 gap-2 mb-4">
+                <input id="prodName" placeholder="Name" class="border p-2">
+                <input id="prodPrice" placeholder="Price" class="border p-2">
+                <input id="prodImage" placeholder="Image URL" class="border p-2">
+                <select id="prodCategory" class="border p-2"></select>
+                <button onclick="addProduct()" class="bg-[#8F267C] text-white">Add</button>
+            </div>
+
+            <div id="productList"></div>
+        </section>
+
+    </div>
+
+    <script>
+        /* VIEW SWITCH */
+        function show(id) {
+            document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
+            document.getElementById(id).classList.remove("hidden");
+        }
+
+        /* LOAD DASHBOARD */
+        async function loadDashboard() {
+            const r = await fetch("/.netlify/functions/admin-dashboard-stats");
+            const d = await r.json();
+
+            stats.innerHTML = `
+    <div class="bg-white p-4 shadow rounded">Categories: <b>${d.categories}</b></div>
+    <div class="bg-white p-4 shadow rounded">Products: <b>${d.products}</b></div>
+  `;
+        }
+
+        /* CATEGORIES */
+        async function loadCategories() {
+            const r = await fetch("/.netlify/functions/admin-get-categories");
+            const d = await r.json();
+
+            categoryList.innerHTML = d.map(c =>
+                `<div class="bg-white p-3 shadow mb-2 flex justify-between">
+      <div>
+        <b>${c.name}</b>
+        <small class="text-gray-500">(${c.slug})</small>
+      </div>
+      <button onclick="deleteCategory(${c.id})" class="text-red-600">Delete</button>
+    </div>`
+            ).join("");
+
+            prodCategory.innerHTML = d.map(c =>
+                `<option value="${c.id}">${c.name}</option>`
+            ).join("");
+        }
+
+        async function addCategory() {
+            await fetch("/.netlify/functions/admin-add-category", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: catName.value,
+                    slug: catSlug.value,
+                    description: ""
+                })
+            });
+            loadCategories();
+        }
+
+        /* PRODUCTS */
+        async function loadProducts() {
+            const r = await fetch("/.netlify/functions/admin-get-products");
+            const d = await r.json();
+
+            productList.innerHTML = d.map(p =>
+                `<div class="bg-white p-3 shadow mb-2 flex justify-between">
+      <div>
+        <b>${p.name}</b> — ${p.category}
+      </div>
+      <button onclick="deleteProduct(${p.id})" class="text-red-600">Delete</button>
+    </div>`
+            ).join("");
+        }
+
+        async function addProduct() {
+            await fetch("/.netlify/functions/admin-add-product", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    name: prodName.value,
+                    price: prodPrice.value,
+                    image_url: prodImage.value,
+                    description: "",
+                    category_id: prodCategory.value
+                })
+            });
+            loadProducts();
+        }
+
+        /* DELETE */
+        async function deleteCategory(id) {
+            await fetch("/.netlify/functions/admin-delete-category", {
+                method: "POST",
+                body: JSON.stringify({ id })
+            });
+            loadCategories();
+        }
+
+        async function deleteProduct(id) {
+            await fetch("/.netlify/functions/admin-delete-product", {
+                method: "POST",
+                body: JSON.stringify({ id })
+            });
+            loadProducts();
+        }
+
+        /* INIT */
+        loadDashboard();
+        loadCategories();
+        loadProducts();
+    </script>
+
+</body>
+
+</html>
