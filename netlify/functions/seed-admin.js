@@ -1,24 +1,36 @@
-// netlify/functions/seed-admin.js
 import bcrypt from "bcryptjs";
 import { Client } from "pg";
 
-export async function handler() {
-  const client = new Client({ connectionString: process.env.DATABASE_URL });
-  await client.connect();
+export async function handler(event, context) {
+  try {
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false }
+    });
 
-  const hash = await bcrypt.hash("ChangeThisPassword123", 10);
+    await client.connect();
 
-  await client.query(
-    `INSERT INTO users (email, password_hash, role, is_active)
-     VALUES ($1, $2, 'admin', true)
-     ON CONFLICT (email) DO NOTHING`,
-    ["admin@zinckon.com", hash]
-  );
+    const hash = await bcrypt.hash("ChangeThisPassword123", 10);
 
-  await client.end();
+    await client.query(
+      `
+      INSERT INTO users (email, password_hash, role, is_active)
+      VALUES ($1, $2, 'admin', true)
+      ON CONFLICT (email) DO NOTHING
+      `,
+      ["admin@zinckon.com", hash]
+    );
 
-  return {
-    statusCode: 200,
-    body: "Admin user ready"
-  };
+    await client.end();
+
+    return {
+      statusCode: 200,
+      body: "Admin seeded successfully"
+    };
+  } catch (err) {
+    return {
+      statusCode: 500,
+      body: err.message
+    };
+  }
 }
