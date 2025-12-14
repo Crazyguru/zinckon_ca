@@ -4,7 +4,6 @@ export async function handler() {
   const client = new Client({
     connectionString: process.env.NETLIFY_DATABASE_URL
   });
-
   await client.connect();
 
   await client.query(`
@@ -13,15 +12,10 @@ export async function handler() {
       name TEXT NOT NULL,
       slug TEXT UNIQUE NOT NULL,
       description TEXT,
-      image_url TEXT,
       created_at TIMESTAMP DEFAULT NOW()
     );
   `);
 
   await client.end();
-
-  return {
-    statusCode: 200,
-    body: "Categories table created"
-  };
+  return { statusCode: 200, body: "Categories table ready" };
 }
