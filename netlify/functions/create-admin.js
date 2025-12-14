@@ -4,7 +4,7 @@ import { Client } from "pg";
 export async function handler(event) {
   const { email, password } = JSON.parse(event.body);
 
-  const client = new Client({ connectionString: process.env.DATABASE_URL });
+  const client = new Client({ connectionString: process.env.NETLIFY_DATABASE_URL});
   await client.connect();
 
   const res = await client.query(
