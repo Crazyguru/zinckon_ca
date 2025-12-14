@@ -28,9 +28,20 @@
             </div>
         </section>
 
+
+
+
+
         <!-- CATEGORIES -->
         <section id="categories" class="view hidden">
             <h1 class="text-3xl font-bold mb-6">Categories</h1>
+
+            <!-- CATEGORY SEARCH -->
+            <div class="mb-4">
+                <input id="categorySearch" placeholder="Search categories..." oninput="filterCategories()"
+                    class="border p-2 w-full rounded" />
+            </div>
+
 
             <div class="bg-white p-6 rounded shadow mb-6">
                 <h2 class="font-semibold mb-4">Add Category</h2>
@@ -47,9 +58,29 @@
             <div id="categoryList"></div>
         </section>
 
+
+
         <!-- PRODUCTS -->
         <section id="products" class="view hidden">
             <h1 class="text-3xl font-bold mb-6">Products</h1>
+
+            <!-- PRODUCT SEARCH & FILTER -->
+            <div class="bg-white p-4 rounded shadow mb-4 grid grid-cols-4 gap-4">
+                <input id="productSearch" placeholder="Search products..." oninput="filterProducts()"
+                    class="border p-2 col-span-2 rounded" />
+
+                <select id="filterCategory" onchange="filterProducts()" class="border p-2 rounded">
+                    <option value="">All Categories</option>
+                </select>
+
+                <div class="flex gap-2">
+                    <input id="minPrice" type="number" placeholder="Min ₹" oninput="filterProducts()"
+                        class="border p-2 w-full rounded">
+                    <input id="maxPrice" type="number" placeholder="Max ₹" oninput="filterProducts()"
+                        class="border p-2 w-full rounded">
+                </div>
+            </div>
+
 
             <div class="bg-white p-6 rounded shadow mb-6">
                 <h2 class="font-semibold mb-4">Add Product</h2>
@@ -112,6 +143,36 @@
             renderProducts(PRODUCTS);
         }
 
+        function filterCategories() {
+            const q = document.getElementById("categorySearch").value.toLowerCase();
+            const filtered = CATEGORIES.filter(c =>
+                c.name.toLowerCase().includes(q) ||
+                c.slug.toLowerCase().includes(q)
+            );
+            renderCategories(filtered);
+        }
+
+        function filterProducts() {
+            const q = productSearch.value.toLowerCase();
+            const cat = filterCategory.value;
+            const min = Number(minPrice.value) || 0;
+            const max = Number(maxPrice.value) || Infinity;
+
+            const filtered = PRODUCTS.filter(p => {
+                return (
+                    (p.name.toLowerCase().includes(q) ||
+                        (p.description || '').toLowerCase().includes(q)) &&
+                    (!cat || p.category === cat) &&
+                    Number(p.price) >= min &&
+                    Number(p.price) <= max
+                );
+            });
+
+            renderProducts(filtered);
+        }
+
+
+
         /* ----------------- DASHBOARD ----------------- */
         function renderDashboard() {
             const count = {};
@@ -132,9 +193,12 @@
             showToast(`Showing products for "${name}"`);
         }
 
+
+
+
         /* ----------------- CATEGORIES ----------------- */
-        function renderCategories() {
-            categoryList.innerHTML = CATEGORIES.map(c => `
+        function renderCategories(list = CATEGORIES) {
+            categoryList.innerHTML = list.map(c => `
     <div class="bg-white p-4 rounded shadow mb-3">
       <div id="cat-view-${c.id}">
         <h3 class="font-bold">${c.name}</h3>
@@ -154,8 +218,12 @@
     </div>
   `).join('');
 
-            prodCategory.innerHTML = CATEGORIES.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+            // keep product filter category dropdown updated
+            filterCategory.innerHTML =
+                `<option value="">All Categories</option>` +
+                CATEGORIES.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
         }
+
 
         function editCategory(id) {
             toggle(`cat-view-${id}`, `cat-edit-${id}`);
@@ -179,7 +247,7 @@
         }
 
         /* ----------------- PRODUCTS ----------------- */
-        function renderProducts(list) {
+        function renderProducts(list = PRODUCTS) {
             productList.innerHTML = list.map(p => `
     <div class="bg-white p-4 rounded shadow mb-3">
       <div id="prod-view-${p.id}">
@@ -204,6 +272,7 @@
     </div>
   `).join('');
         }
+
 
         function editProduct(id) {
             toggle(`prod-view-${id}`, `prod-edit-${id}`);
