@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modern Hero Carousel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-black">
+    <div class="relative w-full h-screen overflow-hidden">
+      <!-- SLIDES -->
+      <div id="slides" class="absolute inset-0">
+        <div
+          class="slide absolute inset-0 opacity-100 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div
+          class="slide absolute inset-0 opacity-0 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div
+          class="slide absolute inset-0 opacity-0 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- OVERLAY -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
+      ></div>
+
+      <!-- TEXT -->
+      <div
+        class="absolute left-16 top-1/2 -translate-y-1/2 max-w-xl text-white z-10"
+      >
+        <h1 class="text-6xl font-bold mb-6">Portraits</h1>
+        <p class="text-gray-200 mb-8 leading-relaxed">
+          Lorem ipsum dolor sit amet consectetur. Feugiat aliquam praesent
+          tellus suspendisse urna.
+        </p>
+        <button
+          class="border border-white px-6 py-2 hover:bg-white hover:text-black transition"
+        >
+          Explore
+        </button>
+      </div>
+
+      <!-- THUMBNAILS -->
+      <div class="absolute right-16 bottom-24 flex items-end gap-6 z-10">
+        <img
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+          class="thumb w-48 h-40 object-cover rounded-2xl ring-4 ring-white opacity-100 scale-100 transition-all duration-500"
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
+          class="thumb w-40 h-32 object-cover rounded-2xl opacity-70 scale-90 transition-all duration-500"
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+          class="thumb w-40 h-32 object-cover rounded-2xl opacity-70 scale-90 transition-all duration-500"
+        />
+      </div>
+
+      <!-- DOTS -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+        <span class="dot w-2 h-2 rounded-full bg-white"></span>
+        <span class="dot w-2 h-2 rounded-full bg-white/40"></span>
+        <span class="dot w-2 h-2 rounded-full bg-white/40"></span>
+      </div>
+    </div>
+
+    <script>
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+      const thumbs = document.querySelectorAll(".thumb");
+      let index = 0;
+
+      setInterval(() => {
+        slides.forEach((s) => s.classList.replace("opacity-100", "opacity-0"));
+        dots.forEach((d) => d.classList.replace("bg-white", "bg-white/40"));
+
+        thumbs.forEach((t) => {
+          t.classList.remove(
+            "w-48",
+            "h-40",
+            "opacity-100",
+            "scale-100",
+            "ring-4",
+            "ring-white",
+            "-translate-y-3"
+          );
+          t.classList.add("w-40", "h-32", "opacity-70", "scale-90");
+        });
+
+        index = (index + 1) % slides.length;
+
+        slides[index].classList.replace("opacity-0", "opacity-100");
+        dots[index].classList.replace("bg-white/40", "bg-white");
+
+        thumbs[index].classList.remove(
+          "w-40",
+          "h-32",
+          "opacity-70",
+          "scale-90"
+        );
+        thumbs[index].classList.add(
+          "w-48",
+          "h-40",
+          "opacity-100",
+          "scale-100",
+          "ring-4",
+          "ring-white",
+          "-translate-y-3"
+        );
+      }, 3500);
+    </script>
+
+    <section class="relative w-full h-screen overflow-hidden bg-black">
+      <!-- SLIDES -->
+      <div class="absolute inset-0">
+        <div
+          class="slide absolute inset-0 opacity-100 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div
+          class="slide absolute inset-0 opacity-0 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div
+          class="slide absolute inset-0 opacity-0 transition-opacity duration-700"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+
+      <!-- OVERLAY -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"
+      ></div>
+
+      <!-- TEXT CONTENT -->
+      <div
+        class="absolute left-16 top-1/2 -translate-y-1/2 max-w-xl text-white z-10"
+      >
+        <h1 class="text-6xl font-bold mb-6">Portraits</h1>
+        <p class="text-gray-200 mb-8 leading-relaxed">
+          Lorem ipsum dolor sit amet consectetur. Feugiat aliquam praesent
+          tellus suspendisse urna.
+        </p>
+        <button
+          class="border border-white px-6 py-2 hover:bg-white hover:text-black transition"
+        >
+          Explore
+        </button>
+      </div>
+
+      <!-- THUMBNAILS -->
+      <div class="absolute right-16 bottom-24 flex items-end gap-6 z-10">
+        <img
+          src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
+          class="thumb w-48 h-40 object-cover rounded-2xl ring-4 ring-white opacity-100 scale-100 -translate-y-3 transition-all duration-500"
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb"
+          class="thumb w-40 h-32 object-cover rounded-2xl opacity-70 scale-90 transition-all duration-500"
+        />
+
+        <img
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+          class="thumb w-40 h-32 object-cover rounded-2xl opacity-70 scale-90 transition-all duration-500"
+        />
+      </div>
+
+      <!-- DOTS -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+        <span class="dot w-2 h-2 rounded-full bg-white"></span>
+        <span class="dot w-2 h-2 rounded-full bg-white/40"></span>
+        <span class="dot w-2 h-2 rounded-full bg-white/40"></span>
+      </div>
+
+      <!-- SCRIPT -->
+      <script>
+        (() => {
+          const section = document.currentScript.closest("section");
+          const slides = section.querySelectorAll(".slide");
+          const dots = section.querySelectorAll(".dot");
+          const thumbs = section.querySelectorAll(".thumb");
+          let index = 0;
+
+          setInterval(() => {
+            slides.forEach((s) =>
+              s.classList.replace("opacity-100", "opacity-0")
+            );
+            dots.forEach((d) => d.classList.replace("bg-white", "bg-white/40"));
+
+            thumbs.forEach((t) => {
+              t.classList.remove(
+                "w-48",
+                "h-40",
+                "opacity-100",
+                "scale-100",
+                "ring-4",
+                "ring-white",
+                "-translate-y-3"
+              );
+              t.classList.add("w-40", "h-32", "opacity-70", "scale-90");
+            });
+
+            index = (index + 1) % slides.length;
+
+            slides[index].classList.replace("opacity-0", "opacity-100");
+            dots[index].classList.replace("bg-white/40", "bg-white");
+
+            thumbs[index].classList.remove(
+              "w-40",
+              "h-32",
+              "opacity-70",
+              "scale-90"
+            );
+            thumbs[index].classList.add(
+              "w-48",
+              "h-40",
+              "opacity-100",
+              "scale-100",
+              "ring-4",
+              "ring-white",
+              "-translate-y-3"
+            );
+          }, 3500);
+        })();
+      </script>
+    </section>
+  </body>
+</html>
