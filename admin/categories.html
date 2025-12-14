@@ -12,31 +12,47 @@
 
     <hr>
     <div id="list"></div>
-
     <script>
+        const nameInput = document.getElementById("name");
+        const slugInput = document.getElementById("slug");
+        const descInput = document.getElementById("desc");
+        const list = document.getElementById("list");
+
         async function load() {
             const res = await fetch("/.netlify/functions/admin-get-categories");
             const data = await res.json();
-            list.innerHTML = data.map(c =>
-                `<p>${c.name} (${c.slug})</p>`
-            ).join("");
+
+            list.innerHTML = data
+                .map(c => `<p>${c.name} (${c.slug})</p>`)
+                .join("");
         }
 
         async function add() {
-            await fetch("/.netlify/functions/admin-add-category", {
+            const payload = {
+                name: nameInput.value,
+                slug: slugInput.value,
+                description: descInput.value
+            };
+
+            console.log("Sending payload:", payload); // 👈 IMPORTANT
+
+            const res = await fetch("/.netlify/functions/admin-add-category", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: name.value,
-                    slug: slug.value,
-                    description: desc.value
-                })
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
             });
+
+            const text = await res.text();
+            console.log("Server response:", text);
+
             load();
         }
 
         load();
     </script>
+
 
 </body>
 
