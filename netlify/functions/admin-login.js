@@ -1,30 +1,28 @@
-import crypto from "crypto";
-
 export async function handler(event) {
-  const { email, password } = JSON.parse(event.body || "{}");
+  if (event.httpMethod !== "POST") {
+    return { statusCode: 405, body: "Method Not Allowed" };
+  }
 
-  // 👇 CHANGE THESE
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
-  const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+  const { email, password } = JSON.parse(event.body);
 
-  if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+  if (
+    email === process.env.ADMIN_EMAIL &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
     return {
-      statusCode: 401,
-      body: JSON.stringify({ message: "Invalid credentials" })
+      statusCode: 200,
+      body: JSON.stringify({
+        success: true,
+        token: "zinckon-admin-auth"
+      })
     };
   }
 
-  // simple signed token
-  const token = crypto
-    .createHash("sha256")
-    .update(email + Date.now())
-    .digest("hex");
-
   return {
-    statusCode: 200,
+    statusCode: 401,
     body: JSON.stringify({
-      token,
-      message: "Login successful"
+      success: false,
+      message: "Invalid credentials"
     })
   };
 }
