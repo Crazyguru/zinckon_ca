@@ -10,54 +10,17 @@
 <body class="bg-gray-100 min-h-screen">
     <nav class="bg-[#8F267C] text-white px-6 py-4 flex justify-between items-center font-semibold">
 
-        <!-- LEFT -->
         <div class="flex gap-6">
             <button onclick="showView('dashboard')">Dashboard</button>
             <button onclick="showView('categories')">Categories</button>
             <button onclick="showView('products')">Products</button>
+            <button onclick="showView('profile')">Profile</button>
+
         </div>
 
-        <!-- RIGHT PROFILE -->
-        <div class="relative">
-            <button onclick="toggleProfile()"
-                class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition">
-
-                <span class="w-8 h-8 bg-white text-[#8F267C] rounded-full flex items-center justify-center font-bold">
-                    A
-                </span>
-
-                <span>Admin</span>
-
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-            </button>
-
-            <!-- DROPDOWN -->
-            <div id="profileMenu"
-                class="hidden absolute right-0 mt-3 w-56 bg-white text-gray-800 rounded-xl shadow-lg z-50">
-
-                <div class="px-4 py-3 border-b">
-                    <p class="font-bold">Zinckon Admin</p>
-                    <p class="text-sm text-gray-500">admin@zinckon.com</p>
-                </div>
-
-                <div class="py-2">
-                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
-                        Profile Settings
-                    </button>
-                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
-                        Change Password
-                    </button>
-                </div>
-
-                <div class="border-t">
-                    <button onclick="logout()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50">
-                        Logout
-                    </button>
-                </div>
-            </div>
-        </div>
+        <button onclick="logout()" class="bg-white text-[#8F267C] px-4 py-2 rounded">
+            Logout
+        </button>
 
     </nav>
 
@@ -149,11 +112,66 @@
 
     </div>
 
+
+
+    <section id="profile" class="view hidden">
+        <h1 class="text-3xl font-bold mb-6">Admin Profile</h1>
+
+        <div class="bg-white rounded-xl shadow p-8 max-w-3xl">
+
+            <div class="grid grid-cols-2 gap-6 mb-8">
+                <div>
+                    <p class="text-sm text-gray-500">Name</p>
+                    <p class="font-semibold">Zinckon Admin</p>
+                </div>
+
+                <div>
+                    <p class="text-sm text-gray-500">Email</p>
+                    <p class="font-semibold">admin@zinckon.com</p>
+                </div>
+
+                <div>
+                    <p class="text-sm text-gray-500">Role</p>
+                    <p class="font-semibold">Super Admin</p>
+                </div>
+
+                <div>
+                    <p class="text-sm text-gray-500">Status</p>
+                    <p class="font-semibold text-green-600">Active</p>
+                </div>
+            </div>
+
+            <hr class="mb-6">
+
+            <div class="flex gap-4">
+                <button class="bg-[#8F267C] text-white px-6 py-2 rounded">
+                    Change Password
+                </button>
+
+                <button class="bg-gray-200 px-6 py-2 rounded">
+                    View Login Activity
+                </button>
+
+                <button onclick="logout()" class="ml-auto bg-red-600 text-white px-6 py-2 rounded">
+                    Logout
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
     <!-- TOAST -->
     <div id="toast" class="fixed bottom-6 right-6 hidden bg-[#8F267C] text-white px-6 py-3 rounded-lg shadow-lg z-50">
     </div>
 
     <script>
+
+        function logout() {
+            localStorage.removeItem("adminAuth");
+            window.location.replace("/admin/index.html");
+        }
+
 
 
         window.addEventListener("pageshow", () => {
@@ -178,20 +196,6 @@
         /* ----------------- DATA ----------------- */
         let CATEGORIES = [];
         let PRODUCTS = [];
-
-
-
-        function toggleProfile() {
-            document.getElementById("profileMenu").classList.toggle("hidden");
-        }
-
-        // close on outside click
-        document.addEventListener("click", function (e) {
-            const profile = document.getElementById("profileMenu");
-            if (!e.target.closest(".relative")) {
-                profile.classList.add("hidden");
-            }
-        });
 
         /* ----------------- LOAD ----------------- */
         async function loadAll() {
