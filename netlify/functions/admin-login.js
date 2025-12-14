@@ -7,18 +7,18 @@ export async function handler(event) {
   const client = new Client({ connectionString: process.env.DATABASE_URL });
   await client.connect();
 
-  const res = await client.query(
-    "SELECT * FROM users WHERE email = $1",
+  const result = await client.query(
+    "SELECT * FROM users WHERE email=$1 AND role='admin' AND is_active=true",
     [email]
   );
 
   await client.end();
 
-  if (res.rows.length === 0) {
+  if (result.rowCount === 0) {
     return { statusCode: 401, body: "Invalid credentials" };
   }
 
-  const user = res.rows[0];
+  const user = result.rows[0];
   const valid = await bcrypt.compare(password, user.password_hash);
 
   if (!valid) {
@@ -28,7 +28,8 @@ export async function handler(event) {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      success: true,
+      id: user.id,
+      email: user.email,
       role: user.role
     })
   };

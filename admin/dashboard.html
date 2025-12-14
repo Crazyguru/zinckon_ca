@@ -170,7 +170,15 @@
         if (!sessionStorage.getItem("admin")) {
             window.location.replace("/index.html");
         }
+
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.replace("/index.html");
+        }
+
     </script>
+
 
 
     <script>

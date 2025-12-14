@@ -27,9 +27,6 @@
     <!-- ✅ SCRIPT GOES HERE -->
     <script>
         async function login() {
-            const emailInput = document.getElementById("emailInput");
-            const passwordInput = document.getElementById("passwordInput");
-
             const res = await fetch("/.netlify/functions/admin-login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -47,6 +44,7 @@
             }
         }
     </script>
+
 
 </body>
 
