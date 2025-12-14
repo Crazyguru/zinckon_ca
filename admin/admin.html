@@ -24,17 +24,19 @@
     <!-- ✅ SCRIPT GOES HERE -->
     <script>
         async function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
             const res = await fetch("/.netlify/functions/admin-login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    email: emailInput.value.trim(),
-                    password: passwordInput.value
-                })
+                body: JSON.stringify({ email, password })
             });
 
             if (res.ok) {
-                sessionStorage.setItem("admin", "true");
+                sessionStorage.setItem("admin_logged_in", "true");
+
+                // IMPORTANT: replace (kills back button access)
                 window.location.replace("/admin/dashboard.html");
             } else {
                 alert("Invalid login");
