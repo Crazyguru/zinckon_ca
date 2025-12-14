@@ -159,7 +159,3 @@ window.addEventListener("scroll", handleSlideInOnScroll);
 window.addEventListener("load", handleSlideInOnScroll);
 
 
-//backend 
-fetch("/.netlify/functions/test")
-  .then(res => res.json())
-  .then(data => console.log(data));
