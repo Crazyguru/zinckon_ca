@@ -33,49 +33,27 @@
 </head>
 
 <body>
-
-    <h1>Admin – Products</h1>
-
-    <input id="name" placeholder="Name">
-    <input id="price" placeholder="Price">
-    <input id="image" placeholder="Image URL">
-    <textarea id="desc" placeholder="Description"></textarea>
-    <select id="cat"></select>
-    <button onclick="add()">Add Product</button>
-
-    <div id="list"></div>
+    <div id="products" class="grid grid-cols-3 gap-6"></div>
 
     <script>
-        async function loadCats() {
-            const r = await fetch("/.netlify/functions/admin-get-categories");
-            const d = await r.json();
-            cat.innerHTML = d.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
-        }
+        const params = new URLSearchParams(window.location.search);
+        const category = params.get("category");
 
-        async function loadProducts() {
-            const r = await fetch("/.netlify/functions/admin-get-products");
-            const d = await r.json();
-            list.innerHTML = d.map(p => `<p>${p.name} – ${p.category}</p>`).join("");
-        }
-
-        async function add() {
-            await fetch("/.netlify/functions/admin-add-product", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    name: name.value,
-                    description: desc.value,
-                    price: price.value,
-                    image_url: image.value,
-                    category_id: cat.value
-                })
+        fetch(`/.netlify/functions/get-products-by-category?category=${category}`)
+            .then(res => res.json())
+            .then(data => {
+                products.innerHTML = data.map(p => `
+      <div class="border p-4 rounded">
+        <img src="${p.image_url}" class="h-40 w-full object-cover">
+        <h3 class="font-bold mt-2">${p.name}</h3>
+        <p>${p.description || ""}</p>
+        <p class="font-semibold">₹${p.price}</p>
+        <button onclick="addToCart(${p.id})">Add to Cart</button>
+      </div>
+    `).join("");
             });
-            loadProducts();
-        }
-
-        loadCats();
-        loadProducts();
     </script>
+
 
 </body>
 

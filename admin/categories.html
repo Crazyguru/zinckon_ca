@@ -1,50 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Admin – Categories</title>
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            margin: 6px 0;
-            padding: 8px;
-        }
-
-        button {
-            padding: 8px 16px;
-            background: #8F267C;
-            color: #fff;
-            border: none;
-        }
-
-        .category {
-            border-bottom: 1px solid #ddd;
-            padding: 8px 0;
-        }
-    </style>
-</head>
-
 <body>
-    <h1>Admin – Categories</h1>
+
+    <h2>Admin – Categories</h2>
 
     <input id="name" placeholder="Name">
     <input id="slug" placeholder="Slug">
     <textarea id="desc" placeholder="Description"></textarea>
-    <button onclick="add()">Add</button>
+    <button onclick="add()">Add Category</button>
 
+    <hr>
     <div id="list"></div>
 
     <script>
         async function load() {
-            const r = await fetch("/.netlify/functions/admin-get-categories");
-            const d = await r.json();
-            list.innerHTML = d.map(c => `<p>${c.name} (${c.slug})</p>`).join("");
+            const res = await fetch("/.netlify/functions/admin-get-categories");
+            const data = await res.json();
+            list.innerHTML = data.map(c =>
+                `<p>${c.name} (${c.slug})</p>`
+            ).join("");
         }
 
         async function add() {
@@ -62,7 +37,6 @@
 
         load();
     </script>
-
 
 </body>
 
