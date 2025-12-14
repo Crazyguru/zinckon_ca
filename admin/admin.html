@@ -26,6 +26,12 @@
     </div>
 
     <script>
+
+        if (localStorage.getItem("adminAuth") === "zinckon-admin-auth") {
+            window.location.replace("/admin/dashboard.html");
+        }
+
+
         async function login() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
