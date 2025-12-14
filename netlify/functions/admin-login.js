@@ -22,7 +22,7 @@ export async function handler(event) {
   const valid = await bcrypt.compare(password, user.password_hash);
 
   if (!valid) {
-    return { statusCode: 401, body: "Invalid credentials" };
+    return { statusCode: 401, body: "Invalid Password" };
   }
 
   return {
