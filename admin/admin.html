@@ -3,56 +3,47 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Zinckon Admin Login</title>
+    <title>Admin Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen flex items-center justify-center bg-gray-100">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h1 class="text-2xl font-bold text-center text-[#8F267C] mb-6">
+    <!-- LOGIN CARD -->
+    <div class="bg-white p-8 rounded shadow w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center text-[#8F267C]">
             Admin Login
         </h1>
 
-        <input id="email" type="email" placeholder="Email" class="border p-3 w-full mb-4 rounded">
+        <input id="emailInput" type="email" placeholder="Email" class="border p-2 w-full mb-4" />
 
-        <input id="password" type="password" placeholder="Password" class="border p-3 w-full mb-4 rounded">
+        <input id="passwordInput" type="password" placeholder="Password" class="border p-2 w-full mb-4" />
 
-        <button onclick="login()" class="bg-[#8F267C] text-white w-full py-3 rounded font-semibold">
+        <button onclick="login()" class="w-full bg-[#8F267C] text-white py-2 rounded">
             Login
         </button>
-
-        <p id="error" class="text-red-600 text-sm mt-4 hidden text-center"></p>
     </div>
 
+    <!-- ✅ SCRIPT GOES HERE -->
     <script>
-
-        if (localStorage.getItem("adminAuth") === "zinckon-admin-auth") {
-            window.location.replace("/admin/dashboard.html");
-        }
-
-
         async function login() {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const error = document.getElementById("error");
-
-            error.classList.add("hidden");
+            const emailInput = document.getElementById("emailInput");
+            const passwordInput = document.getElementById("passwordInput");
 
             const res = await fetch("/.netlify/functions/admin-login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({
+                    email: emailInput.value,
+                    password: passwordInput.value
+                })
             });
 
-            const data = await res.json();
-
-            if (data.success) {
-                localStorage.setItem("adminAuth", data.token);
-                window.location.href = "/admin/dashboard.html";
+            if (res.ok) {
+                sessionStorage.setItem("admin", "true");
+                window.location.replace("/admin/dashboard.html");
             } else {
-                error.textContent = "Invalid email or password";
-                error.classList.remove("hidden");
+                alert("Invalid login");
             }
         }
     </script>
