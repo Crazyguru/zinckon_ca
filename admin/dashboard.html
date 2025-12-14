@@ -75,89 +75,168 @@
     </div>
 
     <script>
-        /* ---------- BASIC UI ---------- */
+        /* ----------------- UI ----------------- */
         function showView(id) {
             document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
             document.getElementById(id).classList.remove('hidden');
         }
-
         function showToast(msg) {
-            const t = document.getElementById("toast");
+            const t = toast;
             t.textContent = msg;
             t.classList.remove("hidden");
             setTimeout(() => t.classList.add("hidden"), 2500);
         }
 
-        /* ---------- DATA ---------- */
-        let ALL_PRODUCTS = [];
+        /* ----------------- DATA ----------------- */
+        let CATEGORIES = [];
+        let PRODUCTS = [];
 
+        /* ----------------- LOAD ----------------- */
         async function loadAll() {
-            const cats = await fetch('/.netlify/functions/admin-get-categories').then(r => r.json());
-            const prods = await fetch('/.netlify/functions/admin-get-products').then(r => r.json());
-            ALL_PRODUCTS = prods;
+            CATEGORIES = await fetch('/.netlify/functions/admin-get-categories').then(r => r.json());
+            PRODUCTS = await fetch('/.netlify/functions/admin-get-products').then(r => r.json());
 
             stats.innerHTML = `
     <div class="bg-white p-6 rounded shadow">
       <p class="text-gray-500">Categories</p>
-      <p class="text-3xl font-bold">${cats.length}</p>
+      <p class="text-3xl font-bold">${CATEGORIES.length}</p>
     </div>
     <div class="bg-white p-6 rounded shadow">
       <p class="text-gray-500">Products</p>
-      <p class="text-3xl font-bold">${prods.length}</p>
+      <p class="text-3xl font-bold">${PRODUCTS.length}</p>
     </div>
   `;
 
-            const map = {};
-            prods.forEach(p => map[p.category] = (map[p.category] || 0) + 1);
+            renderDashboard();
+            renderCategories();
+            renderProducts(PRODUCTS);
+        }
 
-            categoryStats.innerHTML = cats.map(c => `
+        /* ----------------- DASHBOARD ----------------- */
+        function renderDashboard() {
+            const count = {};
+            PRODUCTS.forEach(p => count[p.category] = (count[p.category] || 0) + 1);
+
+            categoryStats.innerHTML = CATEGORIES.map(c => `
     <div class="flex justify-between border-b py-2 cursor-pointer hover:bg-gray-100 px-2"
-      onclick="showCategoryProducts('${c.name}')">
+      onclick="filterByCategory('${c.name}')">
       <span class="font-medium text-[#8F267C]">${c.name}</span>
-      <span>${map[c.name] || 0}</span>
-    </div>
-  `).join('');
-
-            categoryList.innerHTML = cats.map(c => `
-    <div class="bg-white p-4 rounded shadow mb-3">
-      <h3 class="font-bold">${c.name}</h3>
-      <p>${c.slug}</p>
-      <p>${c.description || '-'}</p>
-      <button onclick="deleteCategory(${c.id}, '${c.name}')" class="text-red-600">Delete</button>
-    </div>
-  `).join('');
-
-            prodCategory.innerHTML = cats.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
-            renderProducts(prods);
-        }
-
-        function renderProducts(list) {
-            productList.innerHTML = list.map(p => `
-    <div class="bg-white p-4 rounded shadow mb-3">
-      <h3 class="font-bold">${p.name}</h3>
-      <p>${p.category}</p>
-      <p>₹${p.price}</p>
-      <button onclick="deleteProduct(${p.id}, '${p.name}')" class="text-red-600">Delete</button>
+      <span>${count[c.name] || 0}</span>
     </div>
   `).join('');
         }
 
-        /* ---------- DASHBOARD FILTER ---------- */
-        function showCategoryProducts(name) {
+        function filterByCategory(name) {
             showView('products');
-            const filtered = ALL_PRODUCTS.filter(p => p.category === name);
-            renderProducts(filtered);
+            renderProducts(PRODUCTS.filter(p => p.category === name));
             showToast(`Showing products for "${name}"`);
         }
 
-        /* ---------- CRUD ---------- */
+        /* ----------------- CATEGORIES ----------------- */
+        function renderCategories() {
+            categoryList.innerHTML = CATEGORIES.map(c => `
+    <div class="bg-white p-4 rounded shadow mb-3">
+      <div id="cat-view-${c.id}">
+        <h3 class="font-bold">${c.name}</h3>
+        <p>${c.slug}</p>
+        <p>${c.description || '-'}</p>
+        <button class="text-blue-600 mr-3" onclick="editCategory(${c.id})">Edit</button>
+        <button class="text-red-600" onclick="deleteCategory(${c.id}, '${c.name}')">Delete</button>
+      </div>
+
+      <div id="cat-edit-${c.id}" class="hidden">
+        <input id="cat-name-${c.id}" value="${c.name}" class="border p-1 w-full mb-1">
+        <input id="cat-slug-${c.id}" value="${c.slug}" class="border p-1 w-full mb-1">
+        <textarea id="cat-desc-${c.id}" class="border p-1 w-full mb-2">${c.description || ''}</textarea>
+        <button onclick="saveCategory(${c.id})" class="bg-green-600 text-white px-3 py-1 rounded">Save</button>
+        <button onclick="cancelCategory(${c.id})" class="ml-2">Cancel</button>
+      </div>
+    </div>
+  `).join('');
+
+            prodCategory.innerHTML = CATEGORIES.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+
+        function editCategory(id) {
+            toggle(`cat-view-${id}`, `cat-edit-${id}`);
+        }
+        function cancelCategory(id) {
+            toggle(`cat-edit-${id}`, `cat-view-${id}`);
+        }
+        async function saveCategory(id) {
+            await fetch('/.netlify/functions/admin-update-category', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id,
+                    name: document.getElementById(`cat-name-${id}`).value,
+                    slug: document.getElementById(`cat-slug-${id}`).value,
+                    description: document.getElementById(`cat-desc-${id}`).value
+                })
+            });
+            showToast("Category updated");
+            loadAll();
+        }
+
+        /* ----------------- PRODUCTS ----------------- */
+        function renderProducts(list) {
+            productList.innerHTML = list.map(p => `
+    <div class="bg-white p-4 rounded shadow mb-3">
+      <div id="prod-view-${p.id}">
+        <h3 class="font-bold">${p.name}</h3>
+        <p>${p.category}</p>
+        <p>₹${p.price}</p>
+        <button class="text-blue-600 mr-3" onclick="editProduct(${p.id})">Edit</button>
+        <button class="text-red-600" onclick="deleteProduct(${p.id}, '${p.name}')">Delete</button>
+      </div>
+
+      <div id="prod-edit-${p.id}" class="hidden">
+        <input id="prod-name-${p.id}" value="${p.name}" class="border p-1 w-full mb-1">
+        <input id="prod-price-${p.id}" value="${p.price}" class="border p-1 w-full mb-1">
+        <input id="prod-image-${p.id}" value="${p.image_url || ''}" class="border p-1 w-full mb-1">
+        <textarea id="prod-desc-${p.id}" class="border p-1 w-full mb-1">${p.description || ''}</textarea>
+        <select id="prod-cat-${p.id}" class="border p-1 w-full mb-2">
+          ${CATEGORIES.map(c => `<option value="${c.id}" ${c.name === p.category ? 'selected' : ''}>${c.name}</option>`).join('')}
+        </select>
+        <button onclick="saveProduct(${p.id})" class="bg-green-600 text-white px-3 py-1 rounded">Save</button>
+        <button onclick="cancelProduct(${p.id})" class="ml-2">Cancel</button>
+      </div>
+    </div>
+  `).join('');
+        }
+
+        function editProduct(id) {
+            toggle(`prod-view-${id}`, `prod-edit-${id}`);
+        }
+        function cancelProduct(id) {
+            toggle(`prod-edit-${id}`, `prod-view-${id}`);
+        }
+        async function saveProduct(id) {
+            await fetch('/.netlify/functions/admin-update-product', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id,
+                    name: document.getElementById(`prod-name-${id}`).value,
+                    description: document.getElementById(`prod-desc-${id}`).value,
+                    price: document.getElementById(`prod-price-${id}`).value,
+                    image_url: document.getElementById(`prod-image-${id}`).value,
+                    category_id: document.getElementById(`prod-cat-${id}`).value,
+                    is_active: true
+                })
+            });
+            showToast("Product updated");
+            loadAll();
+        }
+
+        /* ----------------- ADD / DELETE ----------------- */
         async function addCategory() {
             await fetch('/.netlify/functions/admin-add-category', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name: catName.value, slug: catSlug.value, description: catDesc.value })
             });
-            showToast("Category added successfully");
+            showToast("Category added");
             catName.value = catSlug.value = catDesc.value = '';
             loadAll();
         }
@@ -174,7 +253,7 @@
                     category_id: prodCategory.value
                 })
             });
-            showToast("Product added successfully");
+            showToast("Product added");
             prodName.value = prodDesc.value = prodPrice.value = prodImage.value = '';
             loadAll();
         }
@@ -197,6 +276,12 @@
             });
             showToast("Product deleted");
             loadAll();
+        }
+
+        /* ----------------- UTIL ----------------- */
+        function toggle(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
         }
 
         loadAll();
