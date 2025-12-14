@@ -159,3 +159,36 @@ window.addEventListener("scroll", handleSlideInOnScroll);
 window.addEventListener("load", handleSlideInOnScroll);
 
 
+//backend
+
+async function loadProducts() {
+  try {
+    const res = await fetch(
+      "/.netlify/functions/get-products"
+    );
+    const products = await res.json();
+
+    const container = document.getElementById("products-container");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    products.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <img src="${product.image_url}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>${product.description || ""}</p>
+        <strong>₹${product.price}</strong>
+      `;
+
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Failed to load products", err);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadProducts);
