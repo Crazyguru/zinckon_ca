@@ -1,58 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admin – Categories</title>
+</head>
 
 <body>
 
     <h2>Admin – Categories</h2>
 
-    <input id="name" placeholder="Name">
-    <input id="slug" placeholder="Slug">
-    <textarea id="desc" placeholder="Description"></textarea>
-    <button onclick="add()">Add Category</button>
+    <div>
+        <input id="name" placeholder="Name" />
+        <input id="slug" placeholder="Slug" />
+        <textarea id="desc" placeholder="Description"></textarea>
+        <br><br>
+        <button type="button" id="addBtn">Add Category</button>
+    </div>
 
     <hr>
+
+    <h3>Existing Categories</h3>
     <div id="list"></div>
+
     <script>
-        const nameInput = document.getElementById("name");
-        const slugInput = document.getElementById("slug");
-        const descInput = document.getElementById("desc");
-        const list = document.getElementById("list");
+        document.addEventListener("DOMContentLoaded", () => {
+            const nameInput = document.getElementById("name");
+            const slugInput = document.getElementById("slug");
+            const descInput = document.getElementById("desc");
+            const list = document.getElementById("list");
+            const addBtn = document.getElementById("addBtn");
 
-        async function load() {
-            const res = await fetch("/.netlify/functions/admin-get-categories");
-            const data = await res.json();
+            async function loadCategories() {
+                const res = await fetch("/.netlify/functions/admin-get-categories");
+                const data = await res.json();
 
-            list.innerHTML = data
-                .map(c => `<p>${c.name} (${c.slug})</p>`)
-                .join("");
-        }
+                console.log("Loaded categories:", data);
 
-        async function add() {
-            const payload = {
-                name: nameInput.value,
-                slug: slugInput.value,
-                description: descInput.value
-            };
+                list.innerHTML = data.map(c =>
+                    `<p><b>${c.name}</b> (${c.slug})</p>`
+                ).join("");
+            }
 
-            console.log("Sending payload:", payload); // 👈 IMPORTANT
+            async function addCategory() {
+                const payload = {
+                    name: nameInput.value,
+                    slug: slugInput.value,
+                    description: descInput.value
+                };
 
-            const res = await fetch("/.netlify/functions/admin-add-category", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
+                console.log("Sending:", payload);
 
-            const text = await res.text();
-            console.log("Server response:", text);
+                const res = await fetch("/.netlify/functions/admin-add-category", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
 
-            load();
-        }
+                const txt = await res.text();
+                console.log("Server says:", txt);
 
-        load();
+                nameInput.value = "";
+                slugInput.value = "";
+                descInput.value = "";
+
+                loadCategories();
+            }
+
+            addBtn.addEventListener("click", addCategory);
+
+            loadCategories();
+        });
     </script>
-
 
 </body>
 
