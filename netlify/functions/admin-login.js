@@ -15,7 +15,7 @@ export async function handler(event) {
   await client.end();
 
   if (result.rowCount === 0) {
-    return { statusCode: 401, body: "Invalid credentials" };
+    return { statusCode: 401, body: "Invalid Email" };
   }
 
   const user = result.rows[0];
