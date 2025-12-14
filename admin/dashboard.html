@@ -217,6 +217,13 @@
             CATEGORIES = await fetch('/.netlify/functions/admin-get-categories').then(r => r.json());
             PRODUCTS = await fetch('/.netlify/functions/admin-get-products').then(r => r.json());
 
+            // populate Add Product category dropdown
+            prodCategory.innerHTML =
+                CATEGORIES.map(c =>
+                    `<option value="${c.id}">${c.name}</option>`
+                ).join('');
+
+
             stats.innerHTML = `
     <div class="bg-white p-6 rounded shadow">
       <p class="text-gray-500">Categories</p>
@@ -316,6 +323,17 @@
 
         }
 
+        function populateAddProductCategories() {
+            const select = document.getElementById("prodCategory");
+            if (!select) return;
+
+            select.innerHTML =
+                `<option value="">Select Category</option>` +
+                CATEGORIES.map(c =>
+                    `<option value="${c.id}">${c.name}</option>`
+                ).join('');
+        }
+
 
 
         function editCategory(id) {
@@ -364,25 +382,6 @@
       </div>
     </div>
   `).join('');
-        }
-
-        // populate Add Product category dropdown
-        prodCategory.innerHTML =
-            CATEGORIES.map(c =>
-                `<option value="${c.id}">${c.name}</option>`
-            ).join('');
-
-
-
-        function populateAddProductCategories() {
-            const select = document.getElementById("prodCategory");
-            if (!select) return;
-
-            select.innerHTML =
-                `<option value="">Select Category</option>` +
-                CATEGORIES.map(c =>
-                    `<option value="${c.id}">${c.name}</option>`
-                ).join('');
         }
 
 
