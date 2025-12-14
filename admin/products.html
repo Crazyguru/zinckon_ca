@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin – Products</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            margin: 6px 0;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background: #8F267C;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .item {
+            border-bottom: 1px solid #ddd;
+            padding: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Admin – Products</h1>
+
+    <h2>Add Product</h2>
+
+    <input id="name" placeholder="Product name">
+    <textarea id="description" placeholder="Description"></textarea>
+    <input id="price" placeholder="Price">
+    <input id="image" placeholder="Image URL (/images/...)">
+
+    <select id="category"></select>
+
+    <button onclick="addProduct()">Add Product</button>
+
+    <h2>Existing Products</h2>
+    <div id="products"></div>
+
+    <script>
+        async function loadCategories() {
+            const res = await fetch("/.netlify/functions/admin-get-categories");
+            const data = await res.json();
+
+            const select = document.getElementById("category");
+            select.innerHTML = "";
+
+            data.forEach(c => {
+                select.innerHTML += `
+      <option value="${c.id}">${c.name}</option>
+    `;
+            });
+        }
+
+        async function loadProducts() {
+            const res = await fetch("/.netlify/functions/admin-get-products");
+            const data = await res.json();
+
+            const container = document.getElementById("products");
+            container.innerHTML = "";
+
+            data.forEach(p => {
+                container.innerHTML += `
+      <div class="item">
+        <strong>${p.name}</strong> – ₹${p.price}<br>
+        Category: ${p.category}
+      </div>
+    `;
+            });
+        }
+
+        async function addProduct() {
+            const payload = {
+                name: name.value,
+                description: description.value,
+                price: price.value,
+                image_url: image.value,
+                category_id: category.value
+            };
+
+            await fetch("/.netlify/functions/admin-add-product", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            loadProducts();
+        }
+
+        loadCategories();
+        loadProducts();
+    </script>
+
+</body>
+
+</html>

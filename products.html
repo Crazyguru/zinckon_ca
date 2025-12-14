@@ -1,117 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Tailwind Play CDN (for quick prototyping) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body>
-    <!-- STICKY HEADER (Updated to Zinckon+ layout) -->
-    <header class="w-full">
-      <!-- TOP BAR -->
-      <div class="w-full bg-white">
-        <div
-          class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between"
-        >
-          <!-- Logo -->
-          <div class="flex items-center gap-3 md:w-1/6">
-            <a href="#"
-              ><img
-                src="/images/Zinckon-logo.png"
-                alt="Zinckon+"
-                class="h-14 w-auto"
-            /></a>
-          </div>
 
-          <!-- Search Bar -->
-          <div class="flex-1 max-w-2xl mx-6 hidden md:flex md:w-4/6">
-            <div
-              class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden"
-            >
-              <p
-                class="p-4 bg-gray-100 text-sm outline-none border-r border-gray-300 font-bold text-[#8F267C]"
-              >
-                Products
-              </p>
-              <input
-                type="text"
-                placeholder="Type product names or CAS numbers..."
-                class="flex-1 px-4 py-2 outline-none text-sm"
-              />
-              <button
-                class="px-5 bg-[#8F267C] text-white flex items-center justify-center"
-              >
-                <span class="material-icons">search</span>
-              </button>
-            </div>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Tailwind Play CDN (for quick prototyping) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-          <!-- Right Controls -->
-          <div class="flex items-center gap-4 text-sm md:w-1/6">
-            <!-- <div class="flex items-center gap-1 cursor-pointer">
+<body>
+  <!-- STICKY HEADER (Updated to Zinckon+ layout) -->
+  <header class="w-full">
+    <!-- TOP BAR -->
+    <div class="w-full bg-white">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 md:w-1/6">
+          <a href="#"><img src="/images/Zinckon-logo.png" alt="Zinckon+" class="h-14 w-auto" /></a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-2xl mx-6 hidden md:flex md:w-4/6">
+          <div class="flex w-full border-2 border-[#8F267C] rounded-full overflow-hidden">
+            <p class="p-4 bg-gray-100 text-sm outline-none border-r border-gray-300 font-bold text-[#8F267C]">
+              Products
+            </p>
+            <input type="text" placeholder="Type product names or CAS numbers..."
+              class="flex-1 px-4 py-2 outline-none text-sm" />
+            <button class="px-5 bg-[#8F267C] text-white flex items-center justify-center">
+              <span class="material-icons">search</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-4 text-sm md:w-1/6">
+          <!-- <div class="flex items-center gap-1 cursor-pointer">
               <span>CA</span> | <span class="text-gray-500">EN</span>
             </div> -->
-            <button class="relative">
-              <span class="material-icons text-[#8F267C]">shopping_cart</span
-              ><span
-                class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1"
-                >0</span
-              >
+          <button class="relative">
+            <span class="material-icons text-[#8F267C]">shopping_cart</span><span
+              class="absolute -top-1 -right-2 text-xs bg-[#8F267C] text-white rounded-full px-1">0</span>
+          </button>
+          <div class="relative group">
+            <button class="flex items-center text-[#8F267C] gap-1">
+              Login
             </button>
-            <div class="relative group">
-              <button class="flex items-center text-[#8F267C] gap-1">
-                Login
-              </button>
-              <div
-                class="hidden absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2"
-              >
-                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer"
-                  >Sign In</a
-                >
-                <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer"
-                  >Register</a
-                >
-              </div>
+            <div
+              class="hidden absolute right-0 mt-2 w-32 bg-white shadow rounded-md border border-gray-100 text-gray-700 text-sm p-2">
+              <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Sign In</a>
+              <a class="block px-2 py-1 hover:bg-gray-100 cursor-pointer">Register</a>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- PURPLE NAV STRIP -->
-      <div class="w-full bg-[#8F267C] text-white">
-        <div
-          class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between"
-        >
-          <nav class="flex items-center gap-10 text-sm font-medium relative">
-            <a class="font-bold hover:underline" href="/index.html">Home</a>
+    <!-- PURPLE NAV STRIP -->
+    <div class="w-full bg-[#8F267C] text-white">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 h-12 flex items-center justify-between">
+        <nav class="flex items-center gap-10 text-sm font-medium relative">
+          <a class="font-bold hover:underline" href="/index.html">Home</a>
 
-            <!-- Industry Dropdown -->
-            <div class="group relative">
-              <button class="font-bold hover:underline">Applications</button>
+          <!-- Industry Dropdown -->
+          <div class="group relative">
+            <button class="font-bold hover:underline">Applications</button>
 
-              <!-- Dropdown -->
-              <div
-                class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50"
-              >
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                  >Pharmaceuticals</a
-                >
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                  >Nutraceuticals</a
-                >
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                  >Beverages</a
-                >
-                <a href="#" class="block px-4 py-2 hover:bg-gray-100"
-                  >Cosmetics</a
-                >
-              </div>
+            <!-- Dropdown -->
+            <div
+              class="absolute left-0 mt-2 hidden group-hover:block bg-white text-[#8F267C] shadow-lg rounded-lg py-2 w-48 z-50">
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Pharmaceuticals</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Nutraceuticals</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Beverages</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100">Cosmetics</a>
             </div>
-            <!-- Products Dropdown -->
-            <!-- <div class="group relative">
+          </div>
+          <!-- Products Dropdown -->
+          <!-- <div class="group relative">
               <button class="hover:underline">Our Products</button>
 
               <div
@@ -123,313 +90,243 @@
               </div>
             </div> -->
 
-            <!-- Simple Links -->
+          <!-- Simple Links -->
 
-            <a href="/about.html" class="font-bold hover:underline">About Us</a>
-            <a href="/contact.html" class="font-bold hover:underline"
-              >Contact Us</a
-            >
-            <a href="/products.html" class="font-bold underline"
-              >Our Products</a
-            >
-          </nav>
+          <a href="/about.html" class="font-bold hover:underline">About Us</a>
+          <a href="/contact.html" class="font-bold hover:underline">Contact Us</a>
+          <a href="/products.html" class="font-bold underline">Our Products</a>
+        </nav>
 
-          <!-- <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">
+        <!-- <button class="px-4 py-2 bg-white text-[#8F267C] font-semibold rounded-md text-sm">
             Request a QUOTE
           </button> -->
-        </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
-    <section class="max-w-7xl mx-auto px-6 py-16 space-y-24 overflow-x-hidden">
-      <h3
-        class="text-4xl md:text-5xl font-extrabold text-[#8F267C] text-center mb-12"
-      >
-        Product Categories
-      </h3>
-      <!-- 1 -->
-      <div
-        class="flex flex-col md:flex-row items-center gap-10"
-        data-aos="fade-right"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/Pharma.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Pharmaceuticals, Veterinarian Preparations, Nutraceuticals
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Liquid and solid drugs along with nutritional supplements are used
-            every day in human and veterinarian applications. Mineral salts in
-            such products aid to positively influence the biochemical process in
-            the organism.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+  <section class="max-w-7xl mx-auto px-6 py-16 space-y-24 overflow-x-hidden">
+    <h3 class="text-4xl md:text-5xl font-extrabold text-[#8F267C] text-center mb-12">
+      Product Categories
+    </h3>
+    <!-- 1 -->
+    <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/Pharma.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
       </div>
-
-      <!-- 2 -->
-      <div
-        class="flex flex-col md:flex-row-reverse items-center gap-10"
-        data-aos="fade-left"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/baby-food2.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Infant Formulas & Clinical Food
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Besides breast milk, infant formula is the only acceptable nutrition
-            for infants under one year. These formulas contain purified whey,
-            casein proteins, vegetable oils, lactose, vitamins and mineral
-            salts.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Pharmaceuticals, Veterinarian Preparations, Nutraceuticals
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Liquid and solid drugs along with nutritional supplements are used
+          every day in human and veterinarian applications. Mineral salts in
+          such products aid to positively influence the biochemical process in
+          the organism.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
       </div>
+    </div>
 
-      <!-- 3 -->
-      <div
-        class="flex flex-col md:flex-row items-center gap-10"
-        data-aos="fade-right"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/dialysis.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Infusion & Dialysis Solutions
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Infusion solutions using mineral salts and glucose provide fast
-            intravenous delivery. Dialysis removes waste through a
-            semi-permeable membrane into a mineral-salt dialysis solution.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+    <!-- 2 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/baby-food2.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
       </div>
-
-      <!-- 4 -->
-      <div
-        class="flex flex-col md:flex-row-reverse items-center gap-10"
-        data-aos="fade-left"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/water.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Bottled Mineralised Water
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Reverse osmosis purification removes contaminants, while mineral
-            salts are added to improve taste and health effect with low bromide
-            minerals.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Infant Formulas & Clinical Food
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Besides breast milk, infant formula is the only acceptable nutrition
+          for infants under one year. These formulas contain purified whey,
+          casein proteins, vegetable oils, lactose, vitamins and mineral
+          salts.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
       </div>
+    </div>
 
-      <!-- 5 -->
-      <div
-        class="flex flex-col md:flex-row items-center gap-10"
-        data-aos="fade-right"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/seawater.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Seawater Aquariums
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Pure pharmaceutical-grade mineral salts ensure the natural health
-            and stability of seawater aquarium ecosystems.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+    <!-- 3 -->
+    <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/dialysis.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
       </div>
-
-      <!-- 6 -->
-      <div
-        class="flex flex-col md:flex-row-reverse items-center gap-10"
-        data-aos="fade-left"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/glycerophosphate.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Glycerophosphates
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            High bioavailability minerals in their most stable form for
-            effective absorption and performance.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Infusion & Dialysis Solutions
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Infusion solutions using mineral salts and glucose provide fast
+          intravenous delivery. Dialysis removes waste through a
+          semi-permeable membrane into a mineral-salt dialysis solution.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
       </div>
+    </div>
 
-      <!-- 7 -->
-      <div
-        class="flex flex-col md:flex-row items-center gap-10"
-        data-aos="fade-right"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/biopharmaceutical.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Biopharmaceuticals
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Mineral salts are essential in upstream processing for cultivating
-            and purifying biologically derived drugs.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+    <!-- 4 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/water.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
       </div>
-
-      <!-- 8 -->
-      <div
-        class="flex flex-col md:flex-row-reverse items-center gap-10"
-        data-aos="fade-left"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/brewing.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">Brewing</h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Zinc sulphate supports yeast growth, and calcium salts adjust
-            hardness and pH for perfect fermentation.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Bottled Mineralised Water
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Reverse osmosis purification removes contaminants, while mineral
+          salts are added to improve taste and health effect with low bromide
+          minerals.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
       </div>
+    </div>
 
-      <!-- 9 -->
-      <div
-        class="flex flex-col md:flex-row items-center gap-10"
-        data-aos="fade-right"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/bakery.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">Bakery</h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Calcium Propionate prevents mold growth, and sodium chloride is
-            partially replaced with potassium chloride to reduce sodium.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+    <!-- 5 -->
+    <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/seawater.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
       </div>
-
-      <!-- 10 -->
-      <div
-        class="flex flex-col md:flex-row-reverse items-center gap-10"
-        data-aos="fade-left"
-      >
-        <div class="md:w-1/2 h-[480px]">
-          <img
-            src="/images/product-category/flavours.jpg"
-            class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani"
-          />
-        </div>
-        <div class="md:w-1/2 space-y-4">
-          <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
-            Flavouring
-          </h2>
-          <p class="text-lg text-gray-700 leading-relaxed">
-            Sodium Acetate is used in seasoning and Sodium Di-acetate in salt &
-            vinegar chips. Potassium Chloride supports sodium reduction in
-            spices.
-          </p>
-          <a
-            href="#"
-            class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all"
-            >View Products →</a
-          >
-        </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Seawater Aquariums
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Pure pharmaceutical-grade mineral salts ensure the natural health
+          and stability of seawater aquarium ecosystems.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
       </div>
-    </section>
+    </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
-    <script>
-      AOS.init({
-        duration: 1000,
-        once: true,
-      });
-    </script>
-  </body>
+    <!-- 6 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/glycerophosphate.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
+      </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Glycerophosphates
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          High bioavailability minerals in their most stable form for
+          effective absorption and performance.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/biopharmaceutical.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
+      </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Biopharmaceuticals
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Mineral salts are essential in upstream processing for cultivating
+          and purifying biologically derived drugs.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/brewing.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
+      </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">Brewing</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Zinc sulphate supports yeast growth, and calcium salts adjust
+          hardness and pH for perfect fermentation.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="flex flex-col md:flex-row items-center gap-10" data-aos="fade-right">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/bakery.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
+      </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">Bakery</h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Calcium Propionate prevents mold growth, and sodium chloride is
+          partially replaced with potassium chloride to reduce sodium.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
+      </div>
+    </div>
+
+
+    <!-- 10 -->
+    <div class="flex flex-col md:flex-row-reverse items-center gap-10" data-aos="fade-left">
+      <div class="md:w-1/2 h-[480px]">
+        <img src="/images/product-category/flavours.jpg"
+          class="w-full h-full rounded-2xl shadow-xl transition-transform duration-500 hover:scale-105 pop-up-ani" />
+      </div>
+      <div class="md:w-1/2 space-y-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#8F267C]">
+          Flavouring
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed">
+          Sodium Acetate is used in seasoning and Sodium Di-acetate in salt &
+          vinegar chips. Potassium Chloride supports sodium reduction in
+          spices.
+        </p>
+        <a href="#"
+          class="inline-block bg-[#8F267C] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#6e1f5e] transition-all">View
+          Products →</a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+  </script>
+</body>
+
 </html>
