@@ -316,17 +316,6 @@
 
         }
 
-        function populateAddProductCategories() {
-            const select = document.getElementById("prodCategory");
-            if (!select) return;
-
-            select.innerHTML =
-                `<option value="">Select Category</option>` +
-                CATEGORIES.map(c =>
-                    `<option value="${c.id}">${c.name}</option>`
-                ).join('');
-        }
-
 
 
         function editCategory(id) {
@@ -375,6 +364,25 @@
       </div>
     </div>
   `).join('');
+        }
+
+        // populate Add Product category dropdown
+        prodCategory.innerHTML =
+            CATEGORIES.map(c =>
+                `<option value="${c.id}">${c.name}</option>`
+            ).join('');
+
+
+
+        function populateAddProductCategories() {
+            const select = document.getElementById("prodCategory");
+            if (!select) return;
+
+            select.innerHTML =
+                `<option value="">Select Category</option>` +
+                CATEGORIES.map(c =>
+                    `<option value="${c.id}">${c.name}</option>`
+                ).join('');
         }
 
 
