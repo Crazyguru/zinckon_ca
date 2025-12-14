@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { Pool } from "pg";
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: process.env.NETLIFY_DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 
@@ -31,7 +31,7 @@ export async function handler(event) {
 
     const valid = await bcrypt.compare(password, rows[0].password_hash);
     if (!valid) {
-      return { statusCode: 401, body: "Invalid login" };
+      return { statusCode: 401, body: "Invalid password" };
     }
 
     return {
