@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Zinckon Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen">
+    <nav class="bg-[#8F267C] text-white px-6 py-4 flex justify-between items-center font-semibold">
+
+        <!-- LEFT NAV -->
+        <div class="flex gap-6">
+            <button onclick="showView('dashboard')">Dashboard</button>
+            <button onclick="showView('categories')">Categories</button>
+            <button onclick="showView('products')">Products</button>
+        </div>
+
+        <!-- RIGHT PROFILE -->
+        <div class="relative">
+            <button onclick="toggleProfile()"
+                class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition">
+                <span class="w-8 h-8 bg-white text-[#8F267C] rounded-full flex items-center justify-center font-bold">
+                    A
+                </span>
+                <span>Admin</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            <!-- DROPDOWN -->
+            <div id="profileMenu"
+                class="hidden absolute right-0 mt-3 w-56 bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden z-50">
+
+                <div class="px-4 py-3 border-b">
+                    <p class="font-bold">Zinckon Admin</p>
+                    <p class="text-sm text-gray-500">admin@zinckon.com</p>
+                </div>
+
+                <div class="py-2">
+                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        Profile Settings
+                    </button>
+                    <button class="w-full text-left px-4 py-2 hover:bg-gray-100">
+                        Change Password
+                    </button>
+                </div>
+
+                <div class="border-t">
+                    <button onclick="logout()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-red-50">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </nav>
+
+
+
+    <div class="max-w-7xl mx-auto p-6">
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="view">
+            <h1 class="text-3xl font-bold mb-6">Dashboard</h1>
+            <div id="stats" class="grid grid-cols-3 gap-6 mb-8"></div>
+
+            <div class="bg-white p-6 rounded shadow">
+                <h2 class="font-semibold mb-4">Category → Product Count</h2>
+                <div id="categoryStats"></div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- CATEGORIES -->
+        <section id="categories" class="view hidden">
+            <h1 class="text-3xl font-bold mb-6">Categories</h1>
+
+            <!-- CATEGORY SEARCH -->
+            <div class="mb-4">
+                <input id="categorySearch" placeholder="Search categories..." oninput="filterCategories()"
+                    class="border p-2 w-full rounded" />
+            </div>
+
+
+            <div class="bg-white p-6 rounded shadow mb-6">
+                <h2 class="font-semibold mb-4">Add Category</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <input id="catName" placeholder="Name" class="border p-2">
+                    <input id="catSlug" placeholder="Slug" class="border p-2">
+                    <input id="catDesc" placeholder="Description" class="border p-2">
+                </div>
+                <button onclick="addCategory()" class="mt-4 bg-[#8F267C] text-white px-6 py-2 rounded">
+                    Add Category
+                </button>
+            </div>
+
+            <div id="categoryList"></div>
+        </section>
+
+
+
+        <!-- PRODUCTS -->
+        <section id="products" class="view hidden">
+            <h1 class="text-3xl font-bold mb-6">Products</h1>
+
+            <!-- PRODUCT SEARCH & FILTER -->
+            <div class="bg-white p-4 rounded shadow mb-4 grid grid-cols-4 gap-4">
+                <input id="productSearch" placeholder="Search products..." oninput="filterProducts()"
+                    class="border p-2 col-span-2 rounded" />
+
+                <select id="filterCategory" onchange="filterProducts()" class="border p-2 rounded">
+                    <option value="">All Categories</option>
+                </select>
+
+                <div class="flex gap-2">
+                    <input id="minPrice" type="number" placeholder="Min ₹" oninput="filterProducts()"
+                        class="border p-2 w-full rounded">
+                    <input id="maxPrice" type="number" placeholder="Max ₹" oninput="filterProducts()"
+                        class="border p-2 w-full rounded">
+                </div>
+            </div>
+
+
+            <div class="bg-white p-6 rounded shadow mb-6">
+                <h2 class="font-semibold mb-4">Add Product</h2>
+                <div class="grid grid-cols-3 gap-4">
+                    <input id="prodName" placeholder="Name" class="border p-2">
+                    <input id="prodPrice" placeholder="Price" class="border p-2">
+                    <input id="prodImage" placeholder="Image URL" class="border p-2">
+                    <textarea id="prodDesc" placeholder="Description" class="border p-2 col-span-2"></textarea>
+                    <select id="prodCategory" class="border p-2"></select>
+                </div>
+                <button onclick="addProduct()" class="mt-4 bg-[#8F267C] text-white px-6 py-2 rounded">
+                    Add Product
+                </button>
+            </div>
+
+            <div id="productList"></div>
+        </section>
+
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="fixed bottom-6 right-6 hidden bg-[#8F267C] text-white px-6 py-3 rounded-lg shadow-lg z-50">
+    </div>
+
+    <script>
+
+        function logout() {
+            localStorage.removeItem("adminAuth");
+            window.location.replace("/admin/index.html");
+        }
+
+
+
+        window.addEventListener("pageshow", () => {
+            if (localStorage.getItem("adminAuth") !== "zinckon-admin-auth") {
+                window.location.replace("/admin/index.html");
+            }
+        });
+
+
+        /* ----------------- UI ----------------- */
+        function showView(id) {
+            document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function showToast(msg) {
+            const t = toast;
+            t.textContent = msg;
+            t.classList.remove("hidden");
+            setTimeout(() => t.classList.add("hidden"), 2500);
+        }
+
+        /* ----------------- DATA ----------------- */
+        let CATEGORIES = [];
+        let PRODUCTS = [];
+
+        /* ----------------- LOAD ----------------- */
+        async function loadAll() {
+            CATEGORIES = await fetch('/.netlify/functions/admin-get-categories').then(r => r.json());
+            PRODUCTS = await fetch('/.netlify/functions/admin-get-products').then(r => r.json());
+
+            stats.innerHTML = `
+    <div class="bg-white p-6 rounded shadow">
+      <p class="text-gray-500">Categories</p>
+      <p class="text-3xl font-bold">${CATEGORIES.length}</p>
+    </div>
+    <div class="bg-white p-6 rounded shadow">
+      <p class="text-gray-500">Products</p>
+      <p class="text-3xl font-bold">${PRODUCTS.length}</p>
+    </div>
+  `;
+
+            renderDashboard();
+            renderCategories();
+            renderProducts(PRODUCTS);
+        }
+
+        function filterCategories() {
+            const q = document.getElementById("categorySearch").value.toLowerCase();
+            const filtered = CATEGORIES.filter(c =>
+                c.name.toLowerCase().includes(q) ||
+                c.slug.toLowerCase().includes(q)
+            );
+            renderCategories(filtered);
+        }
+
+        function filterProducts() {
+            const q = productSearch.value.toLowerCase();
+            const cat = filterCategory.value;
+            const min = Number(minPrice.value) || 0;
+            const max = Number(maxPrice.value) || Infinity;
+
+            const filtered = PRODUCTS.filter(p => {
+                return (
+                    (p.name.toLowerCase().includes(q) ||
+                        (p.description || '').toLowerCase().includes(q)) &&
+                    (!cat || p.category === cat) &&
+                    Number(p.price) >= min &&
+                    Number(p.price) <= max
+                );
+            });
+
+            renderProducts(filtered);
+        }
+
+
+
+        /* ----------------- DASHBOARD ----------------- */
+        function renderDashboard() {
+            const count = {};
+            PRODUCTS.forEach(p => count[p.category] = (count[p.category] || 0) + 1);
+
+            categoryStats.innerHTML = CATEGORIES.map(c => `
+    <div class="flex justify-between border-b py-2 cursor-pointer hover:bg-gray-100 px-2"
+      onclick="filterByCategory('${c.name}')">
+      <span class="font-medium text-[#8F267C]">${c.name}</span>
+      <span>${count[c.name] || 0}</span>
+    </div>
+  `).join('');
+        }
+
+        function filterByCategory(name) {
+            showView('products');
+            renderProducts(PRODUCTS.filter(p => p.category === name));
+            showToast(`Showing products for "${name}"`);
+        }
+
+
+
+
+        /* ----------------- CATEGORIES ----------------- */
+        function renderCategories(list = CATEGORIES) {
+            categoryList.innerHTML = list.map(c => `
+    <div class="bg-white p-4 rounded shadow mb-3">
+      <div id="cat-view-${c.id}">
+        <h3 class="font-bold">${c.name}</h3>
+        <p>${c.slug}</p>
+        <p>${c.description || '-'}</p>
+        <button class="text-blue-600 mr-3" onclick="editCategory(${c.id})">Edit</button>
+        <button class="text-red-600" onclick="deleteCategory(${c.id}, '${c.name}')">Delete</button>
+      </div>
+
+      <div id="cat-edit-${c.id}" class="hidden">
+        <input id="cat-name-${c.id}" value="${c.name}" class="border p-1 w-full mb-1">
+        <input id="cat-slug-${c.id}" value="${c.slug}" class="border p-1 w-full mb-1">
+        <textarea id="cat-desc-${c.id}" class="border p-1 w-full mb-2">${c.description || ''}</textarea>
+        <button onclick="saveCategory(${c.id})" class="bg-green-600 text-white px-3 py-1 rounded">Save</button>
+        <button onclick="cancelCategory(${c.id})" class="ml-2">Cancel</button>
+      </div>
+    </div>
+  `).join('');
+
+            // keep product filter category dropdown updated
+            filterCategory.innerHTML =
+                `<option value="">All Categories</option>` +
+                CATEGORIES.map(c => `<option value="${c.name}">${c.name}</option>`).join('');
+        }
+
+
+        function editCategory(id) {
+            toggle(`cat-view-${id}`, `cat-edit-${id}`);
+        }
+        function cancelCategory(id) {
+            toggle(`cat-edit-${id}`, `cat-view-${id}`);
+        }
+        async function saveCategory(id) {
+            await fetch('/.netlify/functions/admin-update-category', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id,
+                    name: document.getElementById(`cat-name-${id}`).value,
+                    slug: document.getElementById(`cat-slug-${id}`).value,
+                    description: document.getElementById(`cat-desc-${id}`).value
+                })
+            });
+            showToast("Category updated");
+            loadAll();
+        }
+
+        /* ----------------- PRODUCTS ----------------- */
+        function renderProducts(list = PRODUCTS) {
+            productList.innerHTML = list.map(p => `
+    <div class="bg-white p-4 rounded shadow mb-3">
+      <div id="prod-view-${p.id}">
+        <h3 class="font-bold">${p.name}</h3>
+        <p>${p.category}</p>
+        <p>₹${p.price}</p>
+        <button class="text-blue-600 mr-3" onclick="editProduct(${p.id})">Edit</button>
+        <button class="text-red-600" onclick="deleteProduct(${p.id}, '${p.name}')">Delete</button>
+      </div>
+
+      <div id="prod-edit-${p.id}" class="hidden">
+        <input id="prod-name-${p.id}" value="${p.name}" class="border p-1 w-full mb-1">
+        <input id="prod-price-${p.id}" value="${p.price}" class="border p-1 w-full mb-1">
+        <input id="prod-image-${p.id}" value="${p.image_url || ''}" class="border p-1 w-full mb-1">
+        <textarea id="prod-desc-${p.id}" class="border p-1 w-full mb-1">${p.description || ''}</textarea>
+        <select id="prod-cat-${p.id}" class="border p-1 w-full mb-2">
+          ${CATEGORIES.map(c => `<option value="${c.id}" ${c.name === p.category ? 'selected' : ''}>${c.name}</option>`).join('')}
+        </select>
+        <button onclick="saveProduct(${p.id})" class="bg-green-600 text-white px-3 py-1 rounded">Save</button>
+        <button onclick="cancelProduct(${p.id})" class="ml-2">Cancel</button>
+      </div>
+    </div>
+  `).join('');
+        }
+
+
+        function editProduct(id) {
+            toggle(`prod-view-${id}`, `prod-edit-${id}`);
+        }
+        function cancelProduct(id) {
+            toggle(`prod-edit-${id}`, `prod-view-${id}`);
+        }
+        async function saveProduct(id) {
+            await fetch('/.netlify/functions/admin-update-product', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id,
+                    name: document.getElementById(`prod-name-${id}`).value,
+                    description: document.getElementById(`prod-desc-${id}`).value,
+                    price: document.getElementById(`prod-price-${id}`).value,
+                    image_url: document.getElementById(`prod-image-${id}`).value,
+                    category_id: document.getElementById(`prod-cat-${id}`).value,
+                    is_active: true
+                })
+            });
+            showToast("Product updated");
+            loadAll();
+        }
+
+        /* ----------------- ADD / DELETE ----------------- */
+        async function addCategory() {
+            await fetch('/.netlify/functions/admin-add-category', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name: catName.value, slug: catSlug.value, description: catDesc.value })
+            });
+            showToast("Category added");
+            catName.value = catSlug.value = catDesc.value = '';
+            loadAll();
+        }
+
+        async function addProduct() {
+            await fetch('/.netlify/functions/admin-add-product', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: prodName.value,
+                    description: prodDesc.value,
+                    price: prodPrice.value,
+                    image_url: prodImage.value,
+                    category_id: prodCategory.value
+                })
+            });
+            showToast("Product added");
+            prodName.value = prodDesc.value = prodPrice.value = prodImage.value = '';
+            loadAll();
+        }
+
+        async function deleteCategory(id, name) {
+            if (!confirm(`Delete category "${name}" and all its products?`)) return;
+            await fetch('/.netlify/functions/admin-delete-category', {
+                method: 'POST',
+                body: JSON.stringify({ id })
+            });
+            showToast("Category deleted");
+            loadAll();
+        }
+
+        async function deleteProduct(id, name) {
+            if (!confirm(`Delete product "${name}"?`)) return;
+            await fetch('/.netlify/functions/admin-delete-product', {
+                method: 'POST',
+                body: JSON.stringify({ id })
+            });
+            showToast("Product deleted");
+            loadAll();
+        }
+
+        /* ----------------- UTIL ----------------- */
+        function toggle(hideId, showId) {
+            document.getElementById(hideId).classList.add('hidden');
+            document.getElementById(showId).classList.remove('hidden');
+        }
+
+        loadAll();
+
+        function toggleProfile() {
+            document.getElementById("profileMenu").classList.toggle("hidden");
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener("click", (e) => {
+            const menu = document.getElementById("profileMenu");
+            if (!e.target.closest(".relative")) {
+                menu?.classList.add("hidden");
+            }
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>

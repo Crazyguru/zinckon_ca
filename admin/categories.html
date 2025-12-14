@@ -1,85 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8" />
     <title>Admin – Categories</title>
-    <style>
-        body {
-            font-family: Arial;
-            padding: 20px;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            margin: 6px 0;
-            padding: 8px;
-        }
-
-        button {
-            padding: 8px 16px;
-            background: #8F267C;
-            color: #fff;
-            border: none;
-        }
-
-        .category {
-            border-bottom: 1px solid #ddd;
-            padding: 8px 0;
-        }
-    </style>
 </head>
 
 <body>
 
-    <h1>Admin – Product Categories</h1>
+    <h2>Admin – Categories</h2>
 
-    <h2>Add Category</h2>
-    <input id="name" placeholder="Category Name">
-    <input id="slug" placeholder="Slug (e.g. pharmaceuticals)">
-    <textarea id="description" placeholder="Description"></textarea>
-    <input id="image" placeholder="Image URL (/images/...)">
-    <button onclick="addCategory()">Add</button>
+    <div>
+        <input id="name" placeholder="Name" />
+        <input id="slug" placeholder="Slug" />
+        <textarea id="desc" placeholder="Description"></textarea>
+        <br><br>
+        <button type="button" id="addBtn">Add Category</button>
+    </div>
 
-    <h2>Existing Categories</h2>
-    <div id="categories"></div>
+    <hr>
+
+    <h3>Existing Categories</h3>
+    <div id="list"></div>
 
     <script>
-        async function loadCategories() {
-            const res = await fetch("/.netlify/functions/admin-get-categories");
-            const data = await res.json();
+        document.addEventListener("DOMContentLoaded", () => {
+            const nameInput = document.getElementById("name");
+            const slugInput = document.getElementById("slug");
+            const descInput = document.getElementById("desc");
+            const list = document.getElementById("list");
+            const addBtn = document.getElementById("addBtn");
 
-            const container = document.getElementById("categories");
-            container.innerHTML = "";
+            async function loadCategories() {
+                const res = await fetch("/.netlify/functions/admin-get-categories");
+                const data = await res.json();
 
-            data.forEach(c => {
-                container.innerHTML += `
-      <div class="category">
-        <strong>${c.name}</strong> (${c.slug})<br>
-        ${c.description || ""}
-      </div>
-    `;
-            });
-        }
+                console.log("Loaded categories:", data);
 
-        async function addCategory() {
-            const payload = {
-                name: name.value,
-                slug: slug.value,
-                description: description.value,
-                image_url: image.value
-            };
+                list.innerHTML = data.map(c =>
+                    `<p><b>${c.name}</b> (${c.slug})</p>`
+                ).join("");
+            }
 
-            await fetch("/.netlify/functions/admin-add-category", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            });
+            async function addCategory() {
+                const payload = {
+                    name: nameInput.value,
+                    slug: slugInput.value,
+                    description: descInput.value
+                };
+
+                console.log("Sending:", payload);
+
+                const res = await fetch("/.netlify/functions/admin-add-category", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                const txt = await res.text();
+                console.log("Server says:", txt);
+
+                nameInput.value = "";
+                slugInput.value = "";
+                descInput.value = "";
+
+                loadCategories();
+            }
+
+            addBtn.addEventListener("click", addCategory);
 
             loadCategories();
-        }
-
-        loadCategories();
+        });
     </script>
 
 </body>

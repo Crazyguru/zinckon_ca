@@ -192,3 +192,6 @@ async function loadProducts() {
 }
 
 document.addEventListener("DOMContentLoaded", loadProducts);
+
+
+
