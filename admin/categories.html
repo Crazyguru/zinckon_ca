@@ -31,56 +31,38 @@
 </head>
 
 <body>
+    <h1>Admin – Categories</h1>
 
-    <h1>Admin – Product Categories</h1>
+    <input id="name" placeholder="Name">
+    <input id="slug" placeholder="Slug">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <button onclick="add()">Add</button>
 
-    <h2>Add Category</h2>
-    <input id="name" placeholder="Category Name">
-    <input id="slug" placeholder="Slug (e.g. pharmaceuticals)">
-    <textarea id="description" placeholder="Description"></textarea>
-    <input id="image" placeholder="Image URL (/images/...)">
-    <button onclick="addCategory()">Add</button>
-
-    <h2>Existing Categories</h2>
-    <div id="categories"></div>
+    <div id="list"></div>
 
     <script>
-        async function loadCategories() {
-            const res = await fetch("/.netlify/functions/admin-get-categories");
-            const data = await res.json();
-
-            const container = document.getElementById("categories");
-            container.innerHTML = "";
-
-            data.forEach(c => {
-                container.innerHTML += `
-      <div class="category">
-        <strong>${c.name}</strong> (${c.slug})<br>
-        ${c.description || ""}
-      </div>
-    `;
-            });
+        async function load() {
+            const r = await fetch("/.netlify/functions/admin-get-categories");
+            const d = await r.json();
+            list.innerHTML = d.map(c => `<p>${c.name} (${c.slug})</p>`).join("");
         }
 
-        async function addCategory() {
-            const payload = {
-                name: name.value,
-                slug: slug.value,
-                description: description.value,
-                image_url: image.value
-            };
-
+        async function add() {
             await fetch("/.netlify/functions/admin-add-category", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({
+                    name: name.value,
+                    slug: slug.value,
+                    description: desc.value
+                })
             });
-
-            loadCategories();
+            load();
         }
 
-        loadCategories();
+        load();
     </script>
+
 
 </body>
 

@@ -36,71 +36,44 @@
 
     <h1>Admin – Products</h1>
 
-    <h2>Add Product</h2>
-
-    <input id="name" placeholder="Product name">
-    <textarea id="description" placeholder="Description"></textarea>
+    <input id="name" placeholder="Name">
     <input id="price" placeholder="Price">
-    <input id="image" placeholder="Image URL (/images/...)">
+    <input id="image" placeholder="Image URL">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <select id="cat"></select>
+    <button onclick="add()">Add Product</button>
 
-    <select id="category"></select>
-
-    <button onclick="addProduct()">Add Product</button>
-
-    <h2>Existing Products</h2>
-    <div id="products"></div>
+    <div id="list"></div>
 
     <script>
-        async function loadCategories() {
-            const res = await fetch("/.netlify/functions/admin-get-categories");
-            const data = await res.json();
-
-            const select = document.getElementById("category");
-            select.innerHTML = "";
-
-            data.forEach(c => {
-                select.innerHTML += `
-      <option value="${c.id}">${c.name}</option>
-    `;
-            });
+        async function loadCats() {
+            const r = await fetch("/.netlify/functions/admin-get-categories");
+            const d = await r.json();
+            cat.innerHTML = d.map(c => `<option value="${c.id}">${c.name}</option>`).join("");
         }
 
         async function loadProducts() {
-            const res = await fetch("/.netlify/functions/admin-get-products");
-            const data = await res.json();
-
-            const container = document.getElementById("products");
-            container.innerHTML = "";
-
-            data.forEach(p => {
-                container.innerHTML += `
-      <div class="item">
-        <strong>${p.name}</strong> – ₹${p.price}<br>
-        Category: ${p.category}
-      </div>
-    `;
-            });
+            const r = await fetch("/.netlify/functions/admin-get-products");
+            const d = await r.json();
+            list.innerHTML = d.map(p => `<p>${p.name} – ${p.category}</p>`).join("");
         }
 
-        async function addProduct() {
-            const payload = {
-                name: name.value,
-                description: description.value,
-                price: price.value,
-                image_url: image.value,
-                category_id: category.value
-            };
-
+        async function add() {
             await fetch("/.netlify/functions/admin-add-product", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({
+                    name: name.value,
+                    description: desc.value,
+                    price: price.value,
+                    image_url: image.value,
+                    category_id: cat.value
+                })
             });
-
             loadProducts();
         }
 
-        loadCategories();
+        loadCats();
         loadProducts();
     </script>
 
