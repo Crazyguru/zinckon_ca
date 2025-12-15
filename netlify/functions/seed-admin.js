@@ -10,7 +10,7 @@ export async function handler(event, context) {
 
     await client.connect();
 
-    const hash = await bcrypt.hash("guru@123", 10);
+    const hash = await bcrypt.hash("aafreen@123", 10);
 
     await client.query(
       `
@@ -18,14 +18,14 @@ export async function handler(event, context) {
       VALUES ($1, $2, 'admin', true)
       ON CONFLICT (email) DO NOTHING
       `,
-      ["guru@zinckon.com", hash]
+      ["aafreen@zinckon.com", hash]
     );
 
     await client.end();
 
     return {
       statusCode: 200,
-      body: "Admin seeded successfully"
+      body: "Admin seeded successfully aafreen"
     };
   } catch (err) {
     return {
