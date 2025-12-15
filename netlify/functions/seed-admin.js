@@ -10,7 +10,7 @@ export async function handler(event, context) {
 
     await client.connect();
 
-    const hash = await bcrypt.hash("ChangeThisPassword123", 10);
+    const hash = await bcrypt.hash("sukh@123", 10);
 
     await client.query(
       `
@@ -18,7 +18,7 @@ export async function handler(event, context) {
       VALUES ($1, $2, 'admin', true)
       ON CONFLICT (email) DO NOTHING
       `,
-      ["admin@zinckon.com", hash]
+      ["sukh@zinckon.com", hash]
     );
 
     await client.end();
