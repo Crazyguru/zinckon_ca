@@ -18,14 +18,14 @@ export async function handler(event, context) {
       VALUES ($1, $2, 'admin', true)
       ON CONFLICT (email) DO NOTHING
       `,
-      ["aafreen@zinckon.com", hash]
+      ["@zinckon.com", hash]
     );
 
     await client.end();
 
     return {
       statusCode: 200,
-      body: "Admin seeded successfully aafreen"
+      body: "Admin seeded successfully"
     };
   } catch (err) {
     return {
